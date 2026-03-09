@@ -1,23 +1,55 @@
-# Getting Started with Formbox
+---
+description: This article outlines the basic steps to get started with Formbox
+---
 
-Formbox enables clinical forms with FHIR Questionnaire support, allowing you to build, render, and process healthcare forms.
+# Getting started (module)
 
-## What is Formbox?
+You can try the Formbox module, edit test forms, create new ones, see how the data will be saved to the database and extracted, for this you need to run [the Formbox in Aidbox Sandbox](getting-started.md#run-aidbox-forms-in-aidbox-sandbox). At the same time, you can run [the Formbox locally](getting-started.md#run-aidbox-forms-locally).
 
-Formbox provides:
+You can also use the standalone Formbox product — see [Getting started with Formbox](getting-started-formbox.md).
 
-- **Form Builder** - Visual editor for creating FHIR Questionnaires
-- **Form Renderer** - Render questionnaires as interactive forms
-- **SDC Support** - Structured Data Capture profiles compliance
-- **QuestionnaireResponse** - Automatic FHIR response generation
+## Run Formbox in Aidbox Sandbox
 
-## Quick Start
+### Create a license on Aidbox portal
 
-1. Contact us at [health-samurai.io/contacts](https://health-samurai.io/contacts) to get access
-2. Create your first questionnaire using the form builder
-3. Embed the form renderer in your application
+* Sign up on [Aidbox portal](https://aidbox.app/ui/portal#/signin)
+* Create a license: licence type - **production** or **development**, hosting - **in Cloud (for free)**
 
-## Next Steps
+### Start playing with Formbox
 
-- [API Reference](api.md)
-- [Release Notes](release-notes.md)
+* Go to [Aidbox portal](https://aidbox.app/ui/portal#/signin), find your license in the "Personal project licenses" list. Click on your new license and navigate to the "URL" link in the "Hosting" box.
+* Press the button `Forms` in the Aidbox console in browser
+* Play with forms
+
+## Run Formbox locally
+
+### Create a license on Aidbox portal
+
+* Sign up on [Aidbox portal](https://aidbox.app/ui/portal#/signin)
+* Create a license: licence type - **development**, hosting - **self-hosted**
+* Copy and save a license key
+
+### Configure Aidbox project
+
+1. Follow this [guide](https://docs.aidbox.app/docs/aidbox/getting-started/run-aidbox-locally) to start Aidbox locally
+
+
+2. Press the button `Forms` in the Aidbox console in browser (or by visiting [http://localhost:8080/ui/sdc](http://localhost:8080/ui/sdc) )
+
+### Start form designing
+
+See [Design form in Aidbox UI Builder](aidbox-ui-builder-alpha/)
+
+## Enable Audit log
+
+Formbox support [Audit logs](https://docs.aidbox.app/docs/aidbox/access-control/audit-and-logging).
+
+To enable Audit logging follow this [guide](https://docs.aidbox.app/docs/aidbox/tutorials/security-access-control-tutorials/how-to-configure-audit-log)
+
+## Disable SDC operations
+
+In case you have conflicts with your own implementation, you can easily disable SDC operations by setting environment variable:
+
+```
+AIDBOX_SDC_ENABLED=false
+```
