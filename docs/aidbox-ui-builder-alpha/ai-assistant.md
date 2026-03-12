@@ -10,7 +10,7 @@ The AI Assistant in the Aidbox UI Builder is a powerful tool designed to help yo
 
 Beyond form building, the assistant can digitize paper forms by importing PDF documents and extracting form structures from selected regions. It also helps you analyze collected data by creating ViewDefinitions and generating interactive visualizations, turning your questionnaire responses into actionable insights.
 
-More details on ViewDefinition and SQL on FHIR see [here.](https://www.health-samurai.io/docs/aidbox/sql-on-fhir/)
+More details on ViewDefinition and SQL on FHIR see [here.](https://www.health-samurai.io/docs/aidbox/modules/sql-on-fhir/)
 
 ## Getting Started
 
