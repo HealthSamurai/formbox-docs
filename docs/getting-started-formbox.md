@@ -9,7 +9,7 @@ description: Follow these steps to launch Formbox in Sandbox or locally
 {% hint style="warning" %}
 <img src="../assets/docker.avif" alt="Docker logo" data-size="original">
 
-Please **make sure** that both [Docker & Docker Compose](https://docs.docker.com/engine/install/) are installed.
+Please **make sure** that both [Docker & Docker Compose](https://docs.docker.com/engine/install/) are installed (not required if you're planning to use sandbox).
 {% endhint %}
 
 You can start Formbox standalone from the Aidbox Portal and then sign in with the credentials generated for your instance.
