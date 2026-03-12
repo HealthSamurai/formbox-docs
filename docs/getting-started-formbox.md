@@ -57,6 +57,8 @@ Enter the login and password shown on the **Product Summary** page.
 
 After a successful sign-in, use the left sidebar to open **Aidbox Forms** and continue working in Formbox.
 
+---
+
 # Alternative setup
 
 ## Steps 
