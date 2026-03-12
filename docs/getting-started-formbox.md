@@ -1,5 +1,5 @@
 ---
-description: Follow these steps to launch Formbox locally using Docker
+description: Follow these steps to launch Formbox in Sandbox or locally
 ---
 
 # Getting started (standalone)
@@ -12,7 +12,54 @@ description: Follow these steps to launch Formbox locally using Docker
 Please **make sure** that both [Docker & Docker Compose](https://docs.docker.com/engine/install/) are installed.
 {% endhint %}
 
+You can start Formbox standalone from the Aidbox Portal and then sign in with the credentials generated for your instance.
+
 ## Steps
+
+### 1. Open the Aidbox Portal
+
+Go to [Aidbox Portal](https://aidbox.app/ui/portal#/).
+
+Sign up for a new account or log in to an existing one.
+
+### 2. Create a Formbox license
+
+Click **New license** and fill in the following fields:
+
+- **Product**: `Formbox`
+- **License type**: choose the type you need
+- **License name**: enter a name for your license
+- **Hosting**:
+  - **Sandbox** — use Formbox in the cloud without Docker
+  - **Self-hosted** — run Formbox locally with Docker
+
+Click on **"Create"** button.
+
+If you choose **Sandbox**, wait until the page finishes loading. After that, the product will be ready to use.
+
+If you choose **Self-hosted**, the portal will show the next setup steps for local launch:
+
+After the license is created, you will be redirected to the **Product Summary** page.
+
+### 3. Run Formbox locally
+
+On the **Product Summary** page, copy the command from the **Run me locally** field and run it in your terminal.
+
+After the installation completes successfully, the output will show the local URL where Formbox is running ([http://localhost:8080/](http://localhost:8080) is used by default).
+
+### 4. Open Formbox in the browser
+
+Copy the local URL from the terminal output and open it in your browser.
+
+### 5. Sign in
+
+Enter the login and password shown on the **Product Summary** page.
+
+After a successful sign-in, use the left sidebar to open **Aidbox Forms** and continue working in Formbox.
+
+# Alternative setup
+
+## Steps 
 
 ### 1. Create a directory
 
