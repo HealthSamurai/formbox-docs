@@ -185,7 +185,7 @@ issue:
 >
 > `BOX_SECURITY_AUTH_KEYS_PRIVATE` and `BOX_SECURITY_AUTH_KEYS_PUBLIC` environment variables.
 >
-> [See settings](https://docs.aidbox.app/reference/settings/security-and-access-control#security.auth.keys.public)
+> [See settings](https://www.health-samurai.io/docs/aidbox/reference/settings/security-and-access-control#security.auth.keys.public)
 
 ## Save a QuestionnaireResponse - $save
 
@@ -493,7 +493,7 @@ subject: New form available
 template: 'A new form is ready for you. Open: {{link}}'
 ```
 
-It's possible to create other templates [see docs](https://docs.aidbox.app/docs/aidbox/modules/integration-toolkit/email-providers)
+It's possible to create other templates [see docs](https://www.health-samurai.io/docs/aidbox/modules/integration-toolkit/email-providers)
 
 ### Output Parameters
 

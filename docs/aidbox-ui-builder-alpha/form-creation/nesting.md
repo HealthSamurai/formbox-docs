@@ -120,8 +120,8 @@ You can specify theme in your [SDCConfig](../configuration.md)
 
 Theme also can be specified through `$generate-link`/`$populatelink` APIs when generating link for sending it to enduser
 
-* [$generate-link](https://docs.aidbox.app/docs/aidbox/reference/aidbox-forms-reference/aidbox-sdc-api#generate-a-link-to-a-questionnaireresponse-generate-link)
-* [$populatelink](https://docs.aidbox.app/docs/aidbox/reference/aidbox-forms-reference/fhir-sdc-api#populate-questionnaire-and-generate-a-link-populatelink) 
+* [$generate-link](../../reference/aidbox-sdc-api#generate-a-link-to-a-questionnaireresponse-generate-link)
+* [$populatelink](../../reference/fhir-sdc-api#populate-questionnaire-and-generate-a-link-populatelink) 
 
 
 ### Direct theme parameter to Aidbox-renderer and Aidbox form builder web-component

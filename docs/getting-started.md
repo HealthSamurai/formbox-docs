@@ -31,7 +31,7 @@ You can also use the standalone Formbox product — see [Getting started with Fo
 
 ### Configure Aidbox project
 
-1. Follow this [guide](https://docs.aidbox.app/docs/aidbox/getting-started/run-aidbox-locally) to start Aidbox locally
+1. Follow this [guide](https://www.health-samurai.io/docs/aidbox/getting-started/run-aidbox-locally) to start Aidbox locally
 
 
 2. Press the button `Forms` in the Aidbox console in browser (or by visiting [http://localhost:8080/ui/sdc](http://localhost:8080/ui/sdc) )
@@ -42,9 +42,9 @@ See [Design form in Aidbox UI Builder](aidbox-ui-builder-alpha/)
 
 ## Enable Audit log
 
-Formbox support [Audit logs](https://docs.aidbox.app/docs/aidbox/access-control/audit-and-logging).
+Formbox support [Audit logs](https://www.health-samurai.io/docs/aidbox/access-control/audit-and-logging).
 
-To enable Audit logging follow this [guide](https://docs.aidbox.app/docs/aidbox/tutorials/security-access-control-tutorials/how-to-configure-audit-log)
+To enable Audit logging follow this [guide](https://www.health-samurai.io/docs/aidbox/tutorials/security-access-control-tutorials/how-to-configure-audit-log)
 
 ## Disable SDC operations
 

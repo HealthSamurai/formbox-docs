@@ -297,5 +297,5 @@ item:
 ## Related Resources
 
 - [Da Vinci DTR Implementation Guide](https://build.fhir.org/ig/HL7/davinci-dtr/)
-- [SDC $populate Operation](https://docs.aidbox.app/docs/aidbox/reference/aidbox-forms-reference/fhir-sdc-api)
+- [SDC $populate Operation](./reference/fhir-sdc-api)
 - [FHIR Questionnaire Resource](https://www.hl7.org/fhir/questionnaire.html)

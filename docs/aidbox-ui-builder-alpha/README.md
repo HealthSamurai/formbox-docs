@@ -18,8 +18,8 @@ In FHIR, forms are represented using the [Questionnaire](http://hl7.org/fhir/R4/
 
 Formbox module provides available APIs:
 
-* [FHIR API](https://docs.aidbox.app/docs/aidbox/api/rest-api/fhir-search) - to interact with FHIR Questionnaire, FHIR QuestionnaireResponse and other FHIR resources.
-* [FHIR SDC API](https://docs.aidbox.app/docs/aidbox/reference/aidbox-forms-reference/fhir-sdc-api)- a set of aditional operstions to interact with form and data.
+* [FHIR API](https://www.health-samurai.io/docs/aidbox/api/rest-api/fhir-search) - to interact with FHIR Questionnaire, FHIR QuestionnaireResponse and other FHIR resources.
+* [FHIR SDC API](../reference/fhir-sdc-api)- a set of aditional operstions to interact with form and data.
 
 ## Getting started
 

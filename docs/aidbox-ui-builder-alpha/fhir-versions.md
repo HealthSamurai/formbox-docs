@@ -10,7 +10,7 @@ However, you can load/import questionnaires with FHIR versions ranging from 3.0.
 
 ### FHIR Version configuration
 
-To configure Aidbox FHIR version you can read [Bootstrap FHIR package list](https://docs.aidbox.app/docs/aidbox/reference/all-settings#bootstrap-fhir-packages) section.
+To configure Aidbox FHIR version you can read [Bootstrap FHIR package list](https://www.health-samurai.io/docs/aidbox/reference/all-settings#bootstrap-fhir-packages) section.
 
 ### Import/load questionnare with conversion
 

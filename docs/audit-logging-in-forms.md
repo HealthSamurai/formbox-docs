@@ -12,7 +12,7 @@ Audit Logging is central part for system observability - providing the ability t
 
 Aidbox supports Audit Logging and acts as Audit Record repository. Audit Logging disabled by default and should be enabled via configuration.
 
-* [setup audit logging](https://docs.aidbox.app/docs/aidbox/tutorials/security-access-control-tutorials/how-to-configure-audit-log)
+* [setup audit logging](https://www.health-samurai.io/docs/aidbox/tutorials/security-access-control-tutorials/how-to-configure-audit-log)
 
 ## Audit Logging in Formbox Module
 
@@ -65,7 +65,7 @@ parameter:
   valueString: forms-app
 ```
 
-For using user-token you should setup [TokenIntrospector](https://docs.aidbox.app/docs/aidbox/access-control/authentication/token-introspector) or [IdentityProvider](https://docs.aidbox.app/docs/aidbox/tutorials/security-access-control-tutorials/set-up-external-identity-provider) for validating this token.
+For using user-token you should setup [TokenIntrospector](https://www.health-samurai.io/docs/aidbox/access-control/authentication/token-introspector) or [IdentityProvider](https://www.health-samurai.io/docs/aidbox/tutorials/security-access-control-tutorials/set-up-external-identity-provider) for validating this token.
 
 User from token will be used in AuditEvent as
 

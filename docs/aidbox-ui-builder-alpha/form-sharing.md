@@ -12,7 +12,7 @@ Formbox supports two main scenarios for sharing forms with users:
 2. [Embed the Form via iframe into an application or website](form-sharing.md#embed-the-form-via-iframe-into-an-application-or-website)
 
 {% hint style="warning" %}
-To use **form sharing**, you must explicitly [configure RSA private/public keys and a secret](https://docs.aidbox.app/docs/aidbox/configuration/configure-aidbox-and-multibox/#generate-rsa-keypair.md).
+To use **form sharing**, you must explicitly [configure RSA private/public keys and a secret](https://www.health-samurai.io/docs/aidbox/configuration/configure-aidbox-and-multibox/#generate-rsa-keypair.md).
 {% endhint %}
 
 ## Sharing a Form Link with the User
@@ -23,7 +23,7 @@ After creating a form, you can generate a link to the form and send it to the us
    * Choose the form you want to share from your list of forms.
 2. **Generate the Link:**
    * Use the "Share" option within the Formbox interface.
-   * Generate the link via[ $populatelink ](https://docs.aidbox.app/docs/aidbox/reference/aidbox-forms-reference/fhir-sdc-api)FHIR SDC operation.
+   * Generate the link via[ $populatelink ](../reference/fhir-sdc-api)FHIR SDC operation.
 3. **Copy the Link:**
    * Once the link is generated, copy it to your clipboard.
 4. **Send the Link:**
@@ -49,7 +49,7 @@ After creating a form, you can generate an iframe code for this form and embed i
    * Choose the form you want to embed from your list of forms.
 2. **Generate the iframe Code:**
    * Use the "Share" option within the Formbox interface.
-   * Generate the link via[ $populatelink ](https://docs.aidbox.app/docs/aidbox/reference/aidbox-forms-reference/fhir-sdc-api)FHIR SDC operation and use it with iframe.
+   * Generate the link via[ $populatelink ](../reference/fhir-sdc-api)FHIR SDC operation and use it with iframe.
 
 ```
 <iframe src="your-generated-link"></iframe>

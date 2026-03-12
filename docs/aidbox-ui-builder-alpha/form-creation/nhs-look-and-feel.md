@@ -56,7 +56,7 @@ To enable the NHS look and feel in Formbox:
    All Questionnaires without an explicitly assigned theme will automatically use the NHS design system.
 
    Per questionnaire (when sharing forms):
-   When generating patient-facing links using the [populatelink](https://docs.aidbox.app/docs/aidbox/reference/aidbox-forms-reference/fhir-sdc-api#populate-questionnaire-and-generate-a-link-populatelink) or [generate-link](https://docs.aidbox.app/docs/aidbox/reference/aidbox-forms-reference/aidbox-sdc-api#generate-a-link-to-a-questionnaireresponse-generate-link) operations,
+   When generating patient-facing links using the [populatelink](../../reference/fhir-sdc-api#populate-questionnaire-and-generate-a-link-populatelink) or [generate-link](../../reference/aidbox-sdc-api#generate-a-link-to-a-questionnaireresponse-generate-link) operations,
    include the theme in the `theme` property to apply the NHS design only to that specific form.
 
 This setup allows you to use the NHS design system globally or only for selected Questionnaires, depending on your needs.

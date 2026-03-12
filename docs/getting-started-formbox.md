@@ -7,7 +7,7 @@ description: Follow these steps to launch Formbox locally using Docker
 ## Prerequisites
 
 {% hint style="warning" %}
-<img src="../assets/docker.avif" alt="Docker logo" data-size="original">
+<img src="../assets/docker.png" alt="Docker logo" data-size="original">
 
 Please **make sure** that both [Docker & Docker Compose](https://docs.docker.com/engine/install/) are installed.
 {% endhint %}
@@ -36,7 +36,7 @@ Open in browser [http://localhost:8080/](http://localhost:8080)
 
 Click "Continue with Aidbox account" and create a free Aidbox account in [Aidbox user portal](https://aidbox.app/).
 
-More about Aidbox licenses [here](https://docs.aidbox.app/docs/aidbox/overview/aidbox-user-portal/licenses)
+More about Aidbox licenses [here](https://www.health-samurai.io/docs/aidbox/overview/aidbox-user-portal/licenses)
 
 ### 5. Start form designing
 

@@ -42,7 +42,7 @@ This scenario is ideal for users who have paper forms or fillable PDFs that they
 Your OpenAI API key is used securely and remains private. It is neither transferred nor stored on any backend servers or third-party services. All interactions with OpenAI happen locally in your browser, ensuring your API key is protected throughout the process.
 {% endhint %}
 
-There's the [API for generating a form (Questionnaire resource) from a PDF-file](https://docs.aidbox.app/docs/aidbox/reference/aidbox-forms-reference/generating-questionnaire-from-pdf-api) using AI.
+There's the [API for generating a form (Questionnaire resource) from a PDF-file](../reference/generating-questionnaire-from-pdf-api) using AI.
 
 ### **3. Selecting an openEHR Template File**
 
@@ -51,7 +51,7 @@ In this scenario, you can upload an existing openEHR template file. The system r
 1. Click the **"Choose openEHR Template file"** button and select a file from your local storage. 
 2. The content of the openEHR template file will be converted to FHIR Questionnaire.
 
-There's the [API for generating a form (Questionnaire resource) from an openEHR template](https://docs.aidbox.app/docs/aidbox/reference/aidbox-forms-reference/generating-questionnaire-from-openehr-template).
+There's the [API for generating a form (Questionnaire resource) from an openEHR template](../reference/generating-questionnaire-from-openehr-template).
 
 ### **4. Pasting JSON Directly into the JSON Area**
 

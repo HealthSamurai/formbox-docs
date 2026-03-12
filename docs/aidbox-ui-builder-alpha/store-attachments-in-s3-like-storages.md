@@ -10,7 +10,7 @@ Formbox provides an ability to store files from attachment items in cloud storag
 
 ## 1. Setup storage account
 
-Aidbox supports Amazon S3, Google Cloud Storage, Azure Container. Here is the guide on [how to setup this integration](https://docs.aidbox.app/docs/aidbox/file-storage/aws-s3).
+Aidbox supports Amazon S3, Google Cloud Storage, Azure Container. Here is the guide on [how to setup this integration](https://www.health-samurai.io/docs/aidbox/file-storage/aws-s3).
 
 ## 2. Update SDCConfig
 
@@ -50,7 +50,7 @@ Workload identity is the most secure option as it eliminates the need to store c
 **Prerequisites:**
 - Configure workload identity for your Kubernetes cluster (GKE Workload Identity or AKS Managed Identity)
 - Grant appropriate storage permissions to the managed identity
-- See [GCP Cloud Storage](https://docs.aidbox.app/docs/aidbox/file-storage/gcp-cloud-storage) or [Azure Blob Storage](https://docs.aidbox.app/docs/aidbox/file-storage/azure-blob-storage) documentation for detailed setup instructions
+- See [GCP Cloud Storage](https://www.health-samurai.io/docs/aidbox/file-storage/gcp-cloud-storage) or [Azure Blob Storage](https://www.health-samurai.io/docs/aidbox/file-storage/azure-blob-storage) documentation for detailed setup instructions
 
 ### Option 2: Credential-Based Authentication
 

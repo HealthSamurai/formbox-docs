@@ -26,7 +26,7 @@ Themes are stored in the database in a custom resource called **QuestionnaireThe
 ### **How to Use a Theme:**
 
 * You can set a **default theme** in the configuration, and it will be applied to all forms. More details can be found [here](../configuration.md).
-* You can also pass a theme as a **parameter** when generating a link to a specific form. More details can be found [here](https://docs.aidbox.app/docs/aidbox/reference/aidbox-forms-reference/aidbox-sdc-api#parameters).
+* You can also pass a theme as a **parameter** when generating a link to a specific form. More details can be found [here](../../reference/aidbox-sdc-api#parameters).
 
 ### **How to Create a New Theme:**
 

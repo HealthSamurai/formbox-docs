@@ -4,7 +4,7 @@ description: Configure access control for Formbox with roles like SDC Admin, For
 
 # Access control in forms
 
-Form's module access control can be set via aidbox [ACL engine](https://docs.aidbox.app/docs/aidbox/deprecated/deprecated/zen-related/access-control-lists-docs-acl)
+Form's module access control can be set via aidbox [ACL engine](https://www.health-samurai.io/docs/aidbox/deprecated/deprecated/zen-related/access-control-lists-docs-acl)
 
 ## SDC Roles Access
 
