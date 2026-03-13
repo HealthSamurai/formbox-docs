@@ -14,7 +14,11 @@ formbox-docs/
 
 ## Local Development
 
-Documentation is rendered by the [health-samurai.io](https://health-samurai.io) portal.
+Documentation is rendered by the [health-samurai.io](https://wwww.health-samurai.io) portal.
+Please install prepush hooks:
+```
+bun install
+```
 
 ## Contributing
 
