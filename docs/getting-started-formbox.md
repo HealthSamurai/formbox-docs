@@ -59,9 +59,7 @@ After a successful sign-in, use the left sidebar to open **Aidbox Forms** and co
 
 ---
 
-# Alternative setup
-
-## Steps 
+## Alternative setup
 
 ### 1. Create a directory
 
