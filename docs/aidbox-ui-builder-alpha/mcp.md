@@ -136,8 +136,8 @@ Once the MCP server is configured, the interaction usually looks like this:
 {% endstep %}
 
 {% step %}
-**User:** "Approved."\
-**Agent:** Binds to the selected Builder tab and is ready to work with that questionnaire.
+User approves the consent prompt in the browser.\
+Agent receives the approval result, binds to the selected Builder tab, and is ready to work with that questionnaire.
 {% endstep %}
 
 {% step %}
