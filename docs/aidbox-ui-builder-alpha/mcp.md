@@ -2,7 +2,7 @@
 description: Connect external MCP-capable agents directly to the Formbox Builder MCP endpoint.
 ---
 
-# MCP
+# Connect AI Agents to Formbox Builder
 
 Formbox exposes an MCP endpoint so external agents can work with Formbox Builder directly. To connect an agent, use the `/sdc/mcp` endpoint and send a bearer token in the `Authorization` header.
 
@@ -120,7 +120,7 @@ Add this to `.cursor/mcp.json` in your project root, or `~/.cursor/mcp.json` for
 
 Replace `<formbox-base-url>` with your Formbox base URL and `<your-access-token>` with the token returned by `/auth/token`.
 
-## Working with Formbox through MCP
+## Typical conversation
 
 Once the MCP server is configured, the interaction usually looks like this:
 

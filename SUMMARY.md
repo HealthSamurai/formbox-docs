@@ -8,6 +8,7 @@
   * [Form Builder](aidbox-ui-builder-alpha/README.md)
     * [Form Builder Interface](aidbox-ui-builder-alpha/ui-builder-interface.md)
     * [AI Assistant](aidbox-ui-builder-alpha/ai-assistant.md)
+    * [Connect AI Agents](aidbox-ui-builder-alpha/mcp.md)
     * [Form creation](aidbox-ui-builder-alpha/form-creation/README.md)
       * [Form Settings](aidbox-ui-builder-alpha/form-creation/form-settings.md)
       * [Widgets](aidbox-ui-builder-alpha/form-creation/widgets.md)
