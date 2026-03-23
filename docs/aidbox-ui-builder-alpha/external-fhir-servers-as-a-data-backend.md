@@ -77,12 +77,7 @@ data-store:
 
 #### Terminology service
 
-> `ValueSet` search and `ValueSet/$expand` operation
-
-```yaml
-term-service:
-    endpoint: "https://fhir-server.com/fhir"
-```
+To learn how to configure a custom terminology server and add terminology servers to the configuration, see [Integration with external terminology servers](integration-with-external-terminology-servers.md).
 
 ### Full config example:
 
