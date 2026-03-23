@@ -191,7 +191,7 @@ An example of the simple multilingual questionnaire:
 {% hint style="info" %}
 Formbox supports a predefined set of languages:
 
-Chinese, Croatian, Czech, Danish, Dutch, English, Finnish, French, German, Hungarian, Italian, Japanese, Korean, Polish, Russian, Spanish
+Arabic, Chinese, Croatian, Czech, Danish, Dutch, English, Finnish, French, German, Hungarian, Italian, Japanese, Korean, Polish, Russian, Spanish, Swedish
 
 Additional languages can be added upon request.
 {% endhint %}
