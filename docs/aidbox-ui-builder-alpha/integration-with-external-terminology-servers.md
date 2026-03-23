@@ -73,9 +73,21 @@ builder:
 - Servers configured in `builder.external-terminology-servers` are appended to the built-in list.
 - Servers marked with `default: true` are sorted first in the dropdown.
 - If a default server is present in the list, its URL is prefilled in the `External terminology server` field.
-- 
 
-## Example Configuration Used for QA
+## Adding a custom terminology server
+
+External terminology servers support `ValueSet` search and `ValueSet/$expand` terminology operations in Aidbox Forms.
+
+Aidbox Forms also allows you to connect your own custom FHIR server and use it as a terminology server.
+
+To configure a terminology service, add its endpoint to `SDCConfig`:
+
+```yaml
+term-service:
+  endpoint: "https://fhir-server.com/fhir"
+```
+
+## Example Configuration
 
 ```json
 "external-terminology-servers": [
