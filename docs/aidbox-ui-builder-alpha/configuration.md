@@ -37,6 +37,9 @@ A global Configuration resource can be instantiated to serve as the system-wide 
 * `builder`: Configuration settings for the form builder.
   * `form-url-prefix`: The URL prefix used in URL generation for new forms.
   * `hide-back-button`: A boolean value that specifies whether the back button should be hidden.
+  * `hide-form-entry-mode`: A boolean value that specifies whether the Entry Mode control should be hidden in form settings.
+  * `hide-form-adaptive-form`: A boolean value that specifies whether the Adaptive Form control should be hidden in form settings.
+  * `hide-preview-renderer-selector`: A boolean value that specifies whether the preview renderer selector should be hidden in the builder toolbar.
   * `translation-languages`: Array of languages that can be used for translations in the builder. If not provided, [all languages](ui-builder-interface.md#list-of-supported-languages) are allowed.
   * `hide-publish`: A boolean value that specifies whether the publish button should be hidden.
   * `disable-publish`: A boolean value that specifies whether the publish button should be disabled.
@@ -86,7 +89,10 @@ A global Configuration resource can be instantiated to serve as the system-wide 
   },
   "builder": {
     "form-url-prefix": "https://example.com/forms/",
-    "hide-back-button": false
+    "hide-back-button": false,
+    "hide-form-entry-mode": true,
+    "hide-form-adaptive-form": true,
+    "hide-preview-renderer-selector": true
   },
   "form": {
     "redirect-on-submit": "https://example.com/submit",
@@ -129,6 +135,9 @@ Content-Type: application/json
   "builder": {
     "form-url-prefix": "https://example.com/forms/",
     "hide-back-button": false,
+    "hide-form-entry-mode": true,
+    "hide-form-adaptive-form": true,
+    "hide-preview-renderer-selector": true,
 	"hide-publish": true,
 	"hide-population": true,
 	"hide-extraction": true,
@@ -180,7 +189,10 @@ Content-Type: application/json
   },
   "builder": {
     "form-url-prefix": "https://example.com/forms/",
-    "hide-back-button": false
+    "hide-back-button": false,
+    "hide-form-entry-mode": true,
+    "hide-form-adaptive-form": true,
+    "hide-preview-renderer-selector": true
   },
   "form": {
     "redirect-on-submit": "https://example.com/submit",
