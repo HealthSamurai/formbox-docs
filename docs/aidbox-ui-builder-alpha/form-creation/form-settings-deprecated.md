@@ -1,5 +1,5 @@
 ---
-description: Configure Questionnaire properties in Formbox including title, canonical URL, version, status, and metadata.
+description: This article will be removed. For documentation about the new outline, see [Form settings](form-settings.md).
 ---
 
 # Form Settings (deprecated)
