@@ -6,35 +6,35 @@ Formbox supports multiple widget types for building forms. Widgets define how qu
 
 | Widget | Description | FHIR / Custom |
 | --- | --- | --- |
-| Header | A container-like item with no direct answer that should have child items. It may have an empty label. Supported in sequential mode, in the NHS theme, and works with Pages. | FHIR |
-| Footer | A container-like item with no direct answer that should have child items. It may have an empty label. Works the same way as Header, is always displayed, and is supported in sequential mode, in the NHS theme, and with Pages. | FHIR |
-| Group | An item with no direct answer but should have at least one child item. | FHIR |
-| Group table | Questions within the group are displayed in a table-like structure. | FHIR |
-| Grid | Child items of `type='group'` within a Grid are rows, and questions beneath the row groups are organized as columns in the grid. The grid may be fully populated, but could also be sparse. Questions may support different data types and different answer choices. | FHIR |
-| Choice matrix | Questions within the group are arranged as a matrix. In the new UI, values are added in a child item, then the item can be duplicated and renamed to build the matrix structure. | FHIR |
-| Pages | Indicates that the content within the group should appear as a logical page when rendering the form, such that all enabled items within the page are displayed at once, but items in subsequent groups are not displayed until the user moves to the next page. | FHIR |
-| Tab Container | Indicates that the group represents a collection of tabs. Child items are displayed within separate tab panels. | FHIR |
-| Display | A non-answer item used to display static or dynamically generated text, instructions, or contextual information in the form. | FHIR |
-| Text | A widget for entering short free-text answers, usually a few words or a brief sentence. | FHIR |
-| Textarea | A widget for entering long free-text answers, including multi-line or multi-paragraph text. | FHIR |
-| URL | A widget for entering a URL value, such as a website or other link. | FHIR |
-| Integer | A widget for entering whole-number values. | FHIR |
-| Decimal | A widget for entering rational numbers with decimal precision. | FHIR |
-| Quantity | A widget for entering a numeric value together with a unit. It can be used for measurements such as temperature, weight, height, and similar values. | FHIR |
-| Slider | A widget for selecting a numeric value on a visual axis between a minimum and maximum. | FHIR |
-| Date | A widget for entering a date value. | FHIR |
-| DateTime | A widget for entering a date and time value. | FHIR |
-| Time | A widget for entering a time value independent of a date. | FHIR |
-| Choice | A widget for selecting one or more options from a predefined list. It is displayed as a drop-down list. | FHIR |
-| Open Choice | A widget for selecting an option from a predefined list or entering a custom answer. It is displayed as a drop-down list. | FHIR |
-| Radio Button | A widget for selecting one option from a predefined set of choices. | FHIR |
-| Checkbox List | A widget for selecting multiple options from a predefined list of choices. | FHIR |
-| Checkbox | A widget for boolean input with checked and unchecked states, optionally supporting an indeterminate state. | FHIR |
-| Attachment | A widget for uploading files such as documents, images, audio, video, and other supported file types. | FHIR |
-| Signature | A widget for capturing a handwritten signature. | Custom |
-| Annotation Pad | A widget for drawing or writing annotations directly in the form, optionally over a background image. | Custom |
-| Speech to text | A widget for entering text by speaking. Spoken input is transcribed into text and stored as the answer value. | Custom |
-| Reference | A widget for selecting a reference to another FHIR resource, such as Patient, Practitioner, Appointment, or CarePlan. | FHIR |
+| [Header](widgets.md#header) | A container-like item with no direct answer that should have child items. It may have an empty label. Supported in sequential mode, in the NHS theme, and works with Pages. | FHIR |
+| [Footer](widgets.md#footer) | A container-like item with no direct answer that should have child items. It may have an empty label. Works the same way as Header, is always displayed, and is supported in sequential mode, in the NHS theme, and with Pages. | FHIR |
+| [Group](widgets.md#group) | An item with no direct answer but should have at least one child item. | FHIR |
+| [Group table](widgets.md#group-table) | Questions within the group are displayed in a table-like structure. | FHIR |
+| [Grid](widgets.md#grid) | Child items of `type='group'` within a Grid are rows, and questions beneath the row groups are organized as columns in the grid. The grid may be fully populated, but could also be sparse. Questions may support different data types and different answer choices. | FHIR |
+| [Choice matrix](widgets.md#choice-matrix) | Questions within the group are arranged as a matrix. In the new UI, values are added in a child item, then the item can be duplicated and renamed to build the matrix structure. | FHIR |
+| [Pages](widgets.md#pages) | Indicates that the content within the group should appear as a logical page when rendering the form, such that all enabled items within the page are displayed at once, but items in subsequent groups are not displayed until the user moves to the next page. | FHIR |
+| [Tab Container](widgets.md#tab-container) | Indicates that the group represents a collection of tabs. Child items are displayed within separate tab panels. | FHIR |
+| [Display](widgets.md#display) | A non-answer item used to display static or dynamically generated text, instructions, or contextual information in the form. | FHIR |
+| [Text](widgets.md#text) | A widget for entering short free-text answers, usually a few words or a brief sentence. | FHIR |
+| [Textarea](widgets.md#textarea) | A widget for entering long free-text answers, including multi-line or multi-paragraph text. | FHIR |
+| [URL](widgets.md#url) | A widget for entering a URL value, such as a website or other link. | FHIR |
+| [Integer](widgets.md#integer) | A widget for entering whole-number values. | FHIR |
+| [Decimal](widgets.md#decimal) | A widget for entering rational numbers with decimal precision. | FHIR |
+| [Quantity](widgets.md#quantity) | A widget for entering a numeric value together with a unit. It can be used for measurements such as temperature, weight, height, and similar values. | FHIR |
+| [Slider](widgets.md#slider) | A widget for selecting a numeric value on a visual axis between a minimum and maximum. | FHIR |
+| [Date](widgets.md#date) | A widget for entering a date value. | FHIR |
+| [DateTime](widgets.md#datetime) | A widget for entering a date and time value. | FHIR |
+| [Time](widgets.md#time) | A widget for entering a time value independent of a date. | FHIR |
+| [[Choice]](widgets.md#choice) | A widget for selecting one or more options from a predefined list. It is displayed as a drop-down list. | FHIR |
+| [Open Choice](widgets.md#open-choice) | A widget for selecting an option from a predefined list or entering a custom answer. It is displayed as a drop-down list. | FHIR |
+| [Radio Button](widgets.md#radio-button) | A widget for selecting one option from a predefined set of choices. | FHIR |
+| [Checkbox List](widgets.md#checkbox-list) | A widget for selecting multiple options from a predefined list of choices. | FHIR |
+| [Checkbox](widgets.md#checkbox) | A widget for boolean input with checked and unchecked states, optionally supporting an indeterminate state. | FHIR |
+| [Attachment](widgets.md#attachment) | A widget for uploading files such as documents, images, audio, video, and other supported file types. | FHIR |
+| [Signature](widgets.md#signature) | A widget for capturing a handwritten signature. | Custom |
+| [Annotation Pad](widgets.md#annotation-pad) | A widget for drawing or writing annotations directly in the form, optionally over a background image. | Custom |
+| [Speech to text](widgets.md#speech-to-text) | A widget for entering text by speaking. Spoken input is transcribed into text and stored as the answer value. | Custom |
+| [Reference](widgets.md#reference) | A widget for selecting a reference to another FHIR resource, such as Patient, Practitioner, Appointment, or CarePlan. | FHIR |
 
 
 In the new UI, most widgets are organized into up to four sections:
