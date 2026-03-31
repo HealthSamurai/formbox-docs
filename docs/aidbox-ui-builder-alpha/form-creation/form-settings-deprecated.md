@@ -1,6 +1,12 @@
 ---
-description: This article will be removed. For documentation about the new outline, see [Form settings](form-settings.md).
+description: form settings in the old Form Builder UI.
 ---
+
+{% hint style="warning" %}
+This article will be removed. 
+For documentation about the new outline, see [Form settings](form-settings.md).
+```
+{% endhint %}
 
 # Form Settings (deprecated)
 
