@@ -1,5 +1,5 @@
 ---
-description: form settings in the old Form Builder UI.
+description: form settings in the old Form Builder layout.
 ---
 
 {% hint style="warning" %}
