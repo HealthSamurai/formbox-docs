@@ -6,8 +6,8 @@ Formbox supports multiple widget types for building forms. Widgets define how qu
 
 | Widget | Description | FHIR / Custom |
 | --- | --- | --- |
-| Header | A container-like item with no direct answer that should have child items. It may have an empty label. Supported in sequential mode, in the NHS theme, and works with Pages. | Custom |
-| Footer | A container-like item with no direct answer that should have child items. It may have an empty label. Works the same way as Header, is always displayed, and is supported in sequential mode, in the NHS theme, and with Pages. | Custom |
+| Header | A container-like item with no direct answer that should have child items. It may have an empty label. Supported in sequential mode, in the NHS theme, and works with Pages. | FHIR |
+| Footer | A container-like item with no direct answer that should have child items. It may have an empty label. Works the same way as Header, is always displayed, and is supported in sequential mode, in the NHS theme, and with Pages. | FHIR |
 | Group | An item with no direct answer but should have at least one child item. | FHIR |
 | Group table | Questions within the group are displayed in a table-like structure. | FHIR |
 | Grid | Child items of `type='group'` within a Grid are rows, and questions beneath the row groups are organized as columns in the grid. The grid may be fully populated, but could also be sparse. Questions may support different data types and different answer choices. | FHIR |
@@ -21,14 +21,14 @@ Formbox supports multiple widget types for building forms. Widgets define how qu
 | Integer | A widget for entering whole-number values. | FHIR |
 | Decimal | A widget for entering rational numbers with decimal precision. | FHIR |
 | Quantity | A widget for entering a numeric value together with a unit. It can be used for measurements such as temperature, weight, height, and similar values. | FHIR |
-| Slider | A widget for selecting a numeric value on a visual axis between a minimum and maximum. | Custom |
+| Slider | A widget for selecting a numeric value on a visual axis between a minimum and maximum. | FHIR |
 | Date | A widget for entering a date value. | FHIR |
 | DateTime | A widget for entering a date and time value. | FHIR |
 | Time | A widget for entering a time value independent of a date. | FHIR |
 | Choice | A widget for selecting one or more options from a predefined list. It is displayed as a drop-down list. | FHIR |
 | Open Choice | A widget for selecting an option from a predefined list or entering a custom answer. It is displayed as a drop-down list. | FHIR |
-| Radio Button | A widget for selecting one option from a predefined set of choices. | Custom |
-| Checkbox List | A widget for selecting multiple options from a predefined list of choices. | Custom |
+| Radio Button | A widget for selecting one option from a predefined set of choices. | FHIR |
+| Checkbox List | A widget for selecting multiple options from a predefined list of choices. | FHIR |
 | Checkbox | A widget for boolean input with checked and unchecked states, optionally supporting an indeterminate state. | FHIR |
 | Attachment | A widget for uploading files such as documents, images, audio, video, and other supported file types. | FHIR |
 | Signature | A widget for capturing a handwritten signature. | Custom |
@@ -132,7 +132,8 @@ Most widgets support **Custom Attributes**:
 
 ---
 
-The following section describes the widgets, their settings and configuration options in the builder UI.
+In addition to the general settings described above, each item type provides its own type-specific settings. 
+The following sections provide a brief overview of each item type and describe the type-specific settings available for it.
 
 ## Header
 
