@@ -38,6 +38,9 @@ parameter:
 | [allow-repopulate](aidbox-sdc-api.md#allow-repopulate)     | 0..1        | [Boolean](http://hl7.org/fhir/R4/datatypes.html#boolean)                                                                                     |
 | [redirect-on-submit](aidbox-sdc-api.md#redirect-on-submit) | 0..1        | [String](http://hl7.org/fhir/R4/datatypes.html#string)                                                                                       |
 | [redirect-on-save](aidbox-sdc-api.md#redirect-on-save)     | 0..1        | [String](http://hl7.org/fhir/R4/datatypes.html#string)                                                                                       |
+| [redirect-on-timeout](aidbox-sdc-api.md#redirect-on-timeout)  | 0..1        | [String](http://hl7.org/fhir/R4/datatypes.html#string)                                                                                    |
+| [session-timeout](aidbox-sdc-api.md#session-timeout)      | 0..1        | [String](http://hl7.org/fhir/R4/datatypes.html#integer)                                                                                       |
+| [warning-timeout](aidbox-sdc-api.md#warning-timeout)      | 0..1        | [String](http://hl7.org/fhir/R4/datatypes.html#integer)                                                                                       |
 | [expiration](aidbox-sdc-api.md#expiration)                 | 0..1        | [Integer](http://hl7.org/fhir/R4/datatypes.html#integer)                                                                                     |
 | [theme](aidbox-sdc-api.md#theme)                           | 0..1        | [String](http://hl7.org/fhir/R4/datatypes.html#string)                                                                                       |
 | [read-only](aidbox-sdc-api.md#read-only)                   | 0..1        | [Boolean](http://hl7.org/fhir/R4/datatypes.html#boolean)                                                                                     |
@@ -89,6 +92,39 @@ A URL where the user will be redirected to after hitting Save button.
 name: redirect-on-save
 value:
   String: https://example.com/submit-hook?questionnaire=123
+```
+
+#### redirect-on-timeout
+
+URL to open after the session expires.
+
+```yaml
+name: redirect-on-timeout
+value:
+  String: https://example.com/session-expired
+```
+
+#### session-timeout
+
+Inactivity timeout duration before the session expires (in minutes).
+
+> By default, shared forms do not expire due to inactivity, and users can complete them without a time limit.
+
+```yaml
+name: session-timeout
+value:
+  Integer: 30
+```
+
+#### warning-timeout
+
+Time before expiration when the inactivity warning is shown (in minutes).
+Defaults to 1 minute.
+
+```yaml
+name: warning-timeout
+value:
+  Integer: 5
 ```
 
 #### expiration
