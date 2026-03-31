@@ -1,429 +1,755 @@
----
-description: This page is under construction.
----
-
 # Widgets
 
-Formbox provides a set of widgets that allow you to build comprehensive and user-friendly medical forms. Widgets are pre-defined elements that you can add to your forms to capture various types of data from users.
-
-This section details the various widgets available in Formbox and their corresponding settings.
-
-## Common Widget’s Settings
-
-In the widget settings, you can define various parameters that determine its appearance and behavior.
-
-The user has the ability to change the widget type by clicking on the "change type" button in the upper right corner of the widget settings sidebar, while some of the settings for the current widget that the user entered will be saved, and some will need to be re-set.
-
-Here are the main settings you can configure for most widgets.
-
-### General section
-
-#### LinkId
-
-An identifier that is unique within the Questionnaire allowing linkage to the equivalent item in a QuestionnaireResponse resource.
-
-It is generated automatically, but the user can change it.
-
-#### System / Code / Display
-
-The user can manually add several codes from different terminology systems (use 'add code' option). Or import this data from terminologies (use 'import code' option).
-
-`Code` - a terminology code that corresponds to this group or question (e.g. a code from LOINC, which defines many questions and answers).
-
-`System` - identity of the terminology system.
-
-`Display` - representation defined by the system
-
-#### Text
-
-The Text field is used to define content for sections, questions, or display items within a form.
-
-#### **Short Text**
-
-The Short Text field provides an alternative, abbreviated version of the text. It is particularly useful when rendering forms on smaller screens, such as mobile devices, where space is limited.
-
-#### Size
-
-The Size parameter allows user to define the width of a widget and arrange multiple widgets horizontally within a form.
-
-* The form layout is based on a 12-column grid system.
-* By setting the size of a widget:
-  * Maximum Size (12 columns): The widget will span the entire width of the form (by default)
-  * Partial Size:
-    * If one widget is set to a width of 6 columns and another to 6 columns, both widgets will be displayed side by side on the same line.
-    * Similarly, setting widths like 4, 4, and 4 will arrange three widgets horizontally in a row.
-
-#### Hidden, Required, Read Only, and Repeats Settings
-
-* `Hidden:` Hides the form item from user view while still allowing it to be used internally or for conditional logic.
-* `Required:` Ensures the user must provide input for the item before submitting the form.
-* `Read Only:` Displays the form item as non-editable, allowing users to view but not modify its value.
-* `Repeats:` Enables the user to dynamically add multiple instances of the same form item as needed.
-
-{% hint style="info" %}
-`Repeats` for Checkbox-list and Choice widgets have different behavior! When `Repeats` are enabled, it makes it possible to perform multi-choice actions within the widget.
-{% endhint %}
-
-#### Collapsible
-
-Collapsible section is supported to enhance the usability and navigation of long questionnaires. This feature allows the child items of a group or question item to be displayed in a collapsible form, letting users toggle between showing and hiding nested items.
-
-There are options:
-
-1. `Not Collapsible`: The section is always fully expanded, and its child items are visible.
-2. `Collapsible (Open by Default)`: The section is collapsible and starts in an expanded state. Users can collapse it if desired.
-3. `Collapsible (Closed by Default)`: The section is collapsible and starts in a collapsed state. Users can expand it to view the child items.
-
-User can set the desired collapsibility option for specific sections or items within the questionnaire.
-
-### Media section
-
-#### **Image & Video**
-
-Allows you to add an image or video next to a form item, enhancing its visual appeal or providing additional context. The user needs to provide a publicly available URL for the image or video.
-
-#### **Tooltip**
-
-Displays additional information when the user clicks the question mark icon in the top-right corner of a field, offering guidance or clarification.
-
-#### Support Link
-
-The Support Link option allows you to associate an external or internal link with a question, group, or display item within a form. This is particularly useful for providing users with additional descriptive details or reference material.
-
-* When a support link is added, an **icon** appears immediately.
-* Users can click on the icon to navigate to the linked resource, typically displayed in a separate page or browser tab.
-
-Use Cases:
-
-* Providing contextual help or instructions for complex questions.
-* Linking to guidelines, manuals, or regulatory references.
-* Adding reference material for specific sections or items in the form.
-
-This feature enhances the usability of forms by ensuring users have access to additional information without cluttering the main form interface.
-
-### Attributes section
-
-Each widget in Formbox has its own set of customisable attributes that define its behavior, appearance, and functionality.
-
-### Rules section
-
-#### EnableWhen rule
-
-EnableWhen option controls whether an item should be 'enabled' or not, but can handle more sophisticated circumstances. For example, it is possible to calculate a score based on the answer to several questions and then enable other questions based on the score. It's also possible to enable questions based on data passed in as context or retrieved from queries.
-
-Options for Setting EnableWhen Rules:
-
-`Condition constructor` - use the visual condition builder interface to create logical conditions with AND/OR operators and group conditions.
-
-The condition builder automatically converts to FHIRPath when the Questionnaire.enableWhen DSL is not sufficient for complex scenarios.
-
-`Expression` - use FHIRPath expressions or the FHIRPath Editor to describe the desired behavior with full FHIRPath capabilities.
-
-When to Use Each Option:
-
-{% hint style="info" %}
-Be careful when using existence logic for EnableWhen rules. For example, the checkbox widget has exists = false when untouched and exists = true if the checkbox has been checked or unchecked. Use equality conditions instead.
-{% endhint %}
-
-#### Calculation rule
-
-Calculated expression allows answers to questions to be calculated based on answers to other questions. For example, the determination of a score.
-
-This expression will be most used for displaying scores, but can be used for any calculated element - patient age (based on current date and birth date), BMI (based on recent weight and height), estimated cost (based on selected items and quantities), etc.
-
-How to use Calculated expression:
-
-* Create custom [FHIR Path](https://hl7.org/fhirpath/) expressions in the code editor with autocomplete functionality or in [the FHIRPath Editor](fhirpath-editor.md) by clicking on `Visual mode` button .
-* Utilize predefined templates under the "question" icon.
-
-Named expressions can be used in data calculation process.\
-They are useful for:
-
-* splitting one complex calculatation to smaller ones
-* storing intermediate calculations
-* sharing common pre-calculation with other expressions
-
-Named expressions will be available in current widget and it's child items (if they)\
-Expressions can be referenced with %expr-name literal.
-
-Example:
-
-* Define expression with name `first-name` = `'%resource.repeat(item).where(linkId='first-name').answer.valueString'`
-* Use defined variable via literal %first-name : `%first-name + %last-name`
-
-### Data Extraction
-
-Three options of data extraction are supported at the item level of Questionnaire: Observation-base, Definition-Based and Template-Based.
-
-For detailed instructions and example of extracting data visit the[ Data Extraction page](data-extraction.md) and our [How-to guides](how-to-guides/how-to-extract-data-from-forms.md).
-
-### Population
-
-In order to pre-fill the form with data that is in the database. You need to define the incomming parameters for the widget, which will then be used in field that you want to pre-fill with data.
-
-For detailed instructions and example of populating data visit the[ Population page](population.md) and our [How-to guides](how-to-guides/how-to-populate-forms-with-data.md).
-
-### Extensions
-
-Formbox provide ability to add and edit extensions that are not covered in Forms Builder. Users can edit raw Questionnaire json.
-
-Extensions editor represents three fields for adding your own custom extension. To add extension you need follow three simple steps:
-
-1. `URL` — write down your extension's Url;
-2. `Type` — choose type of extension's value. Also you can write custom FHIRPath / FHIRQuery valueExpression just choose `Expression` type;
-3. `Value` — pick a value.
+Formbox supports multiple widget types for building forms. Widgets define how questions, layout elements, and supporting content are rendered and configured in the builder. The descriptions below follow the previous documentation style, updated to match the new UI.
 
 ## Description of widgets
 
-| Widget                                      | Description                                                                                                                                                                                                                                                                               | FHIR / Custom |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| Group                                       | An item with no direct answer but should have at least one child item.                                                                                                                                                                                                                    | FHIR          |
-| Choice matrix                               | Questions within the group are rows in the table with possible answers as columns. Used for 'choice' questions.                                                                                                                                                                           | FHIR          |
-| Grid                                        | Child items of type='group' within the a 'grid' group are rows, and questions beneath the 'row' groups are organized as columns in the grid. The grid might be fully populated, but could be sparse. Questions may support different data types and/or different answer choices.          | FHIR          |
-| Group table                                 | Questions within the group are rows in the table with possible answers as columns.                                                                                                                                                                                                        | FHIR          |
-| Pages                                       | Indicates that the content within the group should appear as a logical "page" when rendering the form, such that all enabled items within the page are displayed at once, but items in subsequent groups are not displayed until the user indicates a desire to move to the 'next' group. | FHIR          |
-| [Tab-container](widgets.md#tab-container)   | Indicates that the group represents a collection of tabs                                                                                                                                                                                                                                  | FHIR          |
-| [Text](widgets.md#text-1)                   | Question with a short (few words to a short sentence) free-text entry answer                                                                                                                                                                                                              | FHIR          |
-| [Textarea](widgets.md#textarea)             | Question with a long (potentially multi-paragraph) free-text entry answer                                                                                                                                                                                                                 | FHIR          |
-| URL                                         | Question with a URL (website, FTP site, etc.) answer                                                                                                                                                                                                                                      | FHIR          |
-| Display                                     | Text for display that will not capture an answer or have child items.                                                                                                                                                                                                                     | FHIR          |
-| Integer                                     | Question with an integer answer                                                                                                                                                                                                                                                           | FHIR          |
-| [Decimal](widgets.md#decimal)               | Question with is a real number answer                                                                                                                                                                                                                                                     | FHIR          |
-| Slider                                      | A control where an axis is displayed between the high and low values and the control can be visually manipulated to select a value anywhere on the axis.                                                                                                                                  | FHIR          |
-| Quantity                                    | Question with a combination of a numeric value and unit, potentially with a comparator (<, >, etc.) as an answer.                                                                                                                                                                         | FHIR          |
-| Date                                        | Question with a date answer                                                                                                                                                                                                                                                               | FHIR          |
-| Time                                        | Question with a time (hour:minute:second) answer independent of date.                                                                                                                                                                                                                     | FHIR          |
-| DateTime                                    | Question with a date and time answer                                                                                                                                                                                                                                                      | FHIR          |
-| [Choice](widgets.md#choice)                 | Question with a Coding drawn from a list of possible answers (specified in either the answerOption property, or via the valueset referenced in the answerValueSet property) as an answer                                                                                                  | FHIR          |
-| [Open Choice](widgets.md#open-choice)       | Answer is a Coding drawn from a list of possible answers (as with the choice type) or a free-text entry in a string                                                                                                                                                                       | FHIR          |
-| [Checkbox](widgets.md#checkbox)             | Question with a yes/no answer                                                                                                                                                                                                                                                             | FHIR          |
-| [Attachment](widgets.md#attachment)         | Question with binary content such as an image, PDF, etc. as an answer                                                                                                                                                                                                                     | FHIR          |
-| Signature                                   | A control for capturing a signature.                                                                                                                                                                                                                                                      | Custom        |
-| [Annotation Pad](widgets.md#annotation-pad) | A control for capturing visual information, sketches, or handwritten notes that cannot be easily captured through text inputs.                                                                                                                                                            | Custom        |
-| [Speech to text](widgets.md#speech-to-text) | A control to input text by speaking, which is then automatically transcribed into the form.                                                                                                                                                                                               | Custom        |
-| [Reference](widgets.md#reference)           | Question with a reference to another resource (practitioner, organization, etc.) as an answer                                                                                                                                                                                             | FHIR          |
-| [Radio Button](widgets.md#radio-button)     | A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others.                                                                                                                   | FHIR          |
-| [Checkbox List](widgets.md#checkbox-list)   | A control where choices are listed with a box beside them. The box can be toggled to select or de-select a given choice with multiple selections.                                                                                                                                         | FHIR          |
+| Widget | Description | FHIR / Custom |
+| --- | --- | --- |
+| Header | A container-like item with no direct answer that should have child items. It may have an empty label. Supported in sequential mode, in the NHS theme, and works with Pages. | Custom |
+| Footer | A container-like item with no direct answer that should have child items. It may have an empty label. Works the same way as Header, is always displayed, and is supported in sequential mode, in the NHS theme, and with Pages. | Custom |
+| Group | An item with no direct answer but should have at least one child item. | FHIR |
+| Group table | Questions within the group are displayed in a table-like structure. | FHIR |
+| Grid | Child items of `type='group'` within a Grid are rows, and questions beneath the row groups are organized as columns in the grid. The grid may be fully populated, but could also be sparse. Questions may support different data types and different answer choices. | FHIR |
+| Choice matrix | Questions within the group are arranged as a matrix. In the new UI, values are added in a child item, then the item can be duplicated and renamed to build the matrix structure. | FHIR |
+| Pages | Indicates that the content within the group should appear as a logical page when rendering the form, such that all enabled items within the page are displayed at once, but items in subsequent groups are not displayed until the user moves to the next page. | FHIR |
+| Tab Container | Indicates that the group represents a collection of tabs. Child items are displayed within separate tab panels. | FHIR |
+| Display | A non-answer item used to display static or dynamically generated text, instructions, or contextual information in the form. | FHIR |
+| Text | A widget for entering short free-text answers, usually a few words or a brief sentence. | FHIR |
+| Textarea | A widget for entering long free-text answers, including multi-line or multi-paragraph text. | FHIR |
+| URL | A widget for entering a URL value, such as a website or other link. | FHIR |
+| Integer | A widget for entering whole-number values. | FHIR |
+| Decimal | A widget for entering rational numbers with decimal precision. | FHIR |
+| Quantity | A widget for entering a numeric value together with a unit. It can be used for measurements such as temperature, weight, height, and similar values. | FHIR |
+| Slider | A widget for selecting a numeric value on a visual axis between a minimum and maximum. | Custom |
+| Date | A widget for entering a date value. | FHIR |
+| DateTime | A widget for entering a date and time value. | FHIR |
+| Time | A widget for entering a time value independent of a date. | FHIR |
+| Choice | A widget for selecting one or more options from a predefined list. It is displayed as a drop-down list. | FHIR |
+| Open Choice | A widget for selecting an option from a predefined list or entering a custom answer. It is displayed as a drop-down list. | FHIR |
+| Radio Button | A widget for selecting one option from a predefined set of choices. | Custom |
+| Checkbox List | A widget for selecting multiple options from a predefined list of choices. | Custom |
+| Checkbox | A widget for boolean input with checked and unchecked states, optionally supporting an indeterminate state. | FHIR |
+| Attachment | A widget for uploading files such as documents, images, audio, video, and other supported file types. | FHIR |
+| Signature | A widget for capturing a handwritten signature. | Custom |
+| Annotation Pad | A widget for drawing or writing annotations directly in the form, optionally over a background image. | Custom |
+| Speech to text | A widget for entering text by speaking. Spoken input is transcribed into text and stored as the answer value. | Custom |
+| Reference | A widget for selecting a reference to another FHIR resource, such as Patient, Practitioner, Appointment, or CarePlan. | FHIR |
 
-### **Tab-container**
 
-The Tab-container widget indicates that the group represents a collection of tabs. All child items SHALL be of type `group`. Each child group represents one tab within the tab container, where the item.text is the label for the tab.
+In the new UI, most widgets are organized into up to four sections:
 
-### **Text**
+- `General`
+- `Behaviour`
+- `Data`
+- `Custom`
 
-The Text widget is used for capturing short free-text answers, usually a few words or a brief sentence. It is ideal for concise inputs such as names, labels, or short descriptions.
+Many widgets display the same common settings in the builder, even if some of them are not practically relevant for every widget type.
 
-**Settings:**
+## Common widget settings
 
-* **Min Length / Max Length:** Defines the allowed character range. Users receive a validation message if their input is too short or too long.
-* **Regex:** Allows enforcing a specific input format (e.g., patterns, codes, character rules). An error appears if the text does not match the pattern.
+Most widgets in the new UI share the same common settings.
 
-### **Textarea**
+### General
 
-The Textarea widget is used for long free-text responses, including multi-sentence or multi-paragraph input. It is suitable for detailed notes and narrative descriptions.
+#### Description
 
-**Settings:**
+- **Label** — main question or instruction text displayed to the user.
+- **Short name** — shortened label used in narrow layouts, such as on mobile devices.
+- **Placeholder** — activated via a toggle. Defines example text shown inside the input.
+- **Show Tooltip** — activated via a toggle. Displays an info tooltip for the item.
+- **External Link** — activated via a toggle. Displays an external link icon that opens the provided URL in a new tab.
+- **Prefix** — activated via a toggle. Adds a short label shown before the item, such as numbering or a short prefix.
 
-* **Min Length / Max Length:** Sets the required character range for the response. Validation alerts the user when the text is shorter or longer than allowed.
+#### Appearance
 
-### Annotation Pad
+- **Width**
+  - Full width
+  - 1/2
+  - 1/3
+  - 1/4
+  - 1/6
+  - 1/12
+- **Media (image or video)** — public URL of an image or video displayed alongside the item.
 
-The Annotation Pad widget allows users to draw or write annotations directly within a form. This is particularly useful for capturing visual information, sketches, or handwritten notes that cannot be easily captured through text inputs. The Annotation Pad widget provides a flexible and intuitive way to gather this type of data.
+#### Basic Interaction
 
-**Settings:**
+These settings are usually activated via toggles:
 
-* **Background image:** An image that will be displayed as the background of the annotation area.
-* **Pen Color**: The color of the pen used for drawing or writing.
-* **Pen Thickness**: The thickness of the pen used for drawing or writing.
-* **Erase Option**: A tool for erasing parts of the drawing or writing.
+- **Required**
+- **Allow multiple entries**
+- **Read-only**
+- **Hidden**
+- **Collapsible**
 
-The annotation will be saved as base64 encoded attachment in QuestionnaireResponse.
+When **Collapsible** is enabled, the default state can be set to:
 
-### Speech to text
+- **Collapsed**
+- **Expanded**
 
-The Speech to Text widget allows users to input text by speaking, which is then automatically transcribed into the form. This is especially useful for capturing detailed information or notes, making the form-filling process faster and more efficient.
+#### Metadata
 
-**Settings:**
+- **Code**
+  - System
+  - Code
+  - Display
 
-* **Language**: The language in which the speech will be recognised and transcribed. The list of supported languages: Chinese, Croatian, Czech, Danish, Dutch, English, Finnish, French, German, Hungarian, Italian, Japanese, Korean, Polish, Russian, Spanish.
+Available actions:
 
-### Choice
+- **Add code**
+- **Import code**
 
-The Choice widget allows users to select one or more options from a predefined list of options and it is displayed on the form as a drop-down list.
+### Behaviour
 
-**Settings:**
+Most answer-based widgets support **Enable When**.
 
-* **Multiple Selection**: An option to allow the user to select more than one choice. To enable multiple selection, need to set repeats flag.
+Available modes:
 
-**Options**:
+- **Conditions are met**
+- **Expression is true**
 
-* **Static:** A list of values that the user can choose from.
-  * Each option should have a display text, code and system. The user can fill in values ​​or use the import option. In this case, the user will be given the opportunity to select a terminology server, select a valueset in it and find the needed coded value, then the code, system and display will be automatically filled in.
-  * Optionally, the user can include a score to each option and show the score if needed, which will be taken into account in the calculations. To do this, need to click on the include score and show score boxes.
-  * Optionally, the user can add an option prefix to each answer option and the prefix will be displayed in front of an option (e.g. "(a)", or "1.").
-  * Optionally, the user can enable "Include exclusiveness" option. When enabled, an additional Exclusive column appears with a checkbox for each answer option. Marking an option as exclusive (e.g., “None of the above”) makes it mutually exclusive with all other options—selecting it automatically clears any other selected answers.
-  * Instead of inlining options into the form, the use can use a ValueSet that is stored in the Aidbox instance. To do this, the user need to click on the ValueSet box and select the ValueSet.
-* **ValueSet**: Use predefined options in ValueSet
-  * **Use external terminology server**: You can specify external terminology server which will be used to `$expand` ValueSet options
-  * **Expansion parameters**: Optionally, you can set additional parameters for `$expand` operation. For example, you can choose what CodeSystem version need to use.
-* **Expression:** Use a FHIRPath / FHIRQuery expression with conditions and logic.
-  * **FHIRPath:** Allows create logic with answers depends on other items. You can filter options with your conditions.
-  * **FHIRQuery:** Allows dynamically fetch answer options via FHIRQuery from your Aidbox instance resources.
+### Data
 
-{% hint style="info" %}
-How to use Answer Expression see our [example](how-to-guides/how-to-use-answer-expression-into-forms.md)
-{% endhint %}
+Most answer-based widgets support the following data settings:
 
-### Open Choice
+- **Populate on Load**
+  - Default value
+  - Observation
+  - Expression
+- **Prefill with calculated expression**
+- **Data Extraction**
+  - Definition
+  - Observation
+  - Template
 
-The Open Choice widget allows users to select from a predefined list of options or input their own custom answers. This is particularly useful in scenarios where the provided options may not cover all possible answers, giving users the flexibility to provide a more accurate response.
+### Custom
 
-it is displayed on the form as a drop-down list.
+Most widgets support **Custom Attributes**:
 
-**Settings:**
+- **URL**
+- **Type**
+- **Value**
 
-* **Open choice label:** By default the ability to choose your own option is displayed as "specify other..", but the user can redefine the label for this.
-* **Multiple Selection**: Not supported yet, but can be supported on demand.
+---
 
-**Options**:
+The following section describes the widgets, their settings and configuration options in the builder UI.
 
-* **Static:** A list of values that the user can choose from.
-  * Each option should have a display text, code and system. The user can fill in values ​​or use the import option. In this case, the user will be given the opportunity to select a terminology server, select a valueset in it and find the needed coded value, then the code, system and display will be automatically filled in.
-  * Optionally, the user can include a score to each option and show the score if needed, which will be taken into account in the calculations. To do this, need to click on the include score and show score boxes.
-  * Optionally, the user can add an option prefix to each answer option and the prefix will be displayed in front of an option (e.g. "(a)", or "1.").
-  * Optionally, same as with the choice input, the user can enable "Include exclusiveness" feature if "repeats" is enabled. To make an answer option exclusive, tick Exclusive checkbox for the corresponding option. 
-  * Instead of inlining options into the form, the use can use a ValueSet that is stored in the Aidbox instance. To do this, the user need to click on the ValueSet box and select the ValueSet.
-* **ValueSet**: Use predefined options in ValueSet
-  * **Use external terminology server**: You can specify external terminology server which will be used to `$expand` ValueSet options
-  * **Expansion parameters**: Optionally, you can set additional parameters for `$expand` operation. For example, you can choose what CodeSystem version need to use.
-* **Expression:** Use a FHIRPath / FHIRQuery expression with conditions and logic.
-  * **FHIRPath:** Allows create logic with answers depends on other items. You can filter options with your conditions.
-  * **FHIRQuery:** Allows dynamically fetch answer options via FHIRQuery from your Aidbox instance resources.
+## Header
 
-{% hint style="info" %}
-See our [How to use Answer Expression example](how-to-guides/how-to-use-answer-expression-into-forms.md)
-{% endhint %}
+The Header widget is a container-like widget used for grouping nested items. It can also be described as a widget based on FHIR `type: "group"`.
 
-### Checkbox
+A Header item must contain child items. It may have an empty label.
 
-The Checkbox widget allows users to toggle between two states: checked (true) and unchecked (false). This widget is ideal for scenarios where a binary choice is needed, such as accepting terms and conditions or indicating a simple yes/no answer.
+Header is supported in standard mode and **sequential mode**, works with all themes including the *mobile* and the **NHS theme**, works with **Pages**, and is always displayed (if added).
 
-{% hint style="info" %}
-Checkboxes have an indeterminate state when the widget is untouched.
-{% endhint %}
+## Footer
 
-**Settings:**
+The Footer widget works the same way as Header and uses the same settings.
 
-* **Required**: When using this flag, the initial value for the checkbox is set to false automatically. If the user does not change it when filling out the form, this value is included in the completed QuestionnaireResponse.
-* **Repeats:** This option is not available for checkbox.
+A Footer item must contain child items. It may have an empty label.
 
-### Radio Button
+Footer is supported in standard mode and **sequential mode**, works with all themes including the *mobile* and the **NHS theme**, works with **Pages**, and is always displayed (if added).
 
-The Radio Button widget allows users to select one option from a set of predefined choices. This widget is ideal for scenarios where only a single selection is permitted.
+## Text
 
-**Settings:**
+The Text widget is used for capturing short free-text answers, usually a few words or a brief sentence. It is suitable for concise inputs such as names, short labels, or short descriptions. 
 
-* **Orientation**: Display orientation of the options (vertical or horizontal).
-* **Column Count**: The number of columns used to display the options.
+### Input
 
-**Options**:
+- **Min Length**
+- **Max Length**
+- **Input constraints (RegEx)**
 
-* **Static:** A list of values that the user can choose from.
-  * Each option should have a display text, code and system. The user can fill in values ​​or use the import option. In this case, the user will be given the opportunity to select a terminology server, select a valueset in it and find the needed coded value, then the code, system and display will be automatically filled in.
-  * Optionally, the user can include a score to each option and show the score if needed, which will be taken into account in the calculations. To do this, need to click on the include score and show score boxes.
-  * Optionally, the user can add an option prefix to each answer option and the prefix will be displayed in front of an option (e.g. "(a)", or "1.").
-  * Instead of inlining options into the form, the use can use a ValueSet that is stored in the Aidbox instance. To do this, the user need to click on the ValueSet box and select the ValueSet.
-  * The user can optionally choose to attach media, adding an additional field to each answer option. This makes it possible to include images or animated GIFs in the answer options.
-* **ValueSet**: Use predefined options in ValueSet
-  * **Use external terminology server**: You can specify external terminology server which will be used to `$expand` ValueSet options
-  * **Expansion parameters**: Optionally, you can set additional parameters for `$expand` operation. For example, you can choose what CodeSystem version need to use.
-* **Expression:** Use a FHIRPath / FHIRQuery expression with conditions and logic.
-  * **FHIRPath:** Allows create logic with answers depends on other items. You can filter options with your conditions.
-  * **FHIRQuery:** Allows dynamically fetch answer options via FHIRQuery from your Aidbox instance resources.
+## Textarea
 
-{% hint style="info" %}
-How to use Answer Expression see our [example](how-to-guides/how-to-use-answer-expression-into-forms.md)
-{% endhint %}
+The Textarea widget is used for long free-text responses, including multi-line or multi-paragraph input. It is suitable for detailed notes, comments, and narrative descriptions. 
 
-### Checkbox List
+### Input
 
-The Checkbox List widget allows users to select multiple options from a predefined list. This widget is ideal for scenarios where multiple selections are permitted or required.
+- **Min Length**
+- **Max Length**
+- **Input constraints (RegEx)**
 
-**Settings:**
+## URL
 
-* **Orientation**: Display orientation of the options (vertical or horizontal).
-* **Column Count**: The number of columns used to display the options.
-* **Multiple Selection**: An option to allow the user to select more than one choice. To enable multiple selection, need to set repeats flag, by default, this flag is set.
+The URL widget is used for capturing a URL value, such as a website or other link.
 
-**Options**:
+### Input
 
-* **Static:** A list of values that the user can choose from.
-  * Each option should have a display text, code and system. The user can fill in values ​​or use the import option. In this case, the user will be given the opportunity to select a terminology server, select a valueset in it and find the needed coded value, then the code, system and display will be automatically filled in.
-  * Optionally, the user can include a score to each option and show the score if needed, which will be taken into account in the calculations. To do this, need to click on the include score and show score boxes.
-  * Optionally, the user can add an option prefix to each answer option and the prefix will be displayed in front of an option (e.g. "(a)", or "1.").
-  * Instead of inlining options into the form, the use can use a ValueSet that is stored in the Aidbox instance. To do this, the user need to click on the ValueSet box and select the ValueSet.
-  * Optionally, the user can enable "Include Exclusiveness" option. When an option is marked as exclusive, it cannot be selected together with any other option and will automatically clear conflicting selections.
-  * The user can optionally choose to attach media, adding an additional field to each answer option. This makes it possible to include images or animated GIFs in the answer options.
-* **ValueSet**: Use predefined options in ValueSet
-  * **Use external terminology server**: You can specify external terminology server which will be used to `$expand` ValueSet options
-  * **Expansion parameters**: Optionally, you can set additional parameters for `$expand` operation. For example, you can choose what CodeSystem version need to use.
-* **Expression:** Use a FHIRPath / FHIRQuery expression with conditions and logic.
-  * **FHIRPath:** Allows create logic with answers depends on other items. You can filter options with your conditions.
-  * **FHIRQuery:** Allows dynamically fetch answer options via FHIRQuery from your Aidbox instance resources.
+- **Min Length**
+- **Max Length**
+- **Input constraints (RegEx)**
 
-{% hint style="info" %}
-How to use Answer Expression see our [example](how-to-guides/how-to-use-answer-expression-into-forms.md)
-{% endhint %}
+## Integer
 
-### Attachment
+The Integer widget is used for capturing whole numbers. 
 
-The Attachment widget allows users to upload files as part of their form submission. This widget is particularly useful for scenarios where users need to upload supporting documents, images, or other types of files.
+### Input
 
-**Settings:**
+- **Min Length**
+- **Max Length**
+- **Input constraints (RegEx)**
 
-* **Allowed file-types**: You can limit the types of files that can be uploaded (image, audio, video, pdf, doc, csv etc or specify other).
-* **Max File Size**: Set the maximum file size (in kilobytes) allowed for upload.
+### Behaviour
 
-**Additional Functionality:**
+Integer supports **Enable When**.
 
-* **File Preview**: When using the form, the attached file can be viewed by opening it in a separate page. To do this, the user needs to click on the eye icon.
-  * Also File Preview can be embedded with your's custom external viewer or editor: [documentation](../embedding.md#onpreviewattachment-show-attachments-with-external-editor). External viewer or editor can support your own filetypes set or make possible editing files before submiting questionnaire.
-* **File Download:** When using the form, the attached file can be downloaded by clicking on the arrow pointing down icon.
-* Supported file types for preview in browsers (Chrome , Firefox, Safari):
-  * **Images**: PNG, AVIF, GIF, JPEG, SVG, WEBP, BMP, ICO
-  * **Video**: MP4, WebM, Ogg
-  * **Audio**: MP3, Ogg, Wav
-  * **PDF**
-  * DOC, CSV and others - on request
+Available modes:
 
-The attached file will be saved as base64 encoded attachment in QuestionnaireResponse.
+- **Conditions are met**
+- **Expression is true**
 
-### Decimal
+### Data
 
-The Decimal widget is used for capturing rational numbers that have a decimal representation. It is particularly useful for fields requiring numeric input with decimal precision, such as measurements, scores.
+Integer supports:
 
-It can be used in calculation fields where the result of an expression or formula is displayed as a decimal. For example, it can be used for calculated values like BMI, age, ensuring that results are presented with the correct level of precision.
+- **Populate on Load**
+  - Default value
+  - Observation
+  - Expression
+- **Prefill with calculated expression**
+- **Data Extraction**
+  - Definition
+  - Observation
+  - Template
 
-**Settings:**
+### Custom
 
-* **Decimal Representation**: The user can input rational numbers, supporting values like 12,34. The decimal point is not supported as a separator.
-* **Max Decimal Places**: The user can set a **maximum number of decimal places** to restrict the number of digits after the decimal point. This serves as a form validation feature, warning users if they input a value with more decimal places than allowed. For example, if the maximum decimal places are set to 2, an error message will appear if the user enters a value like 3,14159 with the message "Answer exceeds maximum decimal places: 2."
+Integer supports **Custom Attributes**.
 
-### Reference
+## Decimal
 
-The Reference widget allows users to select a reference to another resource such as practitioner, organization, etc. as an answer into their form.
+The Decimal widget is used for capturing rational numbers with decimal precision. It is suitable for measurements, scores, and other numeric values that require a decimal representation. 
 
-**Settings:**
+### Input
 
-* **Resource Type:** The user can choose which resource will be represent into answer list
+- **Unit**
+  - System
+  - Code
+  - Display
+- **Min**
+- **Max**
+- **Max Decimal Places**
 
-**Options**:
+#### Max Decimal Places
+Defines the maximum number of digits allowed after the decimal separator.
 
-* **Resource Type:** Used to determine the options for this widget.
-* **Expression:** Use a FHIRPath / FHIRQuery expression with conditions and logic.
-  * **FHIRPath:** Allows create logic with answers depends on other items. You can filter options with your conditions.
-  * **FHIRQuery:** Allows dynamically fetch answer options via FHIRQuery from your Aidbox instance resources.
+## Quantity
 
-{% hint style="info" %}
-How to use Answer Expression see our [example](how-to-guides/how-to-use-answer-expression-into-forms.md)
-{% endhint %}
+The Quantity widget is used for capturing a quantity value that combines a numeric value with a unit. It can be used for measurements such as temperature, weight, height, and similar values.
+
+### Input
+
+- **Unit Options**
+- **Min**
+- **Max**
+
+#### Unit Options
+Defines the list of units available for this field.
+
+Each unit option row supports:
+
+- System
+- Code
+- Display
+
+Available action:
+
+- **Add unit option**
+
+These unit options are available to the user in the input field. For example, the user can choose one of several units such as `F` or `C`.
+
+## Slider
+
+The Slider widget is a control where an axis is displayed between a minimum and maximum value and the user can visually select a value on that axis. 
+
+### Input
+
+- **Unit**
+  - System
+  - Code
+  - Display
+- **Min Integer**
+- **Max Integer**
+- **Step**
+
+#### Step
+Defines the slider increment.
+
+For example, if the step is set to `1`, the user can select every integer value in the range. If the step is set to `5` or `10`, intermediate values between those increments are not selectable.
+
+## Date
+
+The Date widget is used for capturing a date answer. 
+
+### Input
+
+- **Min**
+- **Max**
+
+Both values are configured using a date picker.
+
+## DateTime
+
+The DateTime widget is used for capturing a date and time answer.
+
+### Input
+
+- **Min**
+- **Max**
+
+Both values are configured using a datetime picker.
+
+## Time
+
+The Time widget is used for capturing a time answer independent of a date.
+
+### Input
+
+- **Min**
+- **Max**
+
+Both values are configured using a time picker.
+
+## Choice
+
+The Choice widget allows users to select one or more options from a predefined list of options and is displayed on the form as a drop-down list. 
+
+### Basic Interaction
+
+- **Allow multiple entries** controls whether the user can select more than one option.
+
+### Input
+
+Options are configured under **Options**.
+
+Available modes:
+
+- **Static**
+- **ValueSet**
+- **Expression**
+
+#### Static
+
+A list of values that the user can choose from.
+
+Each option row supports:
+
+- **System**
+- **Code**
+- **Display**
+
+Additional option columns can be enabled:
+
+- **Prefix**
+- **Exclusive**
+- **Score**
+
+Available actions:
+
+- **Add option**
+- **Import option**
+
+Additional toggles:
+
+- **Include score**
+- **Show score**
+- **Include prefix**
+- **Include exclusiveness**
+
+#### ValueSet
+
+Use predefined options from a ValueSet.
+
+This mode supports:
+
+- **Use external terminology server**
+- **Terminology Server**
+- **ValueSet**
+
+#### Expression
+
+Use an expression to define answer options dynamically.
+
+## Open Choice
+
+The Open Choice widget allows users to select from a predefined list of options or enter their own custom answer. It is displayed on the form as a drop-down list.
+
+### Basic Interaction
+
+- **Allow multiple entries** controls whether the user can select more than one option.
+
+### Input
+
+Options are configured under **Options**.
+
+Available modes:
+
+- **Static**
+- **ValueSet**
+- **Expression**
+
+#### Static
+
+A list of values that the user can choose from.
+
+Each option row supports:
+
+- **System**
+- **Code**
+- **Display**
+
+Additional option columns can be enabled:
+
+- **Prefix**
+- **Exclusive**
+- **Score**
+
+Available actions:
+
+- **Add option**
+- **Import option**
+
+Additional toggles:
+
+- **Include score**
+- **Show score**
+- **Include prefix**
+- **Include exclusiveness**
+
+#### ValueSet
+
+Use predefined options from a ValueSet.
+
+This mode supports:
+
+- **Use external terminology server**
+- **Terminology Server**
+- **ValueSet**
+
+#### Expression
+
+Use an expression to define answer options dynamically.
+
+#### Open choice label
+
+Defines the label displayed for the custom answer option.
+
+This field is available for **Open Choice** and can be used for labels such as `Specify other...`.
+
+## Radio Button
+
+The Radio Button widget allows users to select one option from a predefined set of choices. It is suitable for single-choice questions.
+
+### Appearance
+
+In addition to standard appearance settings, Radio Button supports:
+
+- **Orientation**
+  - Horizontal
+  - Vertical
+
+### Input
+
+Options are configured under **Options**.
+
+Available modes:
+
+- **Static**
+- **ValueSet**
+- **Expression**
+
+Additional setting:
+
+- **Column count**
+
+#### Static
+
+Each option row supports:
+
+- System
+- Code
+- Display
+
+#### ValueSet
+
+Use predefined options from a ValueSet.
+
+#### Expression
+
+Use an expression to define answer options dynamically.
+
+#### Column count
+
+Defines how many columns are used to render the answer options.
+
+## Checkbox List
+
+The Checkbox List widget allows users to select multiple options from a predefined list. It is suitable for multi-select questions. 
+
+### Appearance
+
+In addition to standard appearance settings, Checkbox List supports:
+
+- **Orientation**
+  - Horizontal
+  - Vertical
+
+### Input
+
+Options are configured under **Options**.
+
+Available modes:
+
+- **Static**
+- **ValueSet**
+- **Expression**
+
+Additional setting:
+
+- **Column count**
+
+#### Static
+
+Each option row supports:
+
+- System
+- Code
+- Display
+
+#### ValueSet
+
+Use predefined options from a ValueSet.
+
+#### Expression
+
+Use an expression to define answer options dynamically.
+
+#### Column count
+
+Defines how many columns are used to render the answer options.
+
+## Checkbox
+
+The Checkbox widget allows users to toggle between checked and unchecked states. It is suitable for simple boolean answers such as yes/no or true/false.
+
+### Appearance
+
+In addition to standard appearance settings, Checkbox supports:
+
+- **Orientation**
+  - Horizontal
+  - Vertical
+
+### Input
+
+- **Tri-state**
+
+#### Tri-state
+Enables a third, indeterminate state in addition to checked and unchecked.
+
+## Display
+
+The Display widget is used to show text in the form without capturing an answer. It is intended for static or dynamically generated content that provides context, explanation, or instructions to the user. 
+
+In the new UI, Display has a reduced set of sections compared to answer-based widgets.
+
+Available sections:
+
+- `General`
+- `Behaviour`
+- `Custom`
+
+There is no `Data` section for Display.
+
+### General
+
+Display supports:
+
+- Label
+- Short name
+- External Link
+- Prefix
+- Dynamic text
+- Width
+- Media (image or video)
+- Hidden
+- Metadata → Code
+
+#### Dynamic text
+
+When **Dynamic text** is enabled, the item text can be built dynamically using a **FHIRPath expression**.
+
+The new UI provides:
+
+- **FHIRPath expression** editor
+- **Compact mode**
+- **Visual mode**
+
+### Behaviour
+
+Display supports **Enable When** with the same two modes:
+
+- Conditions are met
+- Expression is true
+
+## Attachment
+
+The Attachment widget allows users to upload files as part of a form response. It can be used for documents, images, audio, video, and other supported file types. 
+
+### Input
+
+- **Allowed file-types**
+- **Max file size (in kilobytes)**
+
+#### Allowed file-types
+
+The new UI provides predefined options such as:
+
+- Any image
+- Any audio
+- Any video
+- PDF
+- Microsoft Word (.doc)
+- Microsoft Word (.docx)
+- Microsoft Excel (.xls)
+- Microsoft Excel (.xlsx)
+- CSV
+- Specify other...
+
+These correspond to MIME types such as:
+
+- `image/*`
+- `audio/*`
+- `video/*`
+- `application/pdf`
+- `application/msword`
+- `application/vnd.openxmlformats-officedocument.wordprocessingml.document`
+- `application/vnd.ms-excel`
+- `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`
+- `text/csv`
+
+## Signature
+
+The Signature widget is used for capturing a handwritten signature as part of the form response.
+
+No additional Signature-specific settings are shown in the new UI.
+
+## Annotation Pad
+
+The Annotation Pad widget allows users to draw or write annotations directly in the form. It can be used for sketches, handwritten notes, markings, and other visual input that cannot be easily captured with standard text fields. 
+
+### Input
+
+- **Background image**
+- **Pen Color**
+- **Pen Thickness**
+- **Erase Option**
+
+#### Background image
+
+Allows uploading an image file to be used as the background of the annotation area.
+
+#### Pen Color
+
+Defines the color used for annotation.
+
+#### Pen Thickness
+
+Defines the stroke thickness used for drawing.
+
+#### Erase Option
+
+Allows erasing annotation content.
+
+## Speech to text
+
+The Speech to text widget allows users to input text by speaking. The spoken input is transcribed into text and stored as the answer value.
+
+### Input
+
+- **Min Length**
+- **Max Length**
+- **Input constraints (RegEx)**
+- **Language**
+
+#### Language
+
+Defines the language used for speech recognition and transcription.
+
+The language is selected from the list of languages supported by Formbox.
+
+## Reference
+
+The Reference widget allows users to select a reference to another resource, such as a Patient, Practitioner, Appointment, CarePlan, and other FHIR resources. 
+
+### Input
+
+Reference-specific settings are grouped under **Options**.
+
+Available modes:
+
+- **Resource Type**
+- **Expression**
+
+#### Resource Type
+
+Use this mode to define which FHIR resource type is available for selection.
+
+Only one resource type can be selected.
+
+The field opens a dropdown with supported FHIR resources, such as:
+
+- Patient
+- Practitioner
+- Appointment
+- CarePlan
+
+and other available resource types.
+
+#### Expression
+
+Use an expression when the available references should be determined dynamically.
+
+## Group
+
+The Group widget is an item that does not capture a direct answer and is used to organize child items inside a form. It is intended for grouping related questions or sections together.
+
+Group acts as a container for nested items rather than as a direct input field.
+
+## Group Table
+
+The Group Table widget is used to organize nested groups in a tabular structure. It acts as a container widget for related grouped content displayed in table-like form. 
+
+## Grid
+
+The Grid widget is used to arrange nested group items in a grid layout. It is intended for structured layouts where child groups act as rows and nested items are organized as columns.
+
+## Choice Matrix
+
+The Choice Matrix widget is used to display a matrix of questions and answer choices, where questions can be arranged in rows or columns. It is suitable for tabular choice-based layouts. 
+
+Choice Matrix works through nested items. Values are added in a child item, then the item can be duplicated and renamed to build a matrix structure.
+
+### Appearance
+
+In addition to standard appearance settings, Choice Matrix supports:
+
+- **Display questions**
+  - In rows
+  - In columns
+
+#### Display questions
+
+Defines how matrix questions are displayed in the table layout.
+
+- **In rows** — questions are displayed as rows.
+- **In columns** — questions are displayed as columns.
+
+## Pages
+
+The Pages widget is a container widget used to split a form into multiple pages or sections. It is intended for multi-step form layouts where child items are grouped into separate pages. 
+
+## Tab Container
+
+The Tab Container widget is a container widget used to split nested content into separate tabs. It is intended for tabbed layouts where child items are displayed within different tab panels. 
