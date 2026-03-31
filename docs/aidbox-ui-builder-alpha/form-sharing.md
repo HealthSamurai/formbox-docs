@@ -35,10 +35,21 @@ After creating a form, you can generate a link to the form and send it to the us
 6. **Review Responses:**
    * After the user submits the form, you can access and review their responses within Formbox.
 
-{% hint style="info" %}
-You can set up the user redirect after the user submits the form.
+### Session timeout
 
-Default behavior when the user remains on the page with a completed form
+Shared forms support session timeout configuration for inactive users.
+
+After clicking 'Share' button, use these fields to control timeout behavior:
+
+- **Session timeout** — total inactivity period before the form session is closed.
+- **Warning timeout** — time before session expiration when the warning popup is shown (if not specified, the default value is 1 minute).
+- **Redirect on timeout** — URL to redirect the user to after the session expires.
+
+When the timeout is reached, the form is closed and the session is invalidated. After that, the user is either redirected to the configured URL or shown a session expired message, depending on the form configuration.
+
+{% hint style="info" %}
+Additionally, you can configure a redirect after successful form submission 
+using the Redirect on submit option.
 {% endhint %}
 
 ## Embed the Form via iframe into an application or website
