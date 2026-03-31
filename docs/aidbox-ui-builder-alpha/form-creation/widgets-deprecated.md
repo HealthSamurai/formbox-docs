@@ -1,6 +1,11 @@
 ---
-description: This article will be removed. For documentation about the new outline, see [Widgets](how-to-guides/widgets.md).
+description: widget settings in the old Form Builder UI and description of the existing widgets.
 ---
+
+{% hint style="warning" %}
+This article will be removed. For documentation about the new outline, see [Widgets](widgets.md).
+```
+{% endhint %}
 
 # Widgets (deprecated)
 
