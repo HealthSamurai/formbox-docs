@@ -4,7 +4,7 @@ description: This article outlines the basic steps to get started with Formbox a
 
 # Getting started (module)
 
-This guide explains how to start using **Formbox as an Aidbox module**. In this deployment model, Formbox runs on top of Aidbox and uses Aidbox as the underlying FHIR server. Form-building and form-rendering capabilities are the same as in the standalone deployment model; the main difference is where and how FHIR data is stored and processed.
+This guide explains how to start using **Formbox as an Aidbox module**. In this deployment model, Formbox runs on top of Aidbox and uses Aidbox as the underlying FHIR server. Form-building and form-rendering capabilities are the same as in the standalone deployment model.
 
 Use this guide if you want to:
 
@@ -19,7 +19,7 @@ If you want to run Formbox as a separate product instead, see [Getting started (
 Formbox was previously known as **Aidbox Forms**. Some UI labels, page names, or older documentation may still use the previous name.
 {% endhint %}
 
-In the **Aidbox module** deployment model, Formbox provides access to Aidbox capabilities, including:
+As a module of Aidbox, Formbox provides access to Aidbox capabilities, including:
 
 - native FHIR storage;
 - pre-fill and data extraction workflows, where data is read from and written directly to Aidbox;
