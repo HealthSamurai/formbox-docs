@@ -25,7 +25,7 @@ Formbox supports multiple widget types for building forms. Widgets define how qu
 | [Date](widgets.md#date) | A widget for entering a date value. | FHIR |
 | [DateTime](widgets.md#datetime) | A widget for entering a date and time value. | FHIR |
 | [Time](widgets.md#time) | A widget for entering a time value independent of a date. | FHIR |
-| [[Choice]](widgets.md#choice) | A widget for selecting one or more options from a predefined list. It is displayed as a drop-down list. | FHIR |
+| [Choice](widgets.md#choice) | A widget for selecting one or more options from a predefined list. It is displayed as a drop-down list. | FHIR |
 | [Open Choice](widgets.md#open-choice) | A widget for selecting an option from a predefined list or entering a custom answer. It is displayed as a drop-down list. | FHIR |
 | [Radio Button](widgets.md#radio-button) | A widget for selecting one option from a predefined set of choices. | FHIR |
 | [Checkbox List](widgets.md#checkbox-list) | A widget for selecting multiple options from a predefined list of choices. | FHIR |
