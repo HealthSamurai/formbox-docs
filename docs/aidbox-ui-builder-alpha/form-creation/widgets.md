@@ -132,6 +132,7 @@ Most widgets support **Custom Attributes**:
 
 ---
 
+## Widget settings
 
 In addition to the general settings described above, each item type provides its own type-specific settings. 
 The following sections provide a brief overview of each item type and describe the type-specific settings available for it.
