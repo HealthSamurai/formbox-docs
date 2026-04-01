@@ -82,6 +82,16 @@ The next time you log in to the portal, after signing in successfully, follow th
 
 ## Option 2. Run Formbox locally
 
+### Prerequisites
+
+{% hint style="warning" %}
+<img src="../assets/docker.avif" alt="Docker logo" data-size="original">
+
+Please **make sure** that both [Docker & Docker Compose](https://docs.docker.com/engine/install/) are installed (not required if you're planning to use sandbox).
+{% endhint %}
+
+You can start Formbox standalone from the Aidbox Portal and then sign in with the credentials generated for your instance.
+
 Use this option if you want to run Formbox as part of a local Aidbox setup. 
 
 ### 1. Create a license in Aidbox Portal
