@@ -33,6 +33,7 @@
       * [Population](aidbox-ui-builder-alpha/form-creation/population.md)
     * [Import Questionnaire](aidbox-ui-builder-alpha/import-questionnaire.md)
     * [Form sharing](aidbox-ui-builder-alpha/form-sharing.md)
+    * [Form sending](aidbox-ui-builder-alpha/form-sending.md)
     * [Printing forms](aidbox-ui-builder-alpha/printing-forms/README.md)
       * [Native look form printing](aidbox-ui-builder-alpha/printing-forms/native-look-form-printing.md)
       * [Template-based PDF generation](aidbox-ui-builder-alpha/printing-forms/template-based-pdf-generation.md)
