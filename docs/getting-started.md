@@ -65,7 +65,7 @@ This option is useful if you want to explore Formbox without running Aidbox loca
 
 5. Click 'Create' to create a new Formbox instance. This may take a few minutes.
 
-### 3. Open Formbox
+### 2. Open Formbox
 
 After the successful initialization of the new Formbox instance, you will be redirected to the starting page of the Aidbox Portal.
 
@@ -134,6 +134,8 @@ From there, you have two options:
 
  The next steps are described here:
 [Design form in Aidbox UI Builder](aidbox-ui-builder-alpha/)
+
+---
 
 ## Enable Audit log
 
