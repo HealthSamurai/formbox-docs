@@ -2,6 +2,7 @@
 
 ## Guides
 * [Formbox  (formerly Aidbox Forms)](README.md)
+  * [Release Notes](release-notes.md)
   * [Getting started (module)](getting-started.md)
   * [Getting started (standalone)](getting-started-formbox.md)
   * [Formbox Interface](aidbox-forms-interface.md)

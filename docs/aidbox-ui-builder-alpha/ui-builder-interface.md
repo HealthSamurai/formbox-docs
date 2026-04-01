@@ -6,6 +6,12 @@ description: This article outlines the the UI Builder Interface
 
 ## UI Builder interface overview
 
+{% hint style="warning" %}
+The new Form Builder UI is available as an alternative interface. Its main capabilities are described on the [Form Settings](form-creation/form-settings.md) and [Widgets](form-creation/widgets.md) pages.
+
+This UI will become the default in a future release.
+{% endhint %}
+
 When creating a form in the UI builder, the interface includes the following components:
 
 1. **Work Area ( left Side ):**
