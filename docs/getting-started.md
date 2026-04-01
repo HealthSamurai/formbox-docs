@@ -85,7 +85,7 @@ The next time you log in to the portal, after signing in successfully, follow th
 ### Prerequisites
 
 {% hint style="warning" %}
-<img src="../assets/docker.avif" alt="Docker logo" data-size="original">
+<img src="../assets/docker.avif" alt="Docker logo" width="240">
 
 Please **make sure** that both [Docker & Docker Compose](https://docs.docker.com/engine/install/) are installed (not required if you're planning to use sandbox).
 {% endhint %}
