@@ -10,6 +10,10 @@ Formbox supports standard FHIR REST API operations for the resource types listed
 
 Additional custom operations are documented in the [FHIR SDC API](reference/fhir-sdc-api.md) and [Custom SDC API](reference/aidbox-sdc-api.md) reference sections.
 
+{% hint style="info" %}
+`populate` and `extract` workflows are also supported. To use them, you need either to configure integration with an [external FHIR server](aidbox-ui-builder-alpha/external-fhir-servers-as-a-data-backend.md) where the source or target data is stored, or to upgrade to the full Aidbox platform and use Formbox as an Aidbox module so that the remaining FHIR resources required by these workflows can be stored and managed in Aidbox.
+{% endhint %}
+
 Only the following resource types are available through the API.
 
 ## FHIR resources
