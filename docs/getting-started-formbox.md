@@ -12,7 +12,7 @@ Use this guide if you want to:
 - run Formbox locally as a standalone product;
 - sign in and start creating medical forms.
 
-If you want to use Formbox on top of Aidbox and work with FHIR resources stored in Aidbox, see [Getting started (module)](getting-started-formbox-module.md).
+If you want to use Formbox on top of Aidbox and work with FHIR resources stored in Aidbox, see [Getting started (module)](getting-started.md).
 
 ## Before you start
 
