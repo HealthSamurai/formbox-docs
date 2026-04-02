@@ -33,7 +33,7 @@ If you are using this feature in a sandbox environment, you can review the email
 The feature supports the following trigger types:
 
 - **Manual trigger** - a user selects a form, enters patient contact details, and sends the form immediately or schedules it.
-- **Event-based trigger** - for example, when an appointment is created.
+- **Event-based trigger** - for example, when an appointment is created (the feature can be added upon request).
 - **Time-based trigger** - for example, on a specific date or N days before a visit.
 
 The workflow can perform the following actions:
