@@ -5,6 +5,7 @@
   * [Release Notes](release-notes.md)
   * [Getting started (module)](getting-started.md)
   * [Getting started (standalone)](getting-started-formbox.md)
+  * [Formbox data storage and API](form-and-response-storage.md)
   * [Formbox Interface](aidbox-forms-interface.md)
   * [Form Builder](aidbox-ui-builder-alpha/README.md)
     * [Form Builder Interface](aidbox-ui-builder-alpha/ui-builder-interface.md)
@@ -57,8 +58,8 @@
   * [Da Vinci DTR](davinci.md)
 
 ## Reference
-* [Aidbox Forms Reference](reference/README.md)
+* [Formbox References](reference/README.md)
   * [FHIR SDC API](reference/fhir-sdc-api.md)
-  * [Aidbox SDC API](reference/aidbox-sdc-api.md)
+  * [Custom SDC API](reference/aidbox-sdc-api.md)
   * [Generating Questionnaire from PDF API](reference/generating-questionnaire-from-pdf-api.md)
   * [Generating Questionnaire from openEHR Template API](reference/generating-questionnaire-from-openehr-template.md)
