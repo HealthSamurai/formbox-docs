@@ -167,9 +167,9 @@ http://localhost:8080
 
 ## What's next? 
 
-Now that Aidbox is running — either locally or in Sandbox — and you're signed in:
+Now that Formbox is running — either locally or in Sandbox — and you're signed in:
 
-1. In the Aidbox web console on the left, click `Aidbox Forms` or follow the direct link: `http://localhost:8080/ui/sdc` to open Formbox.
+1. Open Formbox by following the direct link: `http://localhost:8080/ui/sdc`.
 2. Click `Create Template`.
 3. Click `Create in UI Builder`.
 
