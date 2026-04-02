@@ -1,4 +1,4 @@
-# Formbox data storage and API
+# Data storage and API
 
 Formbox uses an Aidbox server under the hood for storing forms, responses, and related configuration. This server exposes a limited API surface tailored to Formbox use cases.
 
