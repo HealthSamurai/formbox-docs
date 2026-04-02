@@ -61,7 +61,7 @@ A global Configuration resource can be instantiated to serve as the system-wide 
   * `redirect-on-save`: The redirect URI used when the form is saved or closed.
   * `read-only`: A boolean value that specifies whether the form should be read-only.
   * `app-name`: The name of the app that will be mentioned in the AuditEvent logs.
-  * `default-max-width`: The default maximum width of the form. It can accept values in all CSS units (e.g., `px`, `rem`, `%`). Default is `960px`. This value will take effect only if the questionnaire does have [Max Form Width](form-creation/form-settings.md#appearance-settings) set.
+  * `default-max-width`: The default maximum width of the form. It can accept values in all CSS units (e.g., `px`, `rem`, `%`). Default is `960px`. This value will take effect only if the questionnaire has [Max Form Width](form-creation/form-settings.md) set.
   * `hide-footer`: A boolean value that specifies whether the form footer should be hidden.
   * `non-sticky-footer`: A boolean value that specifies whether the form footer should be sticky.
   * `hide-language-selector`: A boolean value that specifies whether the language selector should be hidden.

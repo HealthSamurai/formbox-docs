@@ -47,7 +47,7 @@ To enable request interception, set the `onFetch` property on the builder or ren
 The interception function must follow the same signature as the standard [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Window/fetch) function, with the following exceptions:
 
 1. The function can return null or undefined to bypass the interception and allow the builder to handle the request using the standard fetch.
-2. The [init object](https://developer.mozilla.org/en-US/docs/Web/API/RequestInit) (the second argument) may include an additional tag property. This tag is a string representing the name of one of the [endpoints](request-interception.md#endpoints), allowing you to differentiate between them without relying on the URL or HTTP method, which may be subject to future changes.
+2. The [init object](https://developer.mozilla.org/en-US/docs/Web/API/RequestInit) (the second argument) may include an additional tag property. This tag is a string representing the name of one of the endpoints used by the builder or renderer, allowing you to differentiate between them without relying on the URL or HTTP method, which may be subject to future changes.
 
 ### Common Use Cases
 
