@@ -179,4 +179,4 @@ From there, you have two options:
 - **Create a form from an existing FHIR Questionnaire** using import functionality.
 
 The next steps are described here: 
-[Design form in Aidbox UI Builder](/aidbox-ui-builder-alpha/)
+[Design form in Aidbox UI Builder](aidbox-ui-builder-alpha/README.md)
