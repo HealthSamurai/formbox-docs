@@ -1,1 +1,9 @@
-redirects: {}
+redirects:
+  # Old aidbox-forms paths → current formbox paths
+  aidbox-ui-builder-alpha/embedding-renderer: aidbox-ui-builder-alpha/external-form-renderer.md
+  aidbox-ui-builder-alpha/import-fhir-questionnaire: aidbox-ui-builder-alpha/import-questionnaire.md
+  aidbox-ui-builder-alpha/multilingual-ui-builder: aidbox-ui-builder-alpha/form-creation/multilingual-forms.md
+  converter: deprecated.md
+  how-to-customize-form-appearance: aidbox-ui-builder-alpha/form-creation/form-customisation-in-theme-editor.md
+  ui-form-builder/form-creation/form-customisation: aidbox-ui-builder-alpha/form-creation/form-customisation-in-theme-editor.md
+  ui-form-builder/form-creation/form-settings: aidbox-ui-builder-alpha/form-creation/form-settings.md
