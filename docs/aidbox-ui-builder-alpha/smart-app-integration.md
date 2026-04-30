@@ -8,6 +8,8 @@ Formbox can be launched from an external EHR as a SMART on FHIR app. In this mod
 
 In the current implementation, `Questionnaire` and `QuestionnaireResponse` are stored in Formbox, while other patient data stays in the EHR.
 
+This integration has been tested with Cerner.
+
 ## When to use it
 
 Use this integration when you want:
