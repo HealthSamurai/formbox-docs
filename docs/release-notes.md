@@ -1,6 +1,12 @@
 # Release Notes
 
-## March 2026 _`latest, 2603`_
+## April 2026 _`latest, 2604`_
+
+* **Formbox (formerly Aidbox Forms)**
+  * Implemented EHR integration via SMART on FHIR, with Formbox acting as a SMART app (read), tested with Cerner.
+  * Introduced a new Formbox UI, now available in beta, with a banner on the main Forms page to switch versions.
+
+## March 2026 _`stable, 2603`_
 
 * **Formbox (formerly Aidbox Forms)**
   * Supported the ability to run Formbox in [Sandbox mode](getting-started-formbox.md).
