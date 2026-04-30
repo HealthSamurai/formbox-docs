@@ -182,70 +182,41 @@ In a regular Formbox session, the same fields are resolved as internal FHIR refe
 
 Non-SMART `Parameters` request:
 
-```json
-{
-  "resourceType": "Parameters",
-  "parameter": [
-    {
-      "name": "subject",
-      "valueReference": {
-        "reference": "Patient/pt1"
-      }
-    },
-    {
-      "name": "encounter",
-      "valueReference": {
-        "reference": "Encounter/enc1"
-      }
-    }
-  ]
-}
+```yaml
+resourceType: Parameters
+parameter:
+  - name: subject
+    valueReference:
+      reference: Patient/pt1
+  - name: encounter
+    valueReference:
+      reference: Encounter/enc1
 ```
 
 SMART `Parameters` request:
 
-```json
-{
-  "resourceType": "Parameters",
-  "parameter": [
-    {
-      "name": "subject",
-      "valueReference": {
-        "identifier": {
-          "system": "https://ehr.example.com/fhir",
-          "value": "pt1"
-        }
-      }
-    },
-    {
-      "name": "encounter",
-      "valueReference": {
-        "identifier": {
-          "system": "https://ehr.example.com/fhir",
-          "value": "enc1"
-        }
-      }
-    },
-    {
-      "name": "context",
-      "part": [
-        {
-          "name": "name",
-          "valueString": "patient"
-        },
-        {
-          "name": "content",
-          "valueReference": {
-            "identifier": {
-              "system": "https://ehr.example.com/fhir",
-              "value": "pt1"
-            }
-          }
-        }
-      ]
-    }
-  ]
-}
+```yaml
+resourceType: Parameters
+parameter:
+  - name: subject
+    valueReference:
+      identifier:
+        system: https://ehr.example.com/fhir
+        value: pt1
+  - name: encounter
+    valueReference:
+      identifier:
+        system: https://ehr.example.com/fhir
+        value: enc1
+  - name: context
+    part:
+      - name: name
+        valueString: patient
+      - name: content
+        valueReference:
+          identifier:
+            system: https://ehr.example.com/fhir
+            value: pt1
 ```
 
 Use `identifier` in SMART mode so Formbox keeps EHR identities separate from internal FHIR references.
