@@ -30,9 +30,8 @@ Choosing the `NHS` design system applies NHS-compliant styles and components acr
 
 #### Important Notes
 
-- The NHS design system currently supports only the following [entry modes](./entry-mode.md):
-  - `sequential`
-  - `prior-edit` 
+- The NHS design system currently supports only the following [entry mode](./entry-mode.md):
+  - `sequential w. edit` 
 
 Support for additional entry modes may be added in the future.
 
@@ -41,12 +40,15 @@ Support for additional entry modes may be added in the future.
 To enable the NHS look and feel in Formbox:
 
 1. Create a `Questionnaire`
-   Set its `entry-mode` to one of the modes supported by the NHS design system:
-   - `sequential`
-   - `prior-edit` (typically used)
+   Set its `entry-mode` to the following mode supported by the NHS design system:
+   - `sequential w. edit`
 
 2. Create a `QuestionnaireTheme`
    Set the `design-system` property to `NHS`.
+
+{% hint style="warning" %}
+If you are creating a form with the NHS design system for the first time, select `Add new theme`. In the `Theme Editor` under `General`, choose `NHS (National Health System)` and provide a theme name. Click `Save`, and then select the newly created theme from the list of available themes.
+{% endhint %}
 
 3. Choose how the theme is applied
    You can apply the NHS theme in two ways:
