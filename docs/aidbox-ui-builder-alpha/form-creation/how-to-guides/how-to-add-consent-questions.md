@@ -70,17 +70,11 @@ For consent questions, the expected business behavior is often different.
 
 Usually, when we create a consent checkbox, we do not simply want the user to provide any boolean answer. We want the user to actively confirm the statement.
 
-In other words, the business requirement is not:
+In other words, the business requirement is not "the question must have an answer".
 
-The question must have an answer.
+The real requirement is "the user must explicitly accept the consent".
 
-The real requirement is:
-
-The user must explicitly accept the consent.
-
-These are different requirements.
-
-A required boolean checkbox with a default value of `false` only guarantees that the question has an answer. It does not guarantee that the user interacted with the checkbox or accepted the consent.
+These are different requirements. A required boolean checkbox with a default value of `false` only guarantees that the question has an answer. It does not guarantee that the user interacted with the checkbox or accepted the consent.
 
 ## Recommended workaround
 
@@ -90,11 +84,11 @@ The Checkbox list should contain only one answer option.
 
 For example:
 
-_Checkbox list heading:
-Data processing consent
-
-Answer option:
-I consent to the processing of my personal and health information as described in this form._
+> Checkbox list heading:
+> Data processing consent
+>
+> Answer option:
+> I consent to the processing of my personal and health information as described in this form.
 
 Then make the Checkbox list required:
 
@@ -118,4 +112,4 @@ A required Checkbox list with one option answers the question: "Has the user sel
 
 That makes it a better fit for consent-style questions where explicit user action is required.
 
-This solution does not conflict with the FHIR SDC specification. It stays aligned with FHIR SDC semantics while providing a simple and effective workaround for cases where the user must explicitly accept a consent statement before submitting the form. 
+Finally, this solution does not conflict with the FHIR SDC specification. It stays aligned with FHIR SDC semantics while providing a simple and effective workaround for cases where the user must explicitly accept a consent statement before submitting the form. 
