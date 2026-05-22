@@ -43,13 +43,13 @@ A standard back-end operation to populate a link within a Questionnaire might lo
 {% tabs %}
 {% tab title="FHIR API" %}
 ```
-[base]/Questionnaire/[questionnaire-id]/$populatelink
+[base]/fhir/Questionnaire/[questionnaire-id]/$populatelink
 ```
 {% endtab %}
 
 {% tab title="Aidbox API" %}
 ```
-[base]/fhir/Questionnaire/[questionnaire-id]/$populatelink
+[base]/Questionnaire/[questionnaire-id]/$populatelink
 ```
 {% endtab %}
 {% endtabs %}
@@ -61,13 +61,14 @@ In multi-tenant mode, the call is modified to include the organization context:
 {% tabs %}
 {% tab title="FHIR API" %}
 ```
+[base]/Organization/[organization-id]/fhir/Questionnaire/[questionnaire-id]/$populatelink
 [base]/Organization/[organization-id]/aidbox/Questionnaire/[questionnaire-id]/$populatelink
 ```
 {% endtab %}
 
 {% tab title="Aidbox API" %}
 ```
-[base]/Organization/[organization-id]/fhir/Questionnaire/[questionnaire-id]/$populatelink
+[base]/Organization/[organization-id]/aidbox/Questionnaire/[questionnaire-id]/$populatelink
 ```
 {% endtab %}
 {% endtabs %}
@@ -189,6 +190,18 @@ For globally shared root-level forms, organizations can use the form, but they d
 ### **Responses**
 
 On the **Response** page, users can see only the responses related to the currently selected organization.<br>
+
+When a user submits a form, the resulting `QuestionnaireResponse` is associated with the organization selected in the current context. 
+Later, this response is visible only within that organization context.
+
+Submitted responses cannot be shared between organizations. 
+Even if multiple organizations use the same shared or globally shared form, each organization creates and sees only its own `QuestionnaireResponse` resources.
+On the **Response** page, users can see only the responses related to the currently selected organization.
+
+When a user submits a form, the resulting `QuestionnaireResponse` is associated with the organization selected in the current context. Later, this response is visible only within that organization context.
+
+Sharing is available for form templates (`Questionnaire` resources), but not for submitted responses. 
+Even if multiple organizations use the same shared or globally shared form, each organization creates and sees only its own `QuestionnaireResponse` resources.
 
 ### **Form Gallery**
 
