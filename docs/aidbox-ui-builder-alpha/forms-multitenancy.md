@@ -114,8 +114,9 @@ Once these steps are completed, the **organization selector** becomes available 
 
 ### **Organization Selector**
 
-After multitenancy is enabled, a dropdown appears on the **Form** page.\
-Users can switch between organizations to work within the desired context.
+When multitenancy is enabled, users can switch between organizations using the Organization Selector.
+
+If a user belongs to a specific organization, the selector is hidden. The UI automatically resolves the organization context from the user's metadata.
 
 When an organization is selected:
 
@@ -128,16 +129,19 @@ The **Form Template** page provides several actions, depending on the user's cur
 
 **1. Create a Form**
 
-Users can create a new form under the currently selected organization.\
-If no organization is selected, the form is created under the **root API**.
+Users can create a new form under the currently selected organization.
+
+If no organization is selected, the form is created at the **root level**.
+Root-level forms are not owned by a specific organization and can be shared globally
+with all organizations in the system by using the Share globally button.
 
 **2. Delete a Form**
 
 Users can delete forms **only** if the form belongs to the currently selected organization.
 
-**3. Share a Form with Child Organizations**
+**3. Share a Form**
 
-A form can be shared **only** with child organizations of the current one.\
+A form can be shared either with child organizations of the current one or from the root with all organizations (globally).\
 Once shared, child organizations can view and use the form.
 
 **4. Duplicate a Form**
@@ -145,7 +149,7 @@ Once shared, child organizations can view and use the form.
 Users can duplicate:
 
 * Their own forms
-* Forms shared with them by a parent organization
+* Forms shared with them by a parent organization or from the root
 
 Duplicating a shared form creates a local copy under the selected organization, allowing independent editing.
 
@@ -155,18 +159,32 @@ Multitenancy introduces several rules to ensure proper isolation and hierarchy b
 
 **1. Sharing Limitations**
 
-* A form can be shared **only** with child organizations.
-* Sharing with sibling or parent organizations is not allowed.
+* Forms owned by an organization can be shared only with its child organizations.
+* Sharing with sibling organizations is not allowed.
+* Root-level forms can be shared globally with all organizations by using the Share globally action.
+* The global sharing mode is available only for root-level forms.
 
 **2. Editing Permissions**
 
-* Users **cannot edit or delete** forms owned by another organization.
+* Users **cannot edit or delete** forms shared from the root or owned by another organization.
 * To modify a shared form, the user must **duplicate it** under the selected organization.
 
 **3. Root-Level Forms**
 
 * If a form is created when no organization is selected, it becomes a **root-level form**.
-* Root-level forms are visible outside any organizational context.
+* If shared globally, a root-level form becomes visible for all organizations.
+
+### **Sharing Badges**
+
+The forms grid shows badges that indicate the user's relationship to a form:
+
+- `Shared` — shown to the owner organization when the form is shared with child organizations.
+  The owner can manage child-sharing settings.
+- `Provided` — shown to child organizations for forms shared by a parent organization.
+  Child organizations can use the form but cannot change the parent organization's sharing settings.
+- `Global` — the form is a root-level form shared globally with all organizations in the system.
+
+For globally shared root-level forms, organizations can use the form, but they do not own it.
 
 ### **Responses**
 
