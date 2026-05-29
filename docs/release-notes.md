@@ -1,12 +1,23 @@
 # Release Notes
 
-## April 2026 _`latest, 2604`_
+## May 2026 _`latest, 2605`_
+
+* **Formbox (formerly Aidbox Forms)**
+  * Improved date validation messaging in NHS forms to provide clearer and more accurate min/max validation feedback.
+  * Enhanced the Entry mode layout to ensure required field indicators are displayed consistently.
+  * Improved the organization selection experience in multi-organization environments.
+  * Enhanced security by restricting AccessPolicy matching to SDC-issued JWT tokens only.
+  * Expanded Group item population capabilities with support for FHIR Query configuration and variables.
+  * Improved Azure Blob Storage integration for file attachment uploads.
+  * Enhanced multilingual form support by automatically loading the default language from the configuration.
+
+## April 2026 _`stable, 2604`_
 
 * **Formbox (formerly Aidbox Forms)**
   * Implemented [EHR integration via SMART on FHIR](aidbox-ui-builder-alpha/smart-app-integration.md), with Formbox acting as a SMART app (read), tested with Cerner.
   * Introduced a new Formbox UI, now available in beta, with a banner on the main Forms page to switch versions.
 
-## March 2026 _`stable, 2603`_
+## March 2026 _`2603`_
 
 * **Formbox (formerly Aidbox Forms)**
   * Supported the ability to run Formbox in [Sandbox mode](getting-started-formbox.md).
