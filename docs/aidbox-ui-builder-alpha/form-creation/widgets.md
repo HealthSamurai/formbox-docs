@@ -163,6 +163,22 @@ The Text widget is used for capturing short free-text answers, usually a few wor
 - **Max Length**
 - **Input constraints (RegEx)**
 
+{% hint style="info" %}
+Regex can be used with `text` items for validating short single-line values, such as:
+
+**Email**:
+
+`^[\w+\-._]+(\.[\w+\-._]+)*@[\w+\-._]+(\.[\w+\-._]+)*\.[A-Za-z]{2,}$`
+
+**US ZIP code**:
+
+`^\d{5}(-\d{4})?$`
+
+**Phone number**:
+
+`^\+?\d{1,2}[-\s]?\d{3}[-\s]?\d{3}[-\s]?\d{4}$`
+{% endhint %}
+
 ## Textarea
 
 The Textarea widget is used for long free-text responses, including multi-line or multi-paragraph input. It is suitable for detailed notes, comments, and narrative descriptions. 
@@ -172,6 +188,23 @@ The Textarea widget is used for long free-text responses, including multi-line o
 - **Min Length**
 - **Max Length**
 - **Input constraints (RegEx)**
+
+{% hint style="info" %}
+Regex can be used with `textarea` items to validate longer free-text values, such as:
+
+**Basic clinical notes**:
+
+`^[A-Za-z0-9\s,.\-()]{5,300}$`
+
+**Clinical notes** with colon and semicolon:
+
+`^[A-Za-z0-9\s,.\-():;]{10,1000}$`
+
+**Text without angle brackets**:
+
+`^[^<>]{5,1000}$`
+{% endhint %}
+
 
 ## URL
 
