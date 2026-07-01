@@ -1,6 +1,17 @@
 # Release Notes
 
-## May 2026 _`latest, 2605`_
+## June 2026 _`latest, 2606`_
+
+* **Formbox (formerly Aidbox Forms)**
+  * Added auto-save support to preserve form data when the form is reloaded while being filled out.
+  * Improved form submission handling for text fields and date/time/datetime fields, ensuring the latest entered values are submitted even without a prior blur event.
+  * Enhanced the signature item to respect the browser locale when displaying the form signing date and time.
+  * Updated the Calculated Expression section to open the Advanced Editor by default, helping prevent accidental data loss.
+  * Added support for including SDCConfig when sharing a form.
+  * Added support for applying themes included in SDCConfig when sharing a form.
+  * Improved SDCConfig loading in the embedded form builder via onFetch.
+
+## May 2026 _`stable, 2605`_
 
 * **Formbox (formerly Aidbox Forms)**
   * Improved date validation messaging in NHS forms to provide clearer and more accurate min/max validation feedback.
