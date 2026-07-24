@@ -500,3 +500,48 @@ The example provided below represents a comprehensive translations object for En
   }
 }
 ```
+
+### Open a shared form in a specific language
+
+To make a shared link open the form in a particular language, first create an `SDCConfig` resource that defines the desired `language` (and, optionally, custom `translations`), then reference that config by its **id** in the `config` parameter of the [`$generate-link`](../reference/aidbox-sdc-api.md#config) operation.
+
+**Step 1 — Create (or reuse) an `SDCConfig` with the target language:**
+
+```yaml
+POST /SDCConfig
+Content-Type: text/yaml
+
+resourceType: SDCConfig
+language: fr
+```
+
+Setting `language` is enough to render the form using Formbox's built-in translations for that language. The `translations` object is **optional** — add it only when you want to override specific labels for the selected language:
+
+```yaml
+resourceType: SDCConfig
+language: fr
+translations:
+  # custom labels / overrides for French, e.g.:
+  # alert:
+  #   provide-url:
+  #     message: {fr: "Veuillez fournir une URL pour votre lien."}
+```
+
+The response returns the resource `id`, for example `cd0f1a23-2be3-45f7-b73e-38f4615e2628`.
+
+**Step 2 — Generate the link, referencing that config by id:**
+
+```yaml
+POST [base]/QuestionnaireResponse/[id]/$generate-link
+Content-Type: text/yaml
+
+resourceType: Parameters
+parameter:
+  - name: config
+    value:
+      String: cd0f1a23-2be3-45f7-b73e-38f4615e2628
+```
+
+{% hint style="info" %}
+The `config` value must be the **id** of an existing `SDCConfig` resource — not an inline configuration object. When the recipient opens the returned link, the renderer loads that `SDCConfig` and renders the form using its language and translations. If `config` is omitted, the default `SDCConfig` is used.
+{% endhint %}

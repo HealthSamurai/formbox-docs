@@ -45,6 +45,7 @@ parameter:
 | [theme](aidbox-sdc-api.md#theme)                           | 0..1        | [String](http://hl7.org/fhir/R4/datatypes.html#string)                                                                                       |
 | [read-only](aidbox-sdc-api.md#read-only)                   | 0..1        | [Boolean](http://hl7.org/fhir/R4/datatypes.html#boolean)                                                                                     |
 | [app-name](aidbox-sdc-api.md#read-only)                    | 0..1        | [String](http://hl7.org/fhir/R4/datatypes.html#string)                                                                                       |
+| [config](aidbox-sdc-api.md#config)                         | 0..1        | [String](http://hl7.org/fhir/R4/datatypes.html#string)                                                                                       |
 | source                                                     |             | [Reference\<Device, Organization, Patient, Practitioner, PractitionerRole, RelatedPerson>](http://hl7.org/fhir/R4/references.html#Reference) |
 | partOf                                                     |             | [Reference\<Observation, Procedure>](http://hl7.org/fhir/R4/references.html#Reference)                                                       |
 | author                                                     |             | [Reference\<Device, Practitioner, PractitionerRole, Patient, RelatedPerson, Organization>](http://hl7.org/fhir/R4/references.html#Reference) |
@@ -169,6 +170,18 @@ Application name that will be used in Audit logging when returned link was used.
 - name: app-name
   value
     String: my-app
+```
+
+#### config
+
+Reference to a saved `SDCConfig` resource, passed as the resource **id**. When the form is opened via the generated link, the renderer loads this `SDCConfig` and applies its `language`, `translations`, `theme`, and other rendering settings. This is the recommended way to open a shared form in a specific language.
+
+> The value must be the **id** of an existing `SDCConfig` resource — not an inline configuration object. If omitted, the default `SDCConfig` is used.
+
+```yaml
+name: config
+value:
+  String: cd0f1a23-2be3-45f7-b73e-38f4615e2628
 ```
 
 ### Usage Example
