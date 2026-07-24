@@ -512,6 +512,7 @@ POST /SDCConfig
 Content-Type: text/yaml
 
 resourceType: SDCConfig
+name: french-config
 language: fr
 ```
 
@@ -519,6 +520,7 @@ Setting `language` is enough to render the form using Formbox's built-in transla
 
 ```yaml
 resourceType: SDCConfig
+name: french-config
 language: fr
 translations:
   # custom labels / overrides for French, e.g.:
@@ -545,3 +547,20 @@ parameter:
 {% hint style="info" %}
 The `config` value must be the **id** of an existing `SDCConfig` resource — not an inline configuration object. When the recipient opens the returned link, the renderer loads that `SDCConfig` and renders the form using its language and translations. If `config` is omitted, the default `SDCConfig` is used.
 {% endhint %}
+
+The same `config` parameter is accepted by the `$populatelink` operation, which generates a link from a `Questionnaire` (and pre-populates a new response):
+
+```yaml
+POST [base]/Questionnaire/[id]/$populatelink
+Content-Type: text/yaml
+
+resourceType: Parameters
+parameter:
+  - name: questionnaireRef
+    valueReference:
+      reference: Questionnaire/[id]
+  - name: config
+    valueString: cd0f1a23-2be3-45f7-b73e-38f4615e2628
+```
+
+This is the operation used when sharing a form from the forms list, so the same result is available from the UI: click **Share** and pick the configuration from the **SDC Config** dropdown.
