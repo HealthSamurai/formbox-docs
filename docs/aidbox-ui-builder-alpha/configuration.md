@@ -260,9 +260,11 @@ GET /$sdc-config
     "print-color": "#8e44ad", // Background color for the "Print" button
     "print-text-color": "#ffffff", // Text color for the "Print" button
     "print-text": "Print", // Label text for the "Print" button
-    "redirect-color": "#c0392b", // Background color for the "Close" button
-    "redirect-text-color": "#ffffff", // Text color for the "Close" button
-    "redirect-text": "Close", // Label text for the "Close" button
+    "next-text": "Continue", // Label text for the "Continue" button (NHS design system)
+    "review-text": "Continue", // Label text for the "Continue" button on the last question, which opens the review page (NHS design system)
+    "redirect-color": "#c0392b", // Background color for the "Save" button
+    "redirect-text-color": "#ffffff", // Text color for the "Save" button
+    "redirect-text": "Save", // Label text for the "Save" button; the "Save and exit" link in the NHS design system
     "submit-text": "Submit", // Label text for the "Submit" button
     "text-color": "#ffffff" // General text color for all buttons
   }
@@ -279,9 +281,27 @@ Currently, Formbox supports three design systems:
 
 - **aidbox-desktop** – The default Formbox design system. Widgets are adaptive and optimized for forms with many questions, suitable for both desktop and mobile devices.  
 - **aidbox-mobile** – Optimized for entry modes `sequential` and `prior-edit`, where only one question appears on screen at a time. Widgets are tailored for touch screens and mobile devices.  
-- **NHS** – Widgets and layouts fully follow the [NHS Design System](https://service-manual.nhs.uk/design-system/). Typically used for embedding forms into NHS applications. Supports only `sequential` and `prior-edit` entry modes.
+- **NHS** – Widgets and layouts fully follow the [NHS Design System](https://service-manual.nhs.uk/design-system/). Typically used for embedding forms into NHS applications. Supports only `sequential` and `prior-edit` entry modes, and only button labels can be customized in the theme.
 
 You can set the design system using the `design-system` property.
+
+### NHS design system
+
+Colors, fonts and input styles come from the NHS Design System and cannot be overridden. The only theme properties that affect an NHS form are the button labels:
+
+- **`button.next-text`** – the button that opens the next question.
+- **`button.review-text`** – the button on the last question that opens the review page.
+- **`button.redirect-text`** – the **Save and exit** link.
+- **`button.submit-text`** – the button that submits the answers on the review page.
+
+Every question page also shows a **Save and exit** link below the main button. It saves the answers given so far, without validating them, and then leaves the form:
+
+- inside the NHS App the user is returned to the application home screen;
+- otherwise the user is redirected to the URL passed in the `redirect-on-save` parameter of the shared link.
+
+The answers are saved first and the form is left only after the server confirms the save, so nothing is lost when the NHS App closes the web view.
+
+The link is not shown on the review page or in read-only forms. Outside the NHS App it is also hidden when the form was shared without the `redirect-on-save` parameter, because in that case there is nowhere to redirect the user to.
 
 ## Translations
 
@@ -434,15 +454,17 @@ The example provided below represents a comprehensive translations object for En
     },
     "button" : {
       "offline-amend" : {"en" : "You are offline and cannot amend"},
-      "amend" : {"en" : "Saved"},
+      "amend" : {"en" : "Amend"},
       "skip-item" : {"en" : "Skip Question"},
       "saved" : {"en" : "Saved"},
       "offline-submit" : {"en" : "You are offline and cannot submit"},
       "save-and-close" : {"en" : "Save"},
       "next-question" : {"en" : "Next Question"},
       "offline-next-question" : {"en" : "You are offline and cannot call Next Question"},
-      "next-item" : {"en" : "Next"}, 
-      "submit" : {"en" : "Submit"}, 
+      "next-item" : {"en" : "Continue"}, 
+      "review" : {"en" : "Continue"},
+      "redirect" : {"en" : "Save and exit"},
+      "submit" : {"en" : "Submit answers"}, 
       "repopulate" : {"en" : "Repopulate"},
       "print" : {"en" : "Print"}
     },
@@ -500,6 +522,8 @@ The example provided below represents a comprehensive translations object for En
   }
 }
 ```
+
+Button labels can also be set in the theme (`button.next-text`, `button.review-text`, `button.redirect-text`, `button.submit-text`). A label defined in the theme takes precedence over the corresponding translation.
 
 ### Open a shared form in a specific language
 
