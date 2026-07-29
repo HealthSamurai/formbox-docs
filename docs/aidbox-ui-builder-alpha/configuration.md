@@ -301,7 +301,7 @@ Every question page also shows a **Save and exit** link below the main button. I
 
 The answers are saved first and the form is left only after the server confirms the save, so nothing is lost when the NHS App closes the web view.
 
-The link is not shown on the review page, in read-only forms, and in a regular browser when `redirect-on-save` is not set.
+The link is not shown on the review page or in read-only forms. Outside the NHS App it is also hidden when the form was shared without the `redirect-on-save` parameter, because in that case there is nowhere to redirect the user to.
 
 ## Translations
 
