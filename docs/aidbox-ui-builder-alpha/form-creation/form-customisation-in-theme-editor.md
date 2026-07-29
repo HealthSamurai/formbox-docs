@@ -78,4 +78,6 @@ The color for the tooltip and hover will be set automatically according to the P
       * **Button Color:** Set the background color of the close button.
       * **Button Text Color:** Define the color of the text on the close button.
 
+    When the **NHS** design system is selected, only the button texts can be edited — colors and fonts come from the NHS Design System. The editor shows four fields: **Continue Button text**, **Continue Button text on the last question**, **Save Button text** and **Submit Button text**.
+
 After creating the theme, you need to click the save button.
