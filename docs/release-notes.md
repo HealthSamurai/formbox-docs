@@ -1,6 +1,21 @@
 # Release Notes
 
-## June 2026 _`latest, 2606`_
+## July 2026 _`latest, 2607`_
+
+* **Formbox (formerly Aidbox Forms)**
+  * Added customizable button labels to the NHS theme (including Continue, final-step Continue, and Submit buttons).
+  * Added a Save and Exit button, displayed by default in the NHS app and in the web version when redirect-on-submit link is configured.
+  * Improved validation for time, date, and datetime fields by detecting incomplete values while preserving the user’s partial input.
+  * Added validation for 12-hour time entries to prompt users to specify AM or PM without clearing the entered value.
+  * Added support for using time items in Enable When conditions.
+  * Improved Open Choice form submission to support custom values entered through the Specify Other option.
+  * Refined the Template-based Extraction widget layout.
+  * Improved subject reference generation in template-based extraction UI.
+  * Enhanced allocated ID dependency handling in template-based extraction UI.
+  * Improved calculated expression error handling so resolved validation errors are cleared in Form Builder automatically.
+  * Improved pagination behavior in the forms grid and added pagination support to the Form Gallery.
+
+## June 2026 _`stable, 2606`_
 
 * **Formbox (formerly Aidbox Forms)**
   * Added auto-save support to preserve form data when the form is reloaded while being filled out.
