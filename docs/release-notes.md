@@ -3,17 +3,17 @@
 ## July 2026 _`latest, 2607`_
 
 * **Formbox (formerly Aidbox Forms)**
-  * Added customizable button labels to the NHS theme (including Continue, final-step Continue, and Submit buttons).
-  * Added a Save and Exit button, displayed by default in the NHS app and in the web version when redirect-on-submit link is configured.
+  * Added customizable button labels to the NHS theme (including "continue", final-step "continue", and "submit" buttons).
+  * Added a "save and exit" button, displayed by default in the NHS app and in the web version when redirect-on-submit link is configured.
   * Improved validation for time, date, and datetime fields by detecting incomplete values while preserving the user’s partial input.
-  * Added validation for 12-hour time entries to prompt users to specify AM or PM without clearing the entered value.
-  * Added support for using time items in Enable When conditions.
-  * Improved Open Choice form submission to support custom values entered through the Specify Other option.
-  * Refined the Template-based Extraction widget layout.
+  * Added validation for 12-hour time entries to prompt users to specify "am" or "pm" without clearing the entered value.
+  * Added support for using time items in "enable when" conditions.
+  * Improved open choice form submission to support custom values entered through the "specify other" option.
+  * Refined the template-based extraction widget layout.
   * Improved subject reference generation in template-based extraction UI.
-  * Enhanced allocated ID dependency handling in template-based extraction UI.
-  * Improved calculated expression error handling so resolved validation errors are cleared in Form Builder automatically.
-  * Improved pagination behavior in the forms grid and added pagination support to the Form Gallery.
+  * Enhanced allocated id dependency handling in template-based extraction UI.
+  * Improved calculated expression error handling so resolved validation errors are cleared in form builder automatically.
+  * Improved pagination behavior in the forms grid and added pagination support to the form gallery.
 
 ## June 2026 _`stable, 2606`_
 
