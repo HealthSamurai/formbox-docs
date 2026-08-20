@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 430"
+     width="540" height="430" fill="none" preserveAspectRatio="xMidYMid meet"
+     style="max-width:100%;height:auto;">
+  <style>
+    line, rect, polygon, path, circle, ellipse { vector-effect: non-scaling-stroke; }
+    .d-group-title       { font: 600 13px/1.2 'Inter', system-ui, sans-serif; letter-spacing: 0.2em; text-transform: uppercase; }
+    .d-card-title        { font: 400 14px/1.2 'Inter', system-ui, sans-serif; fill: #353B50; }
+    .d-card-sub          { font: 400 12px/1.4 'Inter', system-ui, sans-serif; fill: #525263; }
+    .d-conn-label        { font: 400 11px/1.2 'Inter', system-ui, sans-serif; fill: #353B50; letter-spacing: 0.15em; text-transform: uppercase; }
+  </style>
+
+  <g>
+    <rect x="20" y="16" width="500" height="242" fill="#FFFFFF" stroke="#EA4A35" stroke-width="2" rx="14"/>
+    <text x="270" y="42" text-anchor="middle" class="d-group-title" fill="#EC291C">Voice Agent</text>
+
+    <rect x="40" y="58" width="222" height="72" fill="#FCEEEB" rx="10"/>
+    <text x="151" y="88" text-anchor="middle" class="d-card-title">Prompt</text>
+    <text x="151" y="108" text-anchor="middle" class="d-card-sub">How the interviewer behaves</text>
+
+    <rect x="278" y="58" width="222" height="72" fill="#FCEEEB" rx="10"/>
+    <text x="389" y="88" text-anchor="middle" class="d-card-title">Questionnaires</text>
+    <text x="389" y="108" text-anchor="middle" class="d-card-sub">What to cover, in order</text>
+
+    <rect x="40" y="146" width="222" height="72" fill="#FCEEEB" rx="10"/>
+    <text x="151" y="176" text-anchor="middle" class="d-card-title">Context</text>
+    <text x="151" y="196" text-anchor="middle" class="d-card-sub">Patient and other resources</text>
+
+    <rect x="278" y="146" width="222" height="72" fill="#FCEEEB" rx="10"/>
+    <text x="389" y="176" text-anchor="middle" class="d-card-title">Models</text>
+    <text x="389" y="196" text-anchor="middle" class="d-card-sub">Speech and language</text>
+  </g>
+
+  <line x1="270" y1="258" x2="270" y2="314" stroke="#353B50" stroke-width="1"/>
+  <polygon points="270,322 265,314 275,314" fill="#353B50"/>
+  <rect x="218" y="274" width="104" height="18" fill="#FFFFFF"/>
+  <text x="270" y="287" text-anchor="middle" class="d-conn-label">$call</text>
+
+  <g>
+    <rect x="20" y="322" width="500" height="92" fill="#FFFFFF" stroke="#D3DBE6" stroke-width="2" rx="14"/>
+    <text x="270" y="346" text-anchor="middle" class="d-group-title" fill="#525263">Filed as FHIR</text>
+
+    <rect x="40" y="360" width="142" height="38" fill="#F6F7F8" rx="10"/>
+    <text x="111" y="383" text-anchor="middle" class="d-card-title">Transcript</text>
+
+    <rect x="198" y="360" width="144" height="38" fill="#F6F7F8" rx="10"/>
+    <text x="270" y="383" text-anchor="middle" class="d-card-title">Answers</text>
+
+    <rect x="358" y="360" width="142" height="38" fill="#F6F7F8" rx="10"/>
+    <text x="429" y="383" text-anchor="middle" class="d-card-title">Provenance</text>
+  </g>
+</svg>

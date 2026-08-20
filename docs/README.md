@@ -77,7 +77,13 @@ The renderer is available as an open-source project:
 
 If you want to explore the Form Builder without installing Formbox or deploying an instance, you can use the public environment:
 
-[**Try the Public Builder**](https://form-builder.aidbox.app/)<br>
+[**Try the Public Builder**](https://form-builder.aidbox.app/)
+
+#### Voice Agents
+
+Design a voice agent in Formbox, test it by typing or talking to it, then phone patients with `$call` and fill Questionnaires from the conversation.
+
+[**Voice Agents**](voice-agents.md) · [**API**](reference/voice-agents-api.md)
 
 \
 <br>

@@ -8,4 +8,5 @@ It includes:
 * adaptive forms
 * audit logging
 * reporting with SQL on FHIR
+* voice agents
 * Da Vinci DTR support

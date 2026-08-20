@@ -58,6 +58,7 @@
     * [Adaptive Forms](adaptive-forms.md)
     * [Audit logging in forms](audit-logging-in-forms.md)
     * [Building reports using SQL on FHIR](aidbox-ui-builder-alpha/building-reports-using-sql-on-fhir.md)
+    * [Voice Agents](voice-agents.md)
     * [Da Vinci DTR](davinci.md)
   * [Deprecated](deprecated.md)
     * [Form Settings (deprecated)](aidbox-ui-builder-alpha/form-creation/form-settings-deprecated.md)
@@ -69,3 +70,4 @@
   * [Custom SDC API](reference/aidbox-sdc-api.md)
   * [Generating Questionnaire from PDF API](reference/generating-questionnaire-from-pdf-api.md)
   * [Generating Questionnaire from openEHR Template API](reference/generating-questionnaire-from-openehr-template.md)
+  * [Voice Agents API](reference/voice-agents-api.md)
