@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 446"
+     width="540" height="446" fill="none" preserveAspectRatio="xMidYMid meet"
+     style="max-width:100%;height:auto;">
+  <style>
+    line, rect, polygon, path, circle, ellipse { vector-effect: non-scaling-stroke; }
+    .d-group-title       { font: 600 13px/1.2 'Inter', system-ui, sans-serif; letter-spacing: 0.2em; text-transform: uppercase; }
+    .d-card-title        { font: 400 14px/1.2 'Inter', system-ui, sans-serif; fill: #353B50; }
+    .d-card-sub          { font: 400 12px/1.4 'Inter', system-ui, sans-serif; fill: #525263; }
+    .d-conn-label        { font: 400 11px/1.2 'Inter', system-ui, sans-serif; fill: #353B50; letter-spacing: 0.15em; text-transform: uppercase; }
+  </style>
+
+  <g>
+    <rect x="20" y="16" width="500" height="76" fill="#FFFFFF" stroke="#D3DBE6" stroke-width="2" rx="14"/>
+    <text x="270" y="40" text-anchor="middle" class="d-group-title" fill="#525263">Patient</text>
+
+    <rect x="40" y="52" width="460" height="24" fill="#F6F7F8" rx="10"/>
+    <text x="270" y="69" text-anchor="middle" class="d-card-sub">Speaks and listens on the phone</text>
+  </g>
+
+  <line x1="150" y1="92" x2="150" y2="140" stroke="#353B50" stroke-width="1"/>
+  <polygon points="150,148 145,140 155,140" fill="#353B50"/>
+  <rect x="106" y="107" width="88" height="18" fill="#FFFFFF"/>
+  <text x="150" y="120" text-anchor="middle" class="d-conn-label">Audio</text>
+
+  <line x1="390" y1="148" x2="390" y2="100" stroke="#353B50" stroke-width="1"/>
+  <polygon points="390,92 385,100 395,100" fill="#353B50"/>
+  <rect x="346" y="107" width="88" height="18" fill="#FFFFFF"/>
+  <text x="390" y="120" text-anchor="middle" class="d-conn-label">Audio</text>
+
+  <g>
+    <rect x="20" y="148" width="500" height="132" fill="#FFFFFF" stroke="#549FEA" stroke-width="2" rx="14"/>
+    <text x="270" y="172" text-anchor="middle" class="d-group-title" fill="#549FEA">During the call</text>
+
+    <rect x="40" y="188" width="140" height="72" fill="#E5F2FF" rx="10"/>
+    <text x="110" y="217" text-anchor="middle" class="d-card-title">Speech-to-text</text>
+    <text x="110" y="237" text-anchor="middle" class="d-card-sub">stt</text>
+
+    <rect x="200" y="188" width="140" height="72" fill="#E5F2FF" rx="10"/>
+    <text x="270" y="217" text-anchor="middle" class="d-card-title">Conversation</text>
+    <text x="270" y="237" text-anchor="middle" class="d-card-sub">llm</text>
+
+    <rect x="360" y="188" width="140" height="72" fill="#E5F2FF" rx="10"/>
+    <text x="430" y="217" text-anchor="middle" class="d-card-title">Text-to-speech</text>
+    <text x="430" y="237" text-anchor="middle" class="d-card-sub">tts</text>
+
+    <line x1="180" y1="224" x2="192" y2="224" stroke="#353B50" stroke-width="1"/>
+    <polygon points="200,224 192,219 192,229" fill="#353B50"/>
+
+    <line x1="340" y1="224" x2="352" y2="224" stroke="#353B50" stroke-width="1"/>
+    <polygon points="360,224 352,219 352,229" fill="#353B50"/>
+  </g>
+
+  <line x1="270" y1="280" x2="270" y2="336" stroke="#353B50" stroke-width="1"/>
+  <polygon points="270,344 265,336 275,336" fill="#353B50"/>
+  <rect x="196" y="296" width="148" height="18" fill="#FFFFFF"/>
+  <text x="270" y="309" text-anchor="middle" class="d-conn-label">Transcript</text>
+
+  <g>
+    <rect x="20" y="344" width="500" height="96" fill="#FFFFFF" stroke="#EA4A35" stroke-width="2" rx="14"/>
+    <text x="270" y="368" text-anchor="middle" class="d-group-title" fill="#EC291C">After the call</text>
+
+    <rect x="40" y="384" width="220" height="38" fill="#FCEEEB" rx="10"/>
+    <text x="150" y="407" text-anchor="middle" class="d-card-title">Extractor model</text>
+
+    <rect x="280" y="384" width="220" height="38" fill="#FCEEEB" rx="10"/>
+    <text x="390" y="407" text-anchor="middle" class="d-card-title">QuestionnaireResponse</text>
+
+    <line x1="260" y1="403" x2="272" y2="403" stroke="#353B50" stroke-width="1"/>
+    <polygon points="280,403 272,398 272,408" fill="#353B50"/>
+  </g>
+</svg>

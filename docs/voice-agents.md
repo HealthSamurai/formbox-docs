@@ -27,13 +27,36 @@ Build the agent in the [designer](#design-and-test-an-agent), or with plain FHIR
 
 ## How a call works
 
-1. `$call` creates a `Task` and Twilio dials the patient (or `send-at` schedules the dial).
-2. Aidbox builds a system prompt from three layers: the agent's instruction text (the active `SDCVoicePrompt` revision), the resolved context resources, and the questionnaires rendered as questions. A hang-up instruction is appended so the model can end the call.
-3. Speech-to-text turns the patient's audio into text; the conversation model replies; text-to-speech speaks that reply. The model never hears raw audio.
-4. When every question is covered, or the person does not want to go on, the model says goodbye and hangs up.
-5. After the socket closes, a **separate extractor model** reads the transcript into `QuestionnaireResponse`s. That is deliberate: a small talk model cannot reliably tell "I'd rather not say" from "no". If the agent sets no `extractorLlm`, a default extractor is used.
+A call runs in two stages, and the split is the thing to understand about this feature: **three models take turns during the conversation, and a fourth reads the transcript afterwards.**
 
-When nobody picks up, the phone workflow redials up to `maxAttempts`. `$hangup` ends a live call from the outside. A test run never dials and never retries.
+![Three models take turns during the call; a fourth reads the transcript afterwards](../assets/voice-call-models.svg)
+
+During the call, `stt`, `llm` and `tts` form a loop. Speech-to-text turns the patient's audio into text, the conversation model replies in text, text-to-speech speaks that reply. The conversation model never hears raw audio and never sees a waveform — it only ever reads and writes text.
+
+After the socket closes, `extractorLlm` reads the finished transcript and writes the answers. It is a separate model on purpose: a small talk model cannot reliably tell "I'd rather not say" from "no", and reads a refusal as a negative answer. If the agent sets no `extractorLlm`, it falls back to `llm`; if that is unset too, a default extractor is used.
+
+Extraction runs in the background and takes seconds. Nothing about it blocks the call, and nothing about the call waits for it.
+
+### Step by step
+
+1. `$call` creates a `Task` and Twilio dials the patient (or `send-at` schedules the dial).
+2. Aidbox builds a system prompt from layers, dropping the empty ones: the agent's instruction text (the active `SDCVoicePrompt` revision), the resolved context resources — stripped of FHIR bookkeeping and capped at ~2000 characters each — and the questionnaires rendered as questions. A completion instruction is appended last.
+3. The conversation loop above runs until the questions are covered or the person does not want to go on.
+4. The model ends its goodbye with a sentinel token that Aidbox appends the instruction for. That token is how the call ends itself; the transport strips it, so it is never spoken or shown. It is appended automatically rather than left to whoever writes the prompt, because a prompt that forgot it would hang silently with a person waiting for someone to put the phone down.
+5. The extractor model reads the transcript into `QuestionnaireResponse`s, and a `Provenance` records which model did it.
+
+When nobody picks up, the phone workflow redials up to `maxAttempts`. `$hangup` ends a live call from the outside. A test run never dials and never retries — but it is extracted like any other call.
+
+### Audio formats
+
+Set per transport; you do not choose them.
+
+| Transport | Encoding | Sample rate |
+| --- | --- | --- |
+| Browser | 16-bit PCM | 16000 Hz |
+| Phone (Twilio) | μ-law | 8000 Hz |
+
+Text mode opens no speech provider at all — no STT or TTS socket, nothing billed to them. It needs the LLM key alone.
 
 ## Place a call — `$call`
 
@@ -124,7 +147,11 @@ Most `BOX_MODULE_SDC_*` keys also accept `BOX_SDC_*`. Gemini is only `BOX_SDC_GE
 
 `$call` (phone) needs the LLM, STT and TTS keys for the agent's models, plus Twilio. Testing an agent by typing needs the LLM key only.
 
-Deepgram STT is limited to Flux (`flux-general-en`). Cartesia STT is limited to `ink-2`.
+Model lists come from the providers themselves and are cached for an hour, so a model released today shows up without an Aidbox upgrade.
+
+Two speech-to-text restrictions are deliberate: the conversation has no local voice-activity detection, so it depends on the provider saying when a turn ended. Deepgram STT is limited to Flux (`flux-general-en`), and Cartesia STT to `ink-2` — not `ink-whisper`, which only finalises on a manual command.
+
+Cartesia has been validated in the browser only; its phone path (μ-law 8 kHz) has not been exercised with a real Twilio call.
 
 ## Design and test an agent
 
