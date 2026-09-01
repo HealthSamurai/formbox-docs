@@ -4,7 +4,7 @@
 
 * **Formbox (formerly Aidbox Forms)**
   * Introduced [Voice Agents](voice-agents.md) functionality, enabling users to create agents for automated patient voice calls based on questions from existing forms.
-  * Enhanced the new Formbox UI and made it the default experience, while preserving the option to switch back to the legacy UI when needed.
+  * Enhanced the [new Formbox UI](aidbox-forms-interface.md) and made it the default experience, while preserving the option to switch back to the legacy UI when needed.
   * Improved the textarea experience in long forms by ensuring stable scrolling while users type large amounts of text, making lengthy responses easier and more comfortable to enter.
   * Improved Date field reliability in the renderer when embedded in an iframe, ensuring that entered date values are preserved correctly.
   * Expanded custom attribute support when saving forms, allowing custom attributes with boolean, integer, and decimal data types to be handled correctly.
