@@ -22,13 +22,13 @@ Use this integration when you want:
 The browser entrypoint for a SMART EHR launch is:
 
 ```text
-https://your-aidbox-domain/ui/sdc/smart/launch?iss=<...>&client-id=d414f88f-232f-4a25-bb22-025e8172ea94&launch=<...>
+https://your-aidbox-domain/u/sdc/smart/launch?iss=<...>&client-id=d414f88f-232f-4a25-bb22-025e8172ea94&launch=<...>
 ```
 
 The callback URL uses the same host and path prefix:
 
 ```text
-https://your-aidbox-domain/ui/sdc/smart/callback?code=<...>&state=<...>
+https://your-aidbox-domain/u/sdc/smart/callback?code=<...>&state=<...>
 ```
 
 The EHR opens this page in the user's browser. Formbox reads the SMART launch context here and starts the OAuth exchange.
