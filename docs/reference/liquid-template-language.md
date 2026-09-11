@@ -84,10 +84,15 @@ A questionnaire points at a template with `http://hl7.org/fhir/StructureDefiniti
 }
 ```
 
-* `purpose` — only `valueCoding.code` is read (`print`, `summary`, `narrative`, or `patient`). `$render` compares that code to the `purpose` parameter string.
+* `purpose` — only `valueCoding.code` is read. `$render` compares that code to the `purpose` parameter string.
 * `template` — `valueCanonical`, or `valueReference` to `Library/<id>` or a contained `#id`.
 
-A template linked as `narrative` is rendered on QuestionnaireResponse submit into `QuestionnaireResponse.text`. The `div` must be valid XHTML.
+| Purpose | Role |
+| --- | --- |
+| `print` | Full printable layout selected via `$render`. |
+| `summary` | Shorter clinician-facing view selected via `$render`. |
+| `patient` | Patient-facing view selected via `$render`. |
+| `narrative` | Rendered on QuestionnaireResponse submit into `QuestionnaireResponse.text`. The `div` must be valid XHTML. |
 
 ## Library resource
 

@@ -42,7 +42,16 @@ The gear icon opens settings: template title, purpose, and **Link to questionnai
 
 From Form Settings you can also **Use existing template** (searches Libraries tagged as liquid templates) or **New template**. Unlinking removes the pointer on the questionnaire; a shared Library stays on the server.
 
-A template linked as `narrative` is rendered on every QuestionnaireResponse submit and stored as `QuestionnaireResponse.text`. If rendering fails, the response is stored without a narrative. The output must be valid XHTML.
+Purpose is how the questionnaire refers to a template — not a property of the Library itself. The same Library can be `print` on one form and `summary` on another. `$render` picks the link by the `purpose` parameter.
+
+| Purpose | Use it for |
+| --- | --- |
+| `print` | Full printable layout — the usual HTML/PDF export. |
+| `summary` | Shorter clinician-facing view of the same response. |
+| `patient` | Patient-facing copy of the answers. |
+| `narrative` | Auto-generated `QuestionnaireResponse.text` on submit. |
+
+`print`, `summary`, and `patient` are selected only when you call `$render` with that purpose. `narrative` is different: on every QuestionnaireResponse submit Formbox renders that template and stores the result as `QuestionnaireResponse.text`. If rendering fails, the response is stored without a narrative. The output must be valid XHTML.
 
 ## Render via API
 
