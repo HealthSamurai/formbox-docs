@@ -8,7 +8,11 @@ description: >-
 
 ## Overview
 
-This feature introduces the capability to generate custom PDF representation for Questionnaire and QuestionnaireResponse resources. It is facilitated through the `$render` operation. This document explains how to use this operation and provides examples on how to create custom print templates.
+{% hint style="info" %}
+For new templates, use [Liquid print templates](liquid-templates.md). They are authored in the Form Builder, stored as FHIR `Library` resources, and use FHIRPath inside `{{ }}` / `{% %}` holes. This page describes the older Selmer / `SDCPrintTemplate` path, which `$render` still accepts.
+{% endhint %}
+
+This feature generates a custom PDF (or HTML) representation of a Questionnaire or QuestionnaireResponse through the `$render` operation. This document explains how to use that operation with Selmer templates.
 
 ## Implementation Details
 

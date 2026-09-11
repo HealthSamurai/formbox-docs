@@ -22,6 +22,7 @@ Only the following resource types are available through the API.
 Organization
 Questionnaire
 QuestionnaireResponse
+Library
 ValueSet
 CodeSystem
 AuditEvent

@@ -196,6 +196,12 @@ Two data extraction options are supported at the root level of the `Questionnair
 
 For detailed instructions and examples, see the [Data Extraction page](data-extraction.md) and our [How-to guides](how-to-guides/how-to-extract-data-from-forms.md).
 
+### Rendering templates
+
+At the bottom of the Data tab you can attach [Liquid print templates](../printing-forms/liquid-templates.md) to the form.
+
+Each linked template is shown as a row: name, purpose, a pencil that opens the editor, and unlink. **Use existing template** searches Libraries already saved as liquid templates. **New template** opens a blank editor for this form.
+
 ---
 
 ## Custom

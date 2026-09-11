@@ -12,7 +12,7 @@ Supported browsers: the latest versions of Chrome and Firefox.
 
 For machine printing, you can choose between two approaches depending on your needs:
 
-* [**$print**](native-look-form-printing.md) **API** – Prints forms in their original/native appearance, preserving the exact layout and styling as seen in the browser. (Requires a headless browser)\
-  &#xNAN;_&#x42;est when you want a faithful replica of the on-screen form._
-* [**$render**](template-based-pdf-generation.md) **API** – Prints forms using custom templates, allowing full control over layout, styling, and formatting.\
-  &#xNAN;_&#x42;est when you need a tailored design or a standardized PDF format._
+* [**$print**](native-look-form-printing.md) **API** — prints forms in their original appearance, preserving the on-screen layout. Requires a headless browser. Best when you want a faithful replica of the form.
+* [**$render**](liquid-templates.md) **API** — prints forms from custom templates, with full control over layout and styling. Best when you need a tailored or standardized PDF.
+  * [**Liquid print templates**](liquid-templates.md) — HTML + FHIRPath, authored in the Liquid template editor. Prefer this for new templates.
+  * [**Selmer templates**](template-based-pdf-generation.md) — the older `$render` path, stored as `SDCPrintTemplate`.

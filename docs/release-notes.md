@@ -9,6 +9,7 @@
   * Improved Date field reliability in the renderer when embedded in an iframe, ensuring that entered date values are preserved correctly.
   * Expanded custom attribute support when saving forms, allowing custom attributes with boolean, integer, and decimal data types to be handled correctly.
   * Improved complex PDF form processing and conversion, enabling larger and more resource-intensive PDF forms to be successfully imported and converted into Questionnaire JSON.
+  * Added [Liquid print templates](aidbox-ui-builder-alpha/printing-forms/liquid-templates.md): author HTML with FHIRPath in the Form Builder, link a template to a form by purpose, and render HTML or PDF with `$render`.
 
 ## July 2026 _`stable, 2607`_
 
