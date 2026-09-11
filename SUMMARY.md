@@ -69,6 +69,7 @@
 * [Formbox References](reference/README.md)
   * [FHIR SDC API](reference/fhir-sdc-api.md)
   * [Custom SDC API](reference/aidbox-sdc-api.md)
+  * [Liquid template language](reference/liquid-template-language.md)
   * [Generating Questionnaire from PDF API](reference/generating-questionnaire-from-pdf-api.md)
   * [Generating Questionnaire from openEHR Template API](reference/generating-questionnaire-from-openehr-template.md)
   * [Voice Agents API](reference/voice-agents-api.md)

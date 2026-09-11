@@ -8,6 +8,7 @@ description: Custom SDC operations supported by Aidbox Forms.
 * [$save](aidbox-sdc-api.md#save-a-questionnaireresponse-save)
 * [$submit](aidbox-sdc-api.md#submit-a-questionnaireresponse-submit)
 * [$notify-patient](aidbox-sdc-api.md#notify-a-patient-notify-patient)
+* [$render](aidbox-sdc-api.md#render-a-questionnaire-or-response-render)
 
 ## Generate a link to a QuestionnaireResponse - $generate-link
 
@@ -608,3 +609,105 @@ issue:
 ```
 {% endtab %}
 {% endtabs %}
+
+## Render a Questionnaire or response - $render
+
+Renders a [Questionnaire](https://hl7.org/fhir/R4/questionnaire.html) or [QuestionnaireResponse](https://hl7.org/fhir/R4/questionnaireresponse.html) through a print template and returns HTML or PDF.
+
+How-to: [Liquid print templates](../aidbox-ui-builder-alpha/printing-forms/liquid-templates.md). Language: [Liquid template language](liquid-template-language.md). The older Selmer / `SDCPrintTemplate` path is documented under [Template-based PDF generation](../aidbox-ui-builder-alpha/printing-forms/template-based-pdf-generation.md).
+
+{% hint style="warning" %}
+These paths are **not** under `/fhir`. `POST /fhir/QuestionnaireResponse/$render` returns 404.
+{% endhint %}
+
+### URLs
+
+```
+POST [base]/Questionnaire/[id]/$render
+POST [base]/QuestionnaireResponse/[id]/$render
+POST [base]/QuestionnaireResponse/$render
+```
+
+Under multi-tenancy the same operations exist as `/Organization/[org-id]/aidbox/…`.
+
+### Parameters
+
+{% hint style="warning" %}
+NOTE: All parameters wrapped with `Parameters object`
+
+```yaml
+resourceType: Parameters
+parameter:
+- name:  [var-name]
+  value: [var-value]
+```
+{% endhint %}
+
+| Parameter | Cardinality | Type | Description |
+| --- | --- | --- | --- |
+| `purpose` | 0..1 | string | Pick the Library the form links for this purpose. Ignored if `template-id` is present. |
+| `format` | 0..1 | string | `"pdf"` → PDF. Anything else or unset → HTML. |
+| `liquid-template-id` | 0..1 | string | Render this `Library` explicitly. Wins over `purpose`. |
+| `template-id` | 0..1 | string | Render this `SDCPrintTemplate` (Selmer). If both engines resolve, Selmer wins. |
+| `questionnaire` | 0..1 | Questionnaire | Inline form — QuestionnaireResponse operation only. |
+| `questionnaire-response` | 0..1 | QuestionnaireResponse | Inline response — QuestionnaireResponse operation only. |
+| `repeated-items-count` | 0..1 | integer | Default `1`. Selmer + Questionnaire only; ignored by Liquid. |
+
+With no selector, the operation reports a missing template.
+
+#### purpose
+
+```yaml
+name: purpose
+valueString: print
+```
+
+#### format
+
+```yaml
+name: format
+valueString: pdf
+```
+
+#### liquid-template-id
+
+```yaml
+name: liquid-template-id
+valueString: liquid-template-d0TSpgNl
+```
+
+### Examples
+
+```yaml
+POST /QuestionnaireResponse/qr-1/$render
+Content-Type: text/yaml
+
+resourceType: Parameters
+parameter:
+  - name: purpose
+    valueString: print
+  - name: format
+    valueString: pdf
+```
+
+```yaml
+POST /Questionnaire/q-1/$render
+Content-Type: text/yaml
+
+resourceType: Parameters
+parameter:
+  - name: liquid-template-id
+    valueString: liquid-template-d0TSpgNl
+```
+
+### Responses
+
+| Status | Meaning |
+| --- | --- |
+| 200 | Rendered. `format=pdf` → `application/pdf`. Otherwise the HTML string. |
+| 404 | Form, response, or template not found. Body is an `OperationOutcome`. |
+| 422 | HTML rendered, but PDF conversion failed. |
+
+### PDF notes
+
+`$render` with `format=pdf` converts HTML via openhtmltopdf. Relative URLs for images and CSS do not resolve — inline or absolute them. Prefer tables over flexbox/grid; no JavaScript, webfonts, or external images.

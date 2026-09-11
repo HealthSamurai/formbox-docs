@@ -6,4 +6,5 @@ It includes:
 
 * FHIR SDC API
 * Custom SDC API
+* Liquid template language
 * Questionnaire generation APIs
