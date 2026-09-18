@@ -1,0 +1,156 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "resource": {
+        "resourceType": "Questionnaire",
+        "id": "example-package-intake",
+        "url": "https://example.org/Questionnaire/package-intake",
+        "version": "1",
+        "title": "Intake",
+        "status": "active",
+        "item": [
+          {
+            "linkId": "full-name",
+            "type": "string",
+            "text": "Full name",
+            "required": true
+          },
+          {
+            "linkId": "needs-travel",
+            "type": "boolean",
+            "text": "Travel assistance needed?",
+            "required": true
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Questionnaire/example-package-intake"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Questionnaire",
+        "id": "example-package-travel",
+        "url": "https://example.org/Questionnaire/package-travel",
+        "version": "1",
+        "title": "Travel arrangements",
+        "status": "active",
+        "item": [
+          {
+            "linkId": "traveler",
+            "type": "group",
+            "text": "Traveler details",
+            "item": [
+              {
+                "linkId": "traveler-name",
+                "type": "string",
+                "text": "Traveler name",
+                "required": true
+              }
+            ]
+          },
+          {
+            "linkId": "travel-notes",
+            "type": "text",
+            "text": "Travel details"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Questionnaire/example-package-travel"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "Questionnaire",
+        "id": "example-package-review",
+        "url": "https://example.org/Questionnaire/package-review",
+        "version": "1",
+        "title": "Review",
+        "status": "active",
+        "item": [
+          {
+            "linkId": "reviewed",
+            "type": "boolean",
+            "text": "Have you reviewed your answers?",
+            "required": true
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Questionnaire/example-package-review"
+      }
+    },
+    {
+      "resource": {
+        "resourceType": "PlanDefinition",
+        "id": "example-intake-package",
+        "url": "https://example.org/PlanDefinition/intake-package",
+        "version": "1",
+        "title": "Intake package",
+        "status": "active",
+        "type": {
+          "coding": [
+            {
+              "system": "http://health-samurai.io/fhir/sdc/CodeSystem/plan-definition-type",
+              "code": "sdc-package"
+            }
+          ]
+        },
+        "action": [
+          {
+            "id": "intake",
+            "title": "Intake",
+            "definitionCanonical": "https://example.org/Questionnaire/package-intake|1"
+          },
+          {
+            "id": "travel",
+            "title": "Travel arrangements",
+            "definitionCanonical": "https://example.org/Questionnaire/package-travel|1",
+            "condition": [
+              {
+                "kind": "applicability",
+                "expression": {
+                  "language": "text/fhirpath",
+                  "expression": "%intake.repeat(item).where(linkId = 'needs-travel').answer.value = true"
+                }
+              }
+            ],
+            "extension": [
+              {
+                "url": "http://health-samurai.io/fhir/sdc/StructureDefinition/sdc-package-prefill",
+                "extension": [
+                  {
+                    "url": "targetLinkId",
+                    "valueString": "traveler-name"
+                  },
+                  {
+                    "url": "expression",
+                    "valueExpression": {
+                      "language": "text/fhirpath",
+                      "expression": "%intake.repeat(item).where(linkId = 'full-name').answer.value.first()"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "review",
+            "title": "Review",
+            "definitionCanonical": "https://example.org/Questionnaire/package-review|1"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "PlanDefinition/example-intake-package"
+      }
+    }
+  ]
+}
