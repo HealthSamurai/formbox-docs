@@ -14,7 +14,13 @@ Additional custom operations are documented in the [FHIR SDC API](reference/fhir
 `populate` and `extract` workflows are also supported. To use them, you need either to configure integration with an [external FHIR server](aidbox-ui-builder-alpha/external-fhir-servers-as-a-data-backend.md) where the source or target data is stored, or to upgrade to the full Aidbox platform and use Formbox as an Aidbox module so that the remaining FHIR resources required by these workflows can be stored and managed in Aidbox.
 {% endhint %}
 
-Only the following resource types are available through the API.
+The following resource list applies to the standalone Formbox product. Formbox running as an Aidbox module also has access to the underlying Aidbox FHIR API.
+
+## Package storage
+
+[Form packages](form-packages.md) use `PlanDefinition` for the definition, `RequestGroup` for each run, and `Task` to connect each form to its `QuestionnaireResponse`. These resources are supported in both standalone Formbox and Formbox running as an Aidbox module.
+
+Packages honor the configured [external storage](aidbox-ui-builder-alpha/external-fhir-servers-as-a-data-backend.md#package-storage-requirements). `PlanDefinition`, `RequestGroup`, `Task`, responses, and extraction results use `data-store`; questionnaires use `form-store`. Package writes use FHIR transaction bundles. The configured data store commits or rolls back each bundle, for both local and external storage. See the [Form packages API](reference/form-packages-api.md).
 
 ## FHIR resources
 
@@ -22,6 +28,9 @@ Only the following resource types are available through the API.
 Organization
 Questionnaire
 QuestionnaireResponse
+PlanDefinition
+RequestGroup
+Task
 Library
 ValueSet
 CodeSystem

@@ -36,6 +36,14 @@ Formbox module records additional ones
 * `submit-response` - Captures details of form submissions, including the user submitting the form
 * `assemble-form` - Logs whenever a complex form is assembled, including user and timestamp
 
+### Form packages
+
+When audit logging is enabled, [package operations](reference/form-packages-api.md) record successful and failed attempts with these `AuditEvent.subtype` codes:
+
+* `package-start-link` — Creates a package run and its renderer link.
+* `package-generate-link` — Generates a link to an existing run.
+* `package-submit` — Submits a package or amendments to a completed run.
+
 ### Events Customization
 
 There are 2 customization options accessible for the user:
