@@ -8,6 +8,8 @@ description: A detailed guide on intercepting requests in Formbox Builder and Re
 
 Request interception allows you to modify network requests made by **Form Builder** and **Form Renderer**. This is useful for debugging, adding authentication, redirecting requests, or handling custom logic before requests are sent.
 
+The same `onFetch` handler applies when [embedding a package](embedding.md#embedding-a-package). It receives the renderer's package-operation requests and questionnaire requests, including draft saves, so existing authentication and request routing can be reused.
+
 ### Enabling Request Interception
 
 To enable request interception, set the `onFetch` property on the builder or renderer element. This property should be a function that takes two arguments: the URL and the request options. The function should return a promise that resolves to the response.
