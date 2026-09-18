@@ -110,25 +110,25 @@ value:
 
 #### session-timeout
 
-Inactivity timeout duration before the session expires (in minutes).
+Inactivity timeout duration before the session expires (in milliseconds). For example, 30 minutes is `1800000`.
 
 > By default, shared forms do not expire due to inactivity, and users can complete them without a time limit.
 
 ```yaml
 name: session-timeout
 value:
-  Integer: 30
+  Integer: 1800000
 ```
 
 #### warning-timeout
 
-Time before expiration when the inactivity warning is shown (in minutes).
-Defaults to 1 minute.
+Time before expiration when the inactivity warning is shown (in milliseconds).
+Defaults to 1 minute (`60000`).
 
 ```yaml
 name: warning-timeout
 value:
-  Integer: 5
+  Integer: 300000
 ```
 
 #### expiration
