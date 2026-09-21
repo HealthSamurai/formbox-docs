@@ -6,6 +6,6 @@ It includes:
 
 * FHIR SDC API
 * Custom SDC API
-* [Form packages API](form-packages-api.md)
+* [Form packages API](plan-definition-api.md)
 * Liquid template language
 * Questionnaire generation APIs

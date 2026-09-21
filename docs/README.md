@@ -25,7 +25,7 @@ In this configuration, it provides:
 
 * No-code Form Builder&#x20;
 * Form Renderer
-* [Form packages](form-packages.md) with ordered questionnaires, conditional forms, shared answers, and one submission
+* [Form packages](plan-definitions.md) with ordered questionnaires, conditional forms, shared answers, and one submission
 * Form Gallery
 * PDF-to-digital form conversion
 * Workflow automation&#x20;
@@ -48,14 +48,14 @@ Formbox can also be deployed as a module of Aidbox.
 In this configuration, Formbox uses Aidbox as the underlying FHIR server and provides access to full FHIR server capabilities, including:
 
 * Native FHIR storage
-* [Form packages](form-packages.md) with ordered questionnaires, conditional forms, shared answers, and one submission
+* [Form packages](plan-definitions.md) with ordered questionnaires, conditional forms, shared answers, and one submission
 * Pre-fill and data extraction workflows (data is read from and written directly to Aidbox)
 * SQL-on-FHIR and advanced querying across FHIR resources
 * Full FHIR API support
 
 In this setup, SQL-on-FHIR analytics can be performed across all FHIR resources stored in Aidbox, not only QuestionnaireResponse data.
 
-Form building, rendering, and [form packages](form-packages.md#availability) are available in both deployment models. Where and how FHIR data is stored depends on the deployment.
+Form building, rendering, and [form packages](plan-definitions.md#availability) are available in both deployment models. Where and how FHIR data is stored depends on the deployment.
 
 [**Getting Started (Aidbox Module)**](getting-started.md)
 

@@ -55,11 +55,11 @@ To send a form manually:
 5. In the **Send form** dialog, fill in the required fields.
 6. Click **Send form**.
 
-## Sending a package
+## Sending a package <a id="sending-a-plan-definition"></a>
 
 Use **Send** on a package row in the new Formbox UI to deliver the complete package through this workflow. The recipient follows one link, completes the enabled forms, and submits the package together. Reminders and completion tracking belong to the package run.
 
-In **Responses**, the package row shows delivery details and supports **Cancel Sending**; expand it to inspect the individual responses. Integrations can use the [package email operations](../reference/form-packages-api.md#send-a-package-by-email).
+In **Responses**, the package row shows delivery details and supports **Cancel Sending**; expand it to inspect the individual responses. Integrations can use the [package email operations](../reference/plan-definition-api.md#send-a-plan-definition-by-email).
 
 ## Send form dialog
 

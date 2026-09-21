@@ -25,16 +25,16 @@ We split data in 4 domains, and last 3 of them can have it's own FHIR backend:
 
 By default all data is stored in Aidbox and there is no need for any configuration.
 
-## Package storage requirements
+## Package storage requirements <a id="plan-definition-storage-requirements"></a>
 
-[Form packages](../form-packages.md) support the same storage configuration as individual forms, in both standalone Formbox and the Aidbox module:
+[Form packages](../plan-definitions.md) support the same storage configuration as individual forms, in both standalone Formbox and the Aidbox module:
 
 * `form-store` handles the package's `Questionnaire` resources.
 * `data-store` handles `PlanDefinition`, `RequestGroup`, `Task`, `QuestionnaireResponse`, and extraction results. This includes the package definition, even though it is reusable content.
 
 Package links, draft saves, conditions, prefills, submission, and amendments all use these stores. The external data store must support FHIR transaction bundles. Package submission sends status updates, responses, and extraction results in one bundle, using the same proxy mechanism as ordinary form extraction.
 
-Each bundle is committed or rolled back by its data store, for both local and external storage. Separate writes within an operation are not covered by a shared transaction, and Formbox does not coordinate rollback across servers. See the [package submission API](../reference/form-packages-api.md#submit-the-package) for failure handling.
+Each bundle is committed or rolled back by its data store, for both local and external storage. Separate writes within an operation are not covered by a shared transaction, and Formbox does not coordinate rollback across servers. See the [package submission API](../reference/plan-definition-api.md#submit) for failure handling.
 
 ## Storage Configuration
 

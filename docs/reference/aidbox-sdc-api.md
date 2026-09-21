@@ -10,7 +10,7 @@ description: Custom SDC operations supported by Aidbox Forms.
 * [$notify-patient](aidbox-sdc-api.md#notify-a-patient-notify-patient)
 * [$render](aidbox-sdc-api.md#render-a-questionnaire-or-response-render)
 
-For workflows that combine several questionnaires, see the [Form packages API](form-packages-api.md). It provides package launch, sharing, navigation, submission, amendment, and email delivery operations.
+For workflows that combine several questionnaires, see the [Form packages API](plan-definition-api.md). It provides package launch, sharing, navigation, submission, amendment, and email delivery operations.
 
 ## Generate a link to a QuestionnaireResponse - $generate-link
 

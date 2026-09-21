@@ -15,11 +15,11 @@ Formbox supports two main scenarios for sharing forms with users:
 To use **form sharing**, you must explicitly [configure RSA private/public keys and a secret](https://www.health-samurai.io/docs/aidbox/configuration/configure-aidbox-and-multibox/#generate-rsa-keypair.md).
 {% endhint %}
 
-## Sharing a package
+## Sharing a package <a id="sharing-a-plan-definition"></a>
 
-In the new Formbox UI, **Share** is also available on [package](../form-packages.md) rows. It creates one package run and a link for its recipient. Choose the subject and encounter when needed, set the link options, and copy the generated link or iframe code.
+In the new Formbox UI, **Share** is also available on [package](../plan-definitions.md) rows. It creates one package run and a link for its recipient. Choose the subject and encounter when needed, set the link options, and copy the generated link or iframe code.
 
-Integrations use [`PlanDefinition/[id]/$sdc-package-start-link`](../reference/form-packages-api.md#create-a-run-and-link) to create a run and link together. To issue another link to an existing run, use `RequestGroup/[id]/$sdc-package-generate-link`. Each recipient should have a separate run; sharing the same link continues the same answers.
+Integrations use [`PlanDefinition/[id]/$sdc-start-link`](../reference/plan-definition-api.md#create-a-run-and-link) to create a run and link together. To issue another link to an existing run, use `RequestGroup/[id]/$sdc-generate-link`. Each recipient should have a separate run; sharing the same link continues the same answers.
 
 ## Sharing a Form Link with the User
 

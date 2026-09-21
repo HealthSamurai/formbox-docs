@@ -4,9 +4,9 @@ description: Create, preview, and share form packages with the graph-based Packa
 
 # Package Designer
 
-The Package Designer in the new [Formbox UI](aidbox-forms-interface.md#new-ui) lets you arrange questionnaires into a [form package](form-packages.md), add enable-when rules, and prefill answers between forms.
+The Package Designer in the new [Formbox UI](aidbox-forms-interface.md#new-ui) lets you arrange questionnaires into a [form package](plan-definitions.md), add enable-when rules, and prefill answers between forms.
 
-## Create a package
+## Create a package <a id="create-a-plan-definition"></a>
 
 1. Create or import the questionnaires you want to use.
 2. Open **Forms**, then open the menu beside **New Form** and choose **New Package**. To start with existing forms, select their checkboxes first and choose **New Package with Selected**.
@@ -15,7 +15,7 @@ The Package Designer in the new [Formbox UI](aidbox-forms-interface.md#new-ui) l
 5. Drag forms into the required order, configure their rules, and test the flow in **Preview**.
 6. Click **Save**.
 
-The [example definition bundle](../assets/form-packages-example.json) contains an Intake questionnaire, a conditional Travel arrangements questionnaire, an independent Review questionnaire, and their package. To load it through the API, follow the [example setup](reference/form-packages-api.md#example-setup).
+The [example definition bundle](../assets/plan-definition-example.json) contains an Intake questionnaire, a conditional Travel arrangements questionnaire, an independent Review questionnaire, and their package. To load it through the API, follow the [example setup](reference/plan-definition-api.md#example-setup).
 
 ## Graph
 
@@ -87,7 +87,7 @@ Turn on **Advanced mode** in the bottom panel header to edit FHIRPath directly. 
 
 Combine inputs using `and` and `or` in the expression. If an imported definition has multiple applicability conditions, each has its own editor and all must be true. Existing entries can be deleted down to the final editor; clearing that editor removes the condition. Advanced mode does not add additional condition entries.
 
-The Designer checks for self-dependencies and circular enable-when dependencies. See [expression variables and result types](reference/form-packages-api.md#expressions).
+The Designer checks for self-dependencies and circular enable-when dependencies. See [expression variables and result types](reference/plan-definition-api.md#expressions).
 
 ## Prefill
 
@@ -103,7 +103,7 @@ Source and target selectors show nested questions. The target selector contains 
 
 For the example, prefill **Traveler name** in Travel arrangements with **Full name** from Intake. The visual editor handles supported answer-type conversions and selects the first source answer for a target that does not repeat.
 
-Turn on **Advanced mode** to supply a FHIRPath expression instead. This lets a prefill combine several answers or use other [package variables](reference/form-packages-api.md#expressions). An advanced expression must return values compatible with the target question; a non-repeating target accepts at most one value.
+Turn on **Advanced mode** to supply a FHIRPath expression instead. This lets a prefill combine several answers or use other [package variables](reference/plan-definition-api.md#expressions). An advanced expression must return values compatible with the target question; a non-repeating target accepts at most one value.
 
 Prefills run on the first opening of a form. Existing answers are preserved on later visits. The Designer rejects a prefill from the current form or from a form whose enable-when rules depend on the current form.
 
@@ -117,12 +117,12 @@ Test both paths in the example: answer **True** to include Travel arrangements, 
 
 ## Code
 
-Open **Code** to edit the package's `PlanDefinition` directly. It contains the same forms and rules shown in Graph. Use the [API reference](reference/form-packages-api.md#package-definition) for the supported structure and prefill extension format.
+Open **Code** to edit the package's `PlanDefinition` directly. It contains the same forms and rules shown in Graph. Use the [API reference](reference/plan-definition-api.md#plan-definition) for the supported structure and prefill extension format.
 
-## Save the package
+## Save the package <a id="save-the-plan-definition"></a>
 
 Click **Save** to validate and persist the definition. Errors are shown on the affected form and settings tab.
 
 For an active package, saving opens a confirmation dialog. To preserve its existing definition, change the version or canonical URL and choose **Create New**. **Force Save** changes the existing resource and can affect package runs that reference it.
 
-After saving, the package appears in **Forms** with type **Package**. Expand its row to see the included questionnaires. Use **Share** for a link or **Send** for [email delivery](aidbox-ui-builder-alpha/form-sending.md#sending-a-package). Completed runs and their individual responses appear together in **Responses**.
+After saving, the package appears in **Forms** with type **Package**. Expand its row to see the included questionnaires. Use **Share** for a link or **Send** for [email delivery](aidbox-ui-builder-alpha/form-sending.md#sending-a-plan-definition). Completed runs and their individual responses appear together in **Responses**.

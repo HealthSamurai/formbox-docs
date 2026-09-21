@@ -16,11 +16,11 @@ Additional custom operations are documented in the [FHIR SDC API](reference/fhir
 
 The following resource list applies to the standalone Formbox product. Formbox running as an Aidbox module also has access to the underlying Aidbox FHIR API.
 
-## Package storage
+## Package storage <a id="plan-definition-storage"></a>
 
-[Form packages](form-packages.md) use `PlanDefinition` for the definition, `RequestGroup` for each run, and `Task` to connect each form to its `QuestionnaireResponse`. These resources are supported in both standalone Formbox and Formbox running as an Aidbox module.
+[Form packages](plan-definitions.md) use `PlanDefinition` for the definition, `RequestGroup` for each run, and `Task` to connect each form to its `QuestionnaireResponse`. These resources are supported in both standalone Formbox and Formbox running as an Aidbox module.
 
-Packages honor the configured [external storage](aidbox-ui-builder-alpha/external-fhir-servers-as-a-data-backend.md#package-storage-requirements). `PlanDefinition`, `RequestGroup`, `Task`, responses, and extraction results use `data-store`; questionnaires use `form-store`. Package writes use FHIR transaction bundles. The configured data store commits or rolls back each bundle, for both local and external storage. See the [Form packages API](reference/form-packages-api.md).
+Packages honor the configured [external storage](aidbox-ui-builder-alpha/external-fhir-servers-as-a-data-backend.md#plan-definition-storage-requirements). `PlanDefinition`, `RequestGroup`, `Task`, responses, and extraction results use `data-store`; questionnaires use `form-store`. Package writes use FHIR transaction bundles. The configured data store commits or rolls back each bundle, for both local and external storage. See the [Form packages API](reference/plan-definition-api.md).
 
 ## FHIR resources
 

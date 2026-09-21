@@ -29,7 +29,7 @@ The **Forms** tab is the default view when you navigate to the Forms page, showi
   * **From scratch**: Start with a blank form.
   * **Select from library**: Start from an existing template in the Library.
   * **Import**: Upload a form as JSON (a FHIR `Questionnaire`) or PDF to convert it into a `Questionnaire`.
-  * **New Package**: Combine questionnaires into a [form package](form-packages.md) in the [Package Designer](package-designer.md). Select questionnaires first to use **New Package with Selected**.
+  * **New Package**: Combine questionnaires into a [form package](plan-definitions.md) in the [Package Designer](plan-definition-designer.md). Select questionnaires first to use **New Package with Selected**.
 * **Actions**:
   * **Preview**: Open the form in a separate popup to view its details.
   * **Share**: Generate a shareable link to the form.
@@ -62,7 +62,7 @@ The **Responses** tab lists submitted form responses in a table with Form, Versi
   * **Cancel Sending**: Cancel a response that has not yet been delivered.
   * **Delete**: Delete the response.
 
-Package runs appear as expandable rows in **Responses**, including runs whose forms have not yet been opened. The parent row shows package status and delivery information; expanding it shows the individual `QuestionnaireResponse` resources. Click the package title to open the complete run. See [reviewing and amending packages](form-packages.md#reviewing-and-amending-responses).
+Package runs appear as expandable rows in **Responses**, including runs whose forms have not yet been opened. The parent row shows package status and delivery information; expanding it shows the individual `QuestionnaireResponse` resources. Click the package title to open the complete run. See [reviewing and amending packages](plan-definitions.md#reviewing-and-amending-responses).
 
 ### Voice Agents
 

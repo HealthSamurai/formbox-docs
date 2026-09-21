@@ -4,13 +4,13 @@ description: Define, launch, share, submit, and amend ordered questionnaire pack
 
 # Form packages API
 
-Formbox provides custom operations for running a [form package](../form-packages.md) defined by a FHIR `PlanDefinition`. Integrations can launch the built-in package renderer or manage the form-by-form workflow themselves.
+Formbox provides custom operations for running a [form package](../plan-definitions.md) defined by a FHIR `PlanDefinition`. Integrations can launch the built-in package renderer or manage the form-by-form workflow themselves.
 
 ## Requirements
 
 * The caller needs access to the package definition, its questionnaires, and the resources created for a run.
 * Package operations follow the configured storage routing. `data-store` handles `PlanDefinition`, `RequestGroup`, `Task`, `QuestionnaireResponse`, and extraction results; `form-store` handles `Questionnaire`. Without an external store, the corresponding resources remain local.
-* An external data store must accept FHIR transaction bundles. See [external package storage](../aidbox-ui-builder-alpha/external-fhir-servers-as-a-data-backend.md#package-storage-requirements).
+* An external data store must accept FHIR transaction bundles. See [external package storage](../aidbox-ui-builder-alpha/external-fhir-servers-as-a-data-backend.md#plan-definition-storage-requirements).
 * For signed renderer links, [configure the sharing keys](../aidbox-ui-builder-alpha/form-sharing.md). Email delivery also requires an email provider and the async scheduler.
 
 ## Operations
@@ -19,42 +19,42 @@ All package operations below use `POST`.
 
 | Resource path after `[base]/fhir` | Operation | Result |
 | --- | --- | --- |
-| `/PlanDefinition/[id]` | `$sdc-package-start` | Create a run and return its reference and form summaries. |
-| `/PlanDefinition/[id]` | `$sdc-package-start-link` | Create a run and return its signed renderer link. |
-| `/RequestGroup/[id]` | `$sdc-package-generate-link` | Generate another link to an existing run. |
-| `/RequestGroup/[id]` | `$sdc-package-open` | Get current form summaries, or open a selected form. |
-| `/RequestGroup/[id]` | `$sdc-package-submit` | Validate and submit the enabled forms together, or submit amendments. |
-| `/PlanDefinition/[id]` | `$sdc-package-send` | Start the package email delivery workflow. |
-| `/RequestGroup/[id]` | `$sdc-package-stop-notification` | Cancel outstanding email notification workflows for a run. |
+| `/PlanDefinition/[id]` | `$sdc-start` | Create a run and return its reference and form summaries. |
+| `/PlanDefinition/[id]` | `$sdc-start-link` | Create a run and return its signed renderer link. |
+| `/RequestGroup/[id]` | `$sdc-generate-link` | Generate another link to an existing run. |
+| `/RequestGroup/[id]` | `$sdc-open` | Get current form summaries, or open a selected form. |
+| `/RequestGroup/[id]` | `$sdc-submit` | Validate and submit the enabled forms together, or submit amendments. |
+| `/PlanDefinition/[id]` | `$sdc-send` | Start the package email delivery workflow. |
+| `/RequestGroup/[id]` | `$sdc-stop-notification` | Cancel outstanding email notification workflows for a run. |
 
-Save draft answers with the existing [`QuestionnaireResponse/$save`](aidbox-sdc-api.md#save-a-questionnaireresponse-save) operation. Use `$sdc-package-submit` to finish the package.
+Save draft answers with the existing [`QuestionnaireResponse/$save`](aidbox-sdc-api.md#save-a-questionnaireresponse-save) operation. Use `$sdc-submit` to finish the package.
 
-Package link creation and submission record successful and failed attempts when [audit logging](../audit-logging-in-forms.md#form-packages) is enabled.
+Package link creation and submission record successful and failed attempts when [audit logging](../audit-logging-in-forms.md#plan-definitions) is enabled.
 
 For [multitenant deployments](../aidbox-ui-builder-alpha/forms-multitenancy.md), use the same paths after `[base]/Organization/[organization-id]/fhir`. Keep the same organization scope throughout the workflow.
 
 ## Example setup
 
-Download the [example transaction bundle](../../assets/form-packages-example.json) and send it to:
+Download the [example transaction bundle](../../assets/plan-definition-example.json) and send it to:
 
 ```http
 POST [base]/fhir
 Content-Type: application/json
 ```
 
-The bundle writes three questionnaires and the `example-intake-package` definition using `PUT` entries. Its resource IDs and canonical URLs are examples; adjust them when importing into your own namespace.
+The bundle writes three questionnaires and the `example-intake` definition using `PUT` entries. Its resource IDs and canonical URLs are examples; adjust them when importing into your own namespace.
 
 The forms are Intake, conditional Travel arrangements, and always-included Review. Travel arrangements copies the name from Intake and is enabled when `needs-travel` is true.
 
-## Package definition
+## Package definition <a id="plan-definition"></a>
 
 The example uses this `PlanDefinition`:
 
 ```json
 {
   "resourceType": "PlanDefinition",
-  "id": "example-intake-package",
-  "url": "https://example.org/PlanDefinition/intake-package",
+  "id": "example-intake",
+  "url": "https://example.org/PlanDefinition/intake",
   "version": "1",
   "title": "Intake package",
   "status": "active",
@@ -62,7 +62,7 @@ The example uses this `PlanDefinition`:
     "coding": [
       {
         "system": "http://health-samurai.io/fhir/sdc/CodeSystem/plan-definition-type",
-        "code": "sdc-package"
+        "code": "plan-definition"
       }
     ]
   },
@@ -70,12 +70,12 @@ The example uses this `PlanDefinition`:
     {
       "id": "intake",
       "title": "Intake",
-      "definitionCanonical": "https://example.org/Questionnaire/package-intake|1"
+      "definitionCanonical": "https://example.org/Questionnaire/intake|1"
     },
     {
       "id": "travel",
       "title": "Travel arrangements",
-      "definitionCanonical": "https://example.org/Questionnaire/package-travel|1",
+      "definitionCanonical": "https://example.org/Questionnaire/travel|1",
       "condition": [
         {
           "kind": "applicability",
@@ -87,7 +87,7 @@ The example uses this `PlanDefinition`:
       ],
       "extension": [
         {
-          "url": "http://health-samurai.io/fhir/sdc/StructureDefinition/sdc-package-prefill",
+          "url": "http://health-samurai.io/fhir/sdc/StructureDefinition/action-questionnaire-answer-mapping",
           "extension": [
             { "url": "targetLinkId", "valueString": "traveler-name" },
             {
@@ -104,7 +104,7 @@ The example uses this `PlanDefinition`:
     {
       "id": "review",
       "title": "Review",
-      "definitionCanonical": "https://example.org/Questionnaire/package-review|1"
+      "definitionCanonical": "https://example.org/Questionnaire/review|1"
     }
   ]
 }
@@ -119,9 +119,9 @@ The example uses this `PlanDefinition`:
 * Nested actions, `definitionUri`, `dynamicValue`, `relatedAction`, and action timing are not supported. If specified, `selectionBehavior` must be `all`, `requiredBehavior` must be `must`, and `cardinalityBehavior` must be `single`.
 * Adaptive questionnaires are not supported in packages.
 
-The `sdc-package` type coding identifies the definition as a package in Formbox UI. The [Package Designer](../package-designer.md) writes this structure for you.
+The `plan-definition` type coding identifies the definition as a package in Formbox UI. The [Package Designer](../plan-definition-designer.md) writes this structure for you.
 
-Starting a run stores references to the plan and resolved questionnaires, including their versions when available. Keep referenced versions unchanged if existing runs must retain their original behavior. Updating a resource in place also changes what that reference resolves to.
+Starting a run stores references to the PlanDefinition and resolved questionnaires, including their versions when available. Keep referenced versions unchanged if existing runs must retain their original behavior. Updating a resource in place also changes what that reference resolves to.
 
 ### Expressions
 
@@ -144,7 +144,7 @@ For example, test whether another form has any answers:
 %intake.repeat(item).answer.value.exists()
 ```
 
-Each prefill extension specifies a target `linkId` and an expression returning answer values. The target must be a unique answer-bearing item; groups, display items, and items inside repeating ancestors are not supported. A repeating target accepts multiple values. A non-repeating target accepts at most one, so use `.first()` when selecting one answer from a collection.
+Each `action-questionnaire-answer-mapping` extension on `PlanDefinition.action` specifies a target item with `targetLinkId` and a FHIRPath expression returning answer values. The target must be a unique answer-bearing item; groups, display items, and items inside repeating ancestors are not supported. A repeating target accepts multiple values. A non-repeating target accepts at most one, so use `.first()` when selecting one answer from a collection.
 
 On the first opening, ordinary questionnaire population runs before package prefills. A nonempty prefill result supplies the target's initial answers. An empty result leaves its populated answer unchanged. Reopening an existing response preserves its answers.
 
@@ -153,7 +153,7 @@ On the first opening, ordinary questionnaire population runs before package pref
 Use this operation when your application launches the built-in renderer:
 
 ```http
-POST [base]/fhir/PlanDefinition/example-intake-package/$sdc-package-start-link
+POST [base]/fhir/PlanDefinition/example-intake/$sdc-start-link
 ```
 
 ```json
@@ -175,7 +175,7 @@ The example needs no patient. Add `subject` to associate the run with an existin
 
 ### Start parameters
 
-These optional parameters apply to both `$sdc-package-start` and `$sdc-package-start-link`:
+These optional parameters apply to both `$sdc-start` and `$sdc-start-link`:
 
 | Parameter | FHIR representation | Meaning |
 | --- | --- | --- |
@@ -188,7 +188,7 @@ The context is retained for population when forms open. Each new response inheri
 
 ### Link options
 
-`$sdc-package-start-link` and `$sdc-package-generate-link` accept:
+`$sdc-start-link` and `$sdc-generate-link` accept:
 
 | Parameter | FHIR representation | Meaning |
 | --- | --- | --- |
@@ -205,14 +205,14 @@ The context is retained for population when forms open. Each new response inheri
 
 A generated link is scoped to one package and its organization. Anyone using it accesses that same run. Generate a separate run for each recipient.
 
-`$sdc-package-start-link` creates the run before generating its link and optional session. If link or session creation fails, the created run remains stored.
+`$sdc-start-link` creates the run before generating its link and optional session. If link or session creation fails, the created run remains stored.
 
 ## Resume or embed a run
 
 To generate a new link without starting another package:
 
 ```http
-POST [base]/fhir/RequestGroup/[run-id]/$sdc-package-generate-link
+POST [base]/fhir/RequestGroup/[run-id]/$sdc-generate-link
 ```
 
 ```json
@@ -222,17 +222,17 @@ POST [base]/fhir/RequestGroup/[run-id]/$sdc-package-generate-link
 The result contains `link.valueUri`. Use the returned URL as-is, including its token and organization route. To embed it:
 
 ```html
-<iframe title="Intake package" src="YOUR_GENERATED_PACKAGE_LINK"></iframe>
+<iframe title="Intake package" src="YOUR_GENERATED_REQUEST_GROUP_LINK"></iframe>
 ```
 
-To embed a run with the renderer web component, pass its RequestGroup ID in `request-group-id` on `<aidbox-form-renderer>`. The component manages navigation, draft saves, and package submission. See [Embedding a package](../aidbox-ui-builder-alpha/embedding.md#embedding-a-package) for examples, progress events, and `submit()` results.
+To embed a run with the renderer web component, pass its RequestGroup ID in `request-group-id` on `<aidbox-form-renderer>`. The component manages navigation, draft saves, and package submission. See [Embedding a package](../aidbox-ui-builder-alpha/embedding.md#embedding-a-plan-definition) for examples, progress events, and `submit()` results.
 
 ## Manage the workflow in your application
 
 ### Start without a link
 
 ```http
-POST [base]/fhir/PlanDefinition/example-intake-package/$sdc-package-start
+POST [base]/fhir/PlanDefinition/example-intake/$sdc-start
 ```
 
 ```json
@@ -256,7 +256,7 @@ The response contains `requestGroup.valueReference`, `status.valueCode`, and rep
 ### Open a form
 
 ```http
-POST [base]/fhir/RequestGroup/[run-id]/$sdc-package-open
+POST [base]/fhir/RequestGroup/[run-id]/$sdc-open
 ```
 
 ```json
@@ -272,7 +272,7 @@ To refresh the overview without opening a form, omit `actionId` and send only `{
 
 ### Save answers
 
-Send the response returned by `$sdc-package-open`, with the changed answers, to:
+Send the response returned by `$sdc-open`, with the changed answers, to:
 
 ```http
 POST [base]/fhir/QuestionnaireResponse/$save
@@ -288,7 +288,7 @@ POST [base]/fhir/QuestionnaireResponse/$save
         "resourceType": "QuestionnaireResponse",
         "id": "intake-response-id",
         "status": "in-progress",
-        "questionnaire": "https://example.org/Questionnaire/package-intake|1",
+        "questionnaire": "https://example.org/Questionnaire/intake|1",
         "item": [
           { "linkId": "full-name", "answer": [{ "valueString": "Alex Taylor" }] },
           { "linkId": "needs-travel", "answer": [{ "valueBoolean": true }] }
@@ -317,7 +317,7 @@ To validate and confirm Intake before opening Travel arrangements:
 }
 ```
 
-Send this to `$sdc-package-open` after saving Intake. A source validation failure leaves it unconfirmed. Once confirmed, it stays confirmed even if population of the destination form fails. To go back without confirming the form being left, send only the destination `actionId`.
+Send this to `$sdc-open` after saving Intake. A source validation failure leaves it unconfirmed. Once confirmed, it stays confirmed even if population of the destination form fails. To go back without confirming the form being left, send only the destination `actionId`.
 
 Use the ordered summaries to choose the next enabled form. `fromActionId` always requires a destination `actionId`.
 
@@ -326,7 +326,7 @@ Use the ordered summaries to choose the next enabled form. `fromActionId` always
 Open and fill every enabled form, including Review in this example, then send:
 
 ```http
-POST [base]/fhir/RequestGroup/[run-id]/$sdc-package-submit
+POST [base]/fhir/RequestGroup/[run-id]/$sdc-submit
 ```
 
 ```json
@@ -344,11 +344,11 @@ The result is a `Parameters` resource containing `status.valueCode: "completed"`
 
 The configured data store commits or rolls back each transaction bundle, for both local and external storage. Package operations do not wrap separate writes in an additional transaction or coordinate rollback across servers. A later failure does not undo a committed bundle. If a failure leaves the result uncertain, reload the package before retrying.
 
-Use `$sdc-package-open` to review a completed run. Its included form set is taken from the completed tasks.
+Use `$sdc-open` to review a completed run. Its included form set is taken from the completed tasks.
 
 ## Amend a completed run
 
-Keep amendment edits in your application until they are submitted. Send them to `$sdc-package-open` as repeated `form` parameters to preview conditions and prefills without changing the stored submission:
+Keep amendment edits in your application until they are submitted. Send them to `$sdc-open` as repeated `form` parameters to preview conditions and prefills without changing the stored submission:
 
 ```json
 {
@@ -365,7 +365,7 @@ Keep amendment edits in your application until they are submitted. Send them to 
             "resourceType": "QuestionnaireResponse",
             "id": "intake-response-id",
             "status": "completed",
-            "questionnaire": "https://example.org/Questionnaire/package-intake|1",
+            "questionnaire": "https://example.org/Questionnaire/intake|1",
             "item": [
               { "linkId": "full-name", "answer": [{ "valueString": "Alex Taylor" }] },
               { "linkId": "needs-travel", "answer": [{ "valueBoolean": true }] }
@@ -380,14 +380,14 @@ Keep amendment edits in your application until they are submitted. Send them to 
 
 Use the actual response ID and retain the original subject reference and version metadata. Each supplied form must match its package action, questionnaire, and subject; action and response IDs must be unique.
 
-If an edit enables an unopened form, `$sdc-package-open` returns a temporary populated response for it. Retain and complete that response in the amendment session. Send all edited and newly opened responses as repeated `form` parameters to `$sdc-package-submit`.
+If an edit enables an unopened form, `$sdc-open` returns a temporary populated response for it. Retain and complete that response in the amendment session. Send all edited and newly opened responses as repeated `form` parameters to `$sdc-submit`.
 
 The package remains `completed` during editing. Successful submission changes previously submitted included responses to `amended` and newly included responses to `completed`. Existing response IDs are retained, and previous versions remain in history. Validation failures and rejected transaction bundles leave the previous submission intact.
 
-## Send a package by email
+## Send a package by email <a id="send-a-plan-definition-by-email"></a>
 
 ```http
-POST [base]/fhir/PlanDefinition/example-intake-package/$sdc-package-send
+POST [base]/fhir/PlanDefinition/example-intake/$sdc-send
 ```
 
 This uses the [form sending workflow](../aidbox-ui-builder-alpha/form-sending.md). The path selects the package definition. The `Parameters` body must include `provider` and `email` as `valueString` values. Supported delivery options include:
@@ -405,24 +405,28 @@ This uses the [form sending workflow](../aidbox-ui-builder-alpha/form-sending.md
 | `follow-up-time`, `follow-up-message` | `valueString` | Reminder time and body. |
 | `clinician-email` | `valueString` | Practitioner notification address. |
 
-The workflow creates the package, generates its link, and tracks delivery and completion against the `RequestGroup`. No email is sent by `$sdc-package-start-link`; `$sdc-package-send` starts delivery.
+The workflow creates the package, generates its link, and tracks delivery and completion against the `RequestGroup`. No email is sent by `$sdc-start-link`; `$sdc-send` starts delivery.
+
+Find delivery workflows with `GET [base]/sdc/$workflow?plan-definition-id=[id]`. Use `request-group-id=[run-id]` to filter by a specific run.
 
 To cancel outstanding notifications for a run, call:
 
 ```http
-POST [base]/fhir/RequestGroup/[run-id]/$sdc-package-stop-notification
+POST [base]/fhir/RequestGroup/[run-id]/$sdc-stop-notification
 ```
 
 The response is an informational `OperationOutcome` with the number of cancelled notification workflows.
 
-## Find package runs and responses
+## Find package runs and responses <a id="find-request-groups-and-responses"></a>
 
 Use the package canonical URL, without its version, to search:
 
 ```http
-GET [base]/fhir/RequestGroup?sdc-package=https%3A%2F%2Fexample.org%2FPlanDefinition%2Fintake-package
-GET [base]/fhir/QuestionnaireResponse?sdc-package=https%3A%2F%2Fexample.org%2FPlanDefinition%2Fintake-package
+GET [base]/fhir/RequestGroup?sdc-plan-definition=https%3A%2F%2Fexample.org%2FPlanDefinition%2Fintake
+GET [base]/fhir/QuestionnaireResponse?sdc-plan-definition=https%3A%2F%2Fexample.org%2FPlanDefinition%2Fintake
 ```
+
+To find runs with no saved QuestionnaireResponse yet, add `sdc-empty=true` to the RequestGroup search.
 
 The searches cover runs of all versions with that canonical URL. To identify the responses in one run, follow its `RequestGroup.action.resource` task references and the tasks' `questionnaire-response` outputs. `QuestionnaireResponse.questionnaire` identifies the individual questionnaire, not the package.
 

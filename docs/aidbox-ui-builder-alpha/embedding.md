@@ -83,7 +83,7 @@ These attributes control various aspects of the form’s behavior and appearance
 
 {% tab title="Renderer" %}
 * `questionnaire-id` (optional): ID of an individual questionnaire to load.
-* `request-group-id` (optional): ID of an existing [package run](../form-packages.md) to load instead of an individual questionnaire.
+* `request-group-id` (optional): ID of an existing [package run](../plan-definitions.md) to load instead of an individual questionnaire.
 * `plan-definition` (optional): A PlanDefinition resource as a JSON string to preview a package without saving a run.
 * `questionnaire-response-id` (optional): ID of the questionnaire response to load.
 * `hide-footer` (optional): Hides the form footer.
@@ -115,7 +115,7 @@ Unlike **attributes**, which can only store string values and are defined in the
 * `onFetch` (optional): A custom fetch handler that allows you to intercept and modify network requests. The function receives the URL and request options as arguments.
 * `onAlert` (optional): A custom alert handler that allows you to intercept and handle alerts, overriding the visual alert display. The function receives the alert object as an argument.
 * `onChange` (optional): A custom callback function that is invoked when the questionnaire response is modified, without affecting the default behavior. The function receives the updated questionnaire response as an argument.
-* `onPackageChange` (optional): Receives [package progress](#track-package-progress) when the current form, availability, readiness, or package status changes. The same payload is available as `event.detail` on the `package-change` event.
+* `onRequestGroupChange` (optional): Receives [package progress](#track-request-group-progress) when the current form, availability, readiness, or package status changes. The same payload is available as `event.detail` on the `request-group-change` event.
 * `onPreviewAttachment` (optional): A custom callback function that allows you to handle attachment previews, enabling external editors or viewers. The function receives the attachment object as an argument.
 * `submit()` (optional): Triggers the same validation and submit flow as the built-in Submit button and returns a Promise. The Promise resolves with the renderer reply payload when submission succeeds and rejects when submission is rejected or fails.
 {% endtab %}
@@ -375,19 +375,19 @@ It returns a Promise with the submission result.
 
 For message-based integrations, `sdc.aidbox.submit` is also supported as an inbound message type.
 
-## Embedding a package
+## Embedding a package <a id="embedding-a-plan-definition"></a>
 
-Use the same `<aidbox-form-renderer>` component for a [form package](../form-packages.md). It handles form order, conditional forms, prefills, drafts, and submission. Authentication, configuration, and [request interception](request-interception.md) work as they do for individual questionnaires.
+Use the same `<aidbox-form-renderer>` component for a [form package](../plan-definitions.md). It handles form order, conditional forms, prefills, drafts, and submission. Authentication, configuration, and [request interception](request-interception.md) work as they do for individual questionnaires.
 
-### Open a package run
+### Open a package run <a id="open-a-request-group"></a>
 
-[Create a run](../reference/form-packages-api.md#start-without-a-link) and pass its RequestGroup ID in `request-group-id`. For a returned reference of `RequestGroup/abc`, use `abc`:
+[Create a run](../reference/plan-definition-api.md#start-without-a-link) and pass its RequestGroup ID in `request-group-id`. For a returned reference of `RequestGroup/abc`, use `abc`:
 
 ```html
 <script src="{{ YOUR_AIDBOX_INSTANCE_BASE_URL }}/static/aidbox-forms-renderer-webcomponent.js"></script>
 
 <aidbox-form-renderer
-  id="package-renderer"
+  id="request-group-renderer"
   request-group-id="YOUR_REQUEST_GROUP_ID"
   style="width: 100%; height: 640px; border: none; display: flex"
 >
@@ -397,12 +397,12 @@ Use the same `<aidbox-form-renderer>` component for a [form package](../form-pac
 
 Changing `request-group-id` loads the selected run and reinitializes the renderer. The `loading` and `ready` events work as described above.
 
-### Track package progress
+### Track package progress <a id="track-request-group-progress"></a>
 
 ```javascript
-const renderer = document.getElementById('package-renderer');
+const renderer = document.getElementById('request-group-renderer');
 
-renderer.onPackageChange = (progress) => {
+renderer.onRequestGroupChange = (progress) => {
   console.log(progress.requestGroup, progress.status, progress.actionId);
   console.log(progress.forms);
 };
@@ -412,11 +412,11 @@ renderer.onChange = (questionnaireResponse) => {
 };
 
 renderer.addEventListener('submit', (event) => {
-  console.log('Completed package:', event.detail);
+  console.log('Completed RequestGroup:', event.detail);
 });
 ```
 
-`onPackageChange` and the `package-change` event receive the same progress object:
+`onRequestGroupChange` and the `request-group-change` event receive the same progress object:
 
 | Field | Meaning |
 | --- | --- |
@@ -426,7 +426,7 @@ renderer.addEventListener('submit', (event) => {
 | `forms` | Ordered form summaries containing `actionId`, `title`, `enabled`, `ready`, and optional validation `issues`. Includes disabled forms. |
 | `preview` | `true` for a definition preview; a preview has no `requestGroup` reference. |
 
-The `ready` field describes whether a form is valid and confirmed for submission; it is separate from the component's `ready` event. See the [form summary fields](../reference/form-packages-api.md#start-without-a-link).
+The `ready` field describes whether a form is valid and confirmed for submission; it is separate from the component's `ready` event. See the [form summary fields](../reference/plan-definition-api.md#start-without-a-link).
 
 Use `onChange` to receive the current QuestionnaireResponse as answers change.
 
@@ -436,9 +436,9 @@ Call `submit()` for the same flow as the package's built-in Submit button. Wait 
 
 * If the current form is invalid, the renderer stays on it and rejects the Promise with `error.payload.reason` set to `validation-failed`.
 * If another enabled form still needs answers or confirmation, the renderer opens it and rejects the Promise with the same reason.
-* On success, the Promise resolves with `{ status: "success", package: progress }`. The `submit` event contains the completed package progress in `event.detail`, whether submission starts from your application or the built-in button.
+* On success, the Promise resolves with `{ status: "success", requestGroupState: progress }`. The `submit` event contains the completed package progress in `event.detail`, whether submission starts from your application or the built-in button.
 
-### Preview a package definition
+### Preview a package definition <a id="preview-a-plan-definition"></a>
 
 Use `plan-definition` to supply a PlanDefinition as JSON. For example, to switch the component above from a saved run to a preview:
 
@@ -459,19 +459,19 @@ If the preview rejects a definition, it emits an `error` event with an Operation
 
 ```javascript
 renderer.addEventListener('error', (event) => {
-  console.error('Package preview could not be updated:', event.detail.issues);
+  console.error('PlanDefinition preview could not be updated:', event.detail.issues);
 });
 ```
 
 ### Embed a generated link
 
-You can also [generate a package link](../reference/form-packages-api.md#create-a-run-and-link) and embed the returned URL directly:
+You can also [generate a package link](../reference/plan-definition-api.md#create-a-run-and-link) and embed the returned URL directly:
 
 ```html
-<iframe title="Form package" src="YOUR_GENERATED_PACKAGE_LINK"></iframe>
+<iframe title="Form package" src="YOUR_GENERATED_REQUEST_GROUP_LINK"></iframe>
 ```
 
-Keep the full generated URL, including its token. Use `$sdc-package-generate-link` to resume an existing run. For package lifecycle control from your own UI, use the [Form packages API](../reference/form-packages-api.md#manage-the-workflow-in-your-application).
+Keep the full generated URL, including its token. Use `$sdc-generate-link` to resume an existing run. For package lifecycle control from your own UI, use the [Form packages API](../reference/plan-definition-api.md#manage-the-workflow-in-your-application).
 
 ## Controlled Mode (Deprecated)
 

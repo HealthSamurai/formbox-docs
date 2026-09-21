@@ -16,13 +16,13 @@ Use a package when questionnaires need to remain reusable while participating in
 
 If travel assistance is not needed, the person goes from Intake directly to Review. Each included questionnaire still has its own response.
 
-Create a package in the [Package Designer](package-designer.md), or define and run it through the [Form packages API](reference/form-packages-api.md). Both use the same package definition and rules.
+Create a package in the [Package Designer](plan-definition-designer.md), or define and run it through the [Form packages API](reference/plan-definition-api.md). Both use the same package definition and rules.
 
 ## Availability
 
 Packages are available in both [standalone Formbox](getting-started-formbox.md) and Formbox running as an [Aidbox module](getting-started.md).
 
-Packages use local storage by default and also support a configured [external FHIR data store](aidbox-ui-builder-alpha/external-fhir-servers-as-a-data-backend.md#package-storage-requirements).
+Packages use local storage by default and also support a configured [external FHIR data store](aidbox-ui-builder-alpha/external-fhir-servers-as-a-data-backend.md#plan-definition-storage-requirements).
 
 ## Definition and instance
 
@@ -57,7 +57,7 @@ The definition's action order is the presentation order. The Designer shows ever
 
 A form without an enable-when condition is always enabled. A conditional form is enabled when its condition evaluates to `true`. An empty result is treated as false. Multiple conditions on the same action must all be true; use an OR group or an `or` expression for alternatives.
 
-Conditions can inspect answers to a particular question or whether another form has any answers. They can also combine several inputs with AND and OR. See [editing enable-when rules](package-designer.md#enable-when).
+Conditions can inspect answers to a particular question or whether another form has any answers. They can also combine several inputs with AND and OR. See [editing enable-when rules](plan-definition-designer.md#enable-when).
 
 Package expressions have access to every action's saved response, regardless of its position. An unopened form has no response yet. Put source forms before the forms that depend on their answers, and test each branch in Preview.
 
@@ -69,7 +69,7 @@ On the first opening of a form, Formbox performs the questionnaire's ordinary [p
 
 Prefills initialize a response once. Going back, changing an earlier answer, and reopening an existing response preserves that response's answers; it does not run the prefills again.
 
-## Completing a package
+## Completing a package <a id="completing-a-request-group"></a>
 
 The renderer saves answers as drafts and refreshes which forms are enabled. **Next** validates the form being left. **Back** lets the person revisit earlier enabled forms. The sidebar shows progress through the package; the active questionnaire's outline provides navigation within that form.
 
@@ -85,12 +85,12 @@ When amendments are enabled, **Amend** starts an editing session. Changes can en
 
 ## Sharing and embedding
 
-Use **Share** to create a link to a new package run, or **Send** to deliver it through the [email workflow](aidbox-ui-builder-alpha/form-sending.md#sending-a-package). Each recipient should have their own run. Reissuing a link for an existing run continues that same package.
+Use **Share** to create a link to a new package run, or **Send** to deliver it through the [email workflow](aidbox-ui-builder-alpha/form-sending.md#sending-a-plan-definition). Each recipient should have their own run. Reissuing a link for an existing run continues that same package.
 
-Integrations can [embed the renderer web component](aidbox-ui-builder-alpha/embedding.md#embedding-a-package) with a package run ID, or [generate a package link](reference/form-packages-api.md#create-a-run-and-link) and use it as an iframe source. The package renderer handles ordering, conditions, drafts, and submission.
+Integrations can [embed the renderer web component](aidbox-ui-builder-alpha/embedding.md#embedding-a-plan-definition) with a package run ID, or [generate a package link](reference/plan-definition-api.md#create-a-run-and-link) and use it as an iframe source. The package renderer handles ordering, conditions, drafts, and submission.
 
 ## Updating a definition
 
 Give published packages and their questionnaires a canonical URL and version. A run references those definitions by canonical URL and, when supplied, version. These references are not copies of the definitions: changing a referenced resource in place can affect existing runs.
 
-To preserve an existing version, create a new resource with a new version. The Designer offers **Create New** when the canonical URL or version of an active package changes. See [saving a package](package-designer.md#save-the-package) and the [API definition rules](reference/form-packages-api.md#package-definition).
+To preserve an existing version, create a new resource with a new version. The Designer offers **Create New** when the canonical URL or version of an active package changes. See [saving a package](plan-definition-designer.md#save-the-plan-definition) and the [API definition rules](reference/plan-definition-api.md#plan-definition).
