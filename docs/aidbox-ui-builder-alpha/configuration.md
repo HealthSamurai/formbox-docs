@@ -28,18 +28,27 @@ A global Configuration resource can be instantiated to serve as the system-wide 
 * `language`: The default language for the UI.
 * `translations`: Object containing [custom translations](configuration.md#translations) strings for the UI.
 * `theme`: An inlined copy of or reference to [QuestionnaireTheme](configuration.md#theme) object.
+* `smart-connect`: Reference to the `SDCSmartConnect` resource that describes the SMART on FHIR connection to a third-party EHR. See [SMART app integration](smart-app-integration.md).
 * `storage`: Storage configuration for attachments types
   * `account`: Reference to [storage resource](https://www.health-samurai.io/docs/aidbox/reference/system-resources-reference/core-module-resources)
     * `id`: id
     * `resourceType`: One of (GcpServiceAccount, AwsAccount, AzureContainer)
   * `bucket`: Bucket to store attachment files (required for GcpServiceAccount and AwsAccount)
+  * `storageAccount`: Azure storage account name (for Azure Workload Identity)
+  * `container`: Azure container name (for Azure Workload Identity)
   * `store-absolute-url`: Store absolute url to QuestionnaireResponse attachments
+* `form-store`, `data-store`, `term-server`: FHIR servers that keep forms, production data and terminology when they should not live in Aidbox. Each one takes `endpoint`, optional `headers` and optional `auth`. See [External FHIR servers as a data backend](external-fhir-servers-as-a-data-backend.md).
+* `dtr-service`: External Da Vinci DTR service that answers `$questionnaire-package` and `$next-question`. Takes `endpoint`, optional `headers` and optional `auth`. See [Da Vinci DTR](../davinci.md).
 * `builder`: Configuration settings for the form builder.
   * `form-url-prefix`: The URL prefix used in URL generation for new forms.
   * `hide-back-button`: A boolean value that specifies whether the back button should be hidden.
   * `hide-form-entry-mode`: A boolean value that specifies whether the Entry Mode control should be hidden in form settings.
   * `hide-form-adaptive-form`: A boolean value that specifies whether the Adaptive Form control should be hidden in form settings.
   * `hide-preview-renderer-selector`: A boolean value that specifies whether the preview renderer selector should be hidden in the builder toolbar.
+  * `layout`: The builder layout variant, `default` or `v2`.
+  * `fhirpath-profile`: The FHIRPath profile every expression in a form must fit: `spec/v2.0.0` (the normative FHIRPath release FHIR R4 and R5 reference), `engine/browser` or `engine/server`. Set it when forms built here run in another SDC runtime; left empty, each expression is checked against the engine that evaluates it. The box setting `BOX_SDC_BUILDER_FHIRPATH_PROFILE` sets the same value for the whole box.
+  * `custom-renderers`: Web components that can be used to preview a form in the builder, each with `name`, `url` and optional `default`. See [External form renderer](external-form-renderer.md).
+  * `external-terminology-servers`: Additional terminology servers offered in the builder UI, each with `url`, `name` and optional `default`. See [Integration with external terminology servers](integration-with-external-terminology-servers.md).
   * `translation-languages`: Array of languages that can be used for translations in the builder. If not provided, [all languages](ui-builder-interface.md#list-of-supported-languages) are allowed.
   * `hide-publish`: A boolean value that specifies whether the publish button should be hidden.
   * `disable-publish`: A boolean value that specifies whether the publish button should be disabled.

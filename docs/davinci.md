@@ -30,7 +30,9 @@ The operation is available at the following endpoints:
 | Endpoint | Description |
 |----------|-------------|
 | `POST /fhir/Questionnaire/$questionnaire-package` | FHIR endpoint |
+| `POST /Questionnaire/$questionnaire-package` | Aidbox-format endpoint |
 | `POST /Organization/{id}/fhir/Questionnaire/$questionnaire-package` | Multi-tenant FHIR endpoint |
+| `POST /Organization/{id}/aidbox/Questionnaire/$questionnaire-package` | Multi-tenant Aidbox-format endpoint |
 
 ## Input Parameters
 
@@ -293,6 +295,40 @@ item:
   - valueString: John
 ```
 
+
+## Using an external DTR service
+
+Payers such as MCG and InterQual run the DTR operations themselves and own the form library behind them. Point Formbox at one of them through `dtr-service` in the **default** `SDCConfig`, and both `$questionnaire-package` and `$next-question` are forwarded to that service:
+
+```yaml
+POST /SDCConfig
+content-type: text/yaml
+
+id: cfg-1
+resourceType: SDCConfig
+name: Config with an external DTR service
+default: true
+dtr-service:
+    endpoint: 'https://dtr.payer.example'
+    auth:
+        token-endpoint: 'https://dtr.payer.example/oauth2/token'
+        client-id: 'formbox'
+        client-secret: 'ILUcZS3T...'
+```
+
+* `endpoint` - base URL of the service; the operations are called at `<endpoint>/Questionnaire/$questionnaire-package` and `<endpoint>/Questionnaire/$next-question`
+* `headers` (optional) - static headers sent with every call
+* `auth` (optional) - OAuth2 `client_credentials` credentials, described in [Authentication](aidbox-ui-builder-alpha/external-fhir-servers-as-a-data-backend.md#authentication) together with the places the client secret can live
+
+With `dtr-service` set, nothing runs locally for these operations: Formbox does not look the Questionnaire up, does not expand ValueSets and does not populate a draft QuestionnaireResponse — the service owns all of that. Without it, the built-in implementation described above answers as before.
+
+For `$next-question` a form can still name a service of its own: the `questionnaireAdaptive` extension of the embedded Questionnaire wins over `dtr-service`. See [Adaptive forms](adaptive-forms.md).
+
+The caller's own credentials are never forwarded to the service, and the status and body the service answers with reach the caller unchanged.
+
+### Multitenancy
+
+Every tenant has its own default `SDCConfig`, so each organization reaches its own DTR service with its own credentials. A request made without an organization (`/fhir/Questionnaire/$questionnaire-package`) uses the configuration that belongs to no organization, never a tenant's one.
 
 ## Related Resources
 

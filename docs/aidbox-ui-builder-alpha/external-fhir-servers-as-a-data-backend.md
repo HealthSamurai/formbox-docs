@@ -54,6 +54,7 @@ To enable external FHIR Backend we should specify next fields for it:
 
 * `endpoint` - URI to FHIR API
 * `headers` (optional) - Additional HTTP headers for requests (Authorization for example)
+* `auth` (optional) - OAuth2 `client_credentials` credentials, see [Authentication](#authentication)
 
 Example:
 
@@ -63,6 +64,50 @@ Example:
     headers:
         Authorization: 'Basic cm9vdDpzZWNyZXQ='
 ```
+
+### Authentication
+
+A server that accepts a fixed credential takes it from `headers`, as in the example above.
+
+A server that issues tokens is described with `auth` instead. Formbox requests an access token with the OAuth2 `client_credentials` grant on the first call and reuses it until it expires, then sends it as `Authorization: Bearer <token>`. A bearer obtained this way replaces an `Authorization` header set in `headers`.
+
+* `token-endpoint` - OAuth2 token endpoint that issues the access token
+* `client-id` - OAuth2 client id
+* `client-secret` - OAuth2 client secret
+* `scope` (optional) - scope requested with the token
+
+```yaml
+data-store:
+    endpoint: 'https://my-ehr.com/fhir'
+    auth:
+        token-endpoint: 'https://my-ehr.com/oauth2/token'
+        client-id: 'formbox'
+        client-secret: 'ILUcZS3T...'
+        scope: 'system/*.read'
+```
+
+#### Where the client secret lives
+
+Formbox takes the secret from the first source that has it:
+
+1. **A secret in the vault** - the recommended option: the value stays in a mounted file and never reaches the database. Point the field at a secret from the vault configuration (`BOX_VAULT_CONFIG`) and scope that secret to `SDCConfig`:
+
+   ```yaml
+   auth:
+       token-endpoint: 'https://my-ehr.com/oauth2/token'
+       client-id: 'formbox'
+       _client-secret:
+           extension:
+           - url: 'http://hl7.org/fhir/StructureDefinition/data-absent-reason'
+             valueCode: masked
+           - url: 'http://health-samurai.io/fhir/secret-reference'
+             valueString: my-ehr-client-secret
+   ```
+
+2. **The value written into `client-secret`** - Aidbox encrypts it on write and stores the ciphertext, so the box needs `BOX_SECURITY_ENCRYPT_SECRET`. Without that setting the resource cannot be saved.
+3. **Box settings** - `BOX_SDC_DTR_CLIENT_ID` and `BOX_SDC_DTR_CLIENT_SECRET` are used when the configuration carries no credentials of its own.
+
+If the token endpoint cannot be reached, or no credentials are found, the call answers with an `OperationOutcome` naming the token endpoint.
 
 #### Form Storage
 
@@ -109,6 +154,10 @@ data-store:
 term-server:
     endpoint: 'http://tx.com/fhir'
 ```
+
+### Response of an external server
+
+The status and the body a server answers with reach the caller as they are: a `400` with an `OperationOutcome` from the external server arrives at the client as a `400` with that outcome. When the server cannot be reached at all, Formbox answers with an `OperationOutcome` that names the endpoint.
 
 ### Multitenancy Support
 

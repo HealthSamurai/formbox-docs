@@ -41,6 +41,16 @@ When used without 3rd party service URL - it does next things:
 
 > This implementation has a predefined behavior and used for testing purposes only. Real logic should be implemented on 3rd party service with same **Questionnaire/$next-question** endpoint.
 
+#### Where the operation is sent
+
+Formbox picks the service in this order:
+
+1. The `questionnaireAdaptive` extension of the embedded **Questionnaire**, when its `valueUri` holds a URL — the form names its own service, as in the example below.
+2. `dtr-service` in the default `SDCConfig` — one service for the whole box or tenant, used for `$next-question` and `$questionnaire-package` alike, with OAuth2 credentials of its own. See [Da Vinci DTR](davinci.md#using-an-external-dtr-service).
+3. The built-in implementation, which answers the demo questions described above.
+
+The operation is available at `POST /Questionnaire/$next-question`, `POST /fhir/Questionnaire/$next-question` and, for a tenant, at `POST /Organization/{id}/aidbox/Questionnaire/$next-question` and `POST /Organization/{id}/fhir/Questionnaire/$next-question`.
+
 Example request:
 
 ```json
