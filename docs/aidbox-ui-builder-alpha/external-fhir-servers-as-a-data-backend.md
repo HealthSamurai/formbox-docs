@@ -184,6 +184,8 @@ dtr-service:
 
 The status and the body a server answers with reach the caller as they are: a `400` with an `OperationOutcome` from the external server arrives at the client as a `400` with that outcome. When the server cannot be reached at all, Formbox answers with an `OperationOutcome` that names the endpoint.
 
+The server's own response headers and cookies stay at the proxy — a gateway in front of the external server does not leak its session into the Formbox response.
+
 ### Multitenancy Support
 
 * Default system `SDCCOnfig` (for `root` Organization) does not take effect on tenants
