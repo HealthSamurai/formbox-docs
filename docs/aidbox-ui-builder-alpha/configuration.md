@@ -37,8 +37,13 @@ A global Configuration resource can be instantiated to serve as the system-wide 
   * `storageAccount`: Azure storage account name (for Azure Workload Identity)
   * `container`: Azure container name (for Azure Workload Identity)
   * `store-absolute-url`: Store absolute url to QuestionnaireResponse attachments
-* `form-store`, `data-store`, `term-server`: FHIR servers that keep forms, production data and terminology when they should not live in Aidbox. Each one takes `endpoint`, optional `headers` and optional `auth`. See [External FHIR servers as a data backend](external-fhir-servers-as-a-data-backend.md).
-* `dtr-service`: External Da Vinci DTR service that answers `$questionnaire-package` and `$next-question`. Takes `endpoint`, optional `headers` and optional `auth`. See [Da Vinci DTR](../davinci.md).
+* `form-store`: FHIR server that stores `Questionnaire` resources. See [External FHIR servers as a data backend](external-fhir-servers-as-a-data-backend.md).
+  * `endpoint`: The URL of the FHIR API. Aidbox is used when it is not set.
+  * `headers`: Additional HTTP headers sent with every request.
+  * `auth`: OAuth2 `client_credentials` credentials used to obtain an access token. See [Authentication](external-fhir-servers-as-a-data-backend.md#authentication).
+* `data-store`: FHIR server that stores `QuestionnaireResponse` and the other production resources. Takes the same `endpoint`, `headers` and `auth` fields as `form-store`.
+* `term-server`: FHIR server that stores terminology and expands ValueSets. Takes the same `endpoint`, `headers` and `auth` fields as `form-store`.
+* `dtr-service`: External Da Vinci DTR service that answers `$questionnaire-package` and `$next-question`. Takes the same `endpoint`, `headers` and `auth` fields as `form-store`. See [Da Vinci DTR](../davinci.md#using-an-external-dtr-service).
 * `builder`: Configuration settings for the form builder.
   * `form-url-prefix`: The URL prefix used in URL generation for new forms.
   * `hide-back-button`: A boolean value that specifies whether the back button should be hidden.
