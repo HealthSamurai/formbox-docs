@@ -50,6 +50,10 @@ For every domain we have separate key:
 * `data-store` - production resources domain
 * `term-server` - terminology resources domain
 
+One more key names a service rather than a storage domain:
+
+* `dtr-service` - external Da Vinci DTR service, see [DTR service](#dtr-service)
+
 To enable external FHIR Backend we should specify next fields for it:
 
 * `endpoint` - URI to FHIR API
@@ -135,6 +139,21 @@ data-store:
 
 To learn how to configure a custom terminology server and add terminology servers to the configuration, see [Integration with external terminology servers](integration-with-external-terminology-servers.md).
 
+#### DTR service
+
+`dtr-service` is not a storage domain: it names the service that answers the Da Vinci DTR operations `$questionnaire-package` and `$next-question` instead of Formbox. Payers such as MCG and InterQual own the form library behind those operations, so with it set Formbox resolves nothing locally and forwards the whole call.
+
+```yaml
+dtr-service:
+    endpoint: 'https://dtr.payer.example'
+    auth:
+        token-endpoint: 'https://dtr.payer.example/oauth2/token'
+        client-id: 'formbox'
+        client-secret: 'ILUcZS3T...'
+```
+
+It takes the same `endpoint`, `headers` and `auth` fields as the stores above. See [Da Vinci DTR](../davinci.md#using-an-external-dtr-service) for what is forwarded, how a single form can name a service of its own, and how each tenant reaches its own service.
+
 ### Full config example:
 
 ```yaml
@@ -153,6 +172,12 @@ data-store:
         Authorization: 'Basic cm9vdDpzZWNyZXQ='
 term-server:
     endpoint: 'http://tx.com/fhir'
+dtr-service:
+    endpoint: 'https://dtr.payer.example'
+    auth:
+        token-endpoint: 'https://dtr.payer.example/oauth2/token'
+        client-id: 'formbox'
+        client-secret: 'ILUcZS3T...'
 ```
 
 ### Response of an external server
