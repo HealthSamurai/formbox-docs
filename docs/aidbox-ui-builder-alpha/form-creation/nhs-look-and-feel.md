@@ -35,6 +35,18 @@ Choosing the `NHS` design system applies NHS-compliant styles and components acr
 
 Support for additional entry modes may be added in the future.
 
+- The NHS design spec has no dropdown component, so every `choice` and `coding` question with
+  inline `answerOption` is rendered through the NHS checkbox list, whatever item control
+  (`drop-down`, `autocomplete`, `radio-button`, `check-box`) is set on it:
+  - `repeats: true` - a list of checkboxes,
+  - `repeats: false` - a list of radio buttons.
+
+- Questions answered from a value set (`answerValueSet`) are **not** rendered in the NHS design
+  system - only inline `answerOption` is supported.
+
+- All answer options are rendered at once, there is no paging or collapsing. A question with many
+  options makes for a long page, so keep the option lists short.
+
 ### Usage
 
 To enable the NHS look and feel in Formbox:
