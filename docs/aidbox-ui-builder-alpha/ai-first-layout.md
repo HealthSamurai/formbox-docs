@@ -54,6 +54,8 @@ The chat needs an AI provider. If none is configured, the chat column shows an *
 
 ## The screen
 
+![AI first layout wireframe: the page toolbar on top, the canvas toolbar and the form preview on the left with the collapsed debug panel under them, the element tree opening as a drawer over the preview, and the chat on the right with settings panels opening above the conversation](../assets/builder-layout-ai-first.svg)
+
 The page is split into two columns, 60% form preview and 40% chat by default. Drag the divider between them to change the split; the split resets on reload.
 
 * **Form preview (left).** The live form, exactly as the renderer shows it. Above it sits the canvas toolbar; below it, the collapsed debug panel.

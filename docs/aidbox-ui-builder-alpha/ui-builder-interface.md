@@ -13,6 +13,10 @@ The Form Builder comes in two layouts. Both edit the same questionnaire with the
 | **Modern** | Element tree on the left, form preview in the middle, item settings on the right. The default. | Everyday form building and heavy manual editing. |
 | **AI first** | Form preview on the left, chat with the AI Assistant on the right. The element tree, the settings and the debug panel stay hidden until they are needed. | Building and changing forms by describing what you want. |
 
+![Standard layout wireframe: the element tree on the left, the toolbar and the form preview in the middle with the debug panel under them, and the form or item settings on the right](../assets/builder-layout-standard.svg)
+
+![AI first layout wireframe: the page toolbar on top, the canvas toolbar and the form preview on the left with the collapsed debug panel under them, the element tree opening as a drawer over the preview, and the chat on the right with settings panels opening above the conversation](../assets/builder-layout-ai-first.svg)
+
 Both layouts share the same item settings and widgets, described on [Form Settings](form-creation/form-settings.md) and [Widgets](form-creation/widgets.md).
 
 ### Switching the layout
