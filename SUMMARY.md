@@ -61,6 +61,8 @@
     * [Adaptive Forms](adaptive-forms.md)
     * [Audit logging in forms](audit-logging-in-forms.md)
     * [Building reports using SQL on FHIR](aidbox-ui-builder-alpha/building-reports-using-sql-on-fhir.md)
+    * [AI Scriber](ai-scriber.md)
+      * [How AI Scriber works](ai-scriber-internals.md)
     * [Voice Agents](voice-agents.md)
     * [Da Vinci DTR](davinci.md)
   * [Deprecated](deprecated.md)

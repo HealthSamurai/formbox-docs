@@ -84,6 +84,7 @@ A global Configuration resource can be instantiated to serve as the system-wide 
   * `hide-title`  A boolean value that specifies whether the title of the Form should be shown.
   * `enable-amend-button`: A boolean value that specifies whether the Amend button should be shown.
   * `enable-save-button`: A boolean value that specifies whether the Save button should be shown.
+  * `enable-scriber`: A boolean value that specifies whether the [AI Scriber](../ai-scriber.md) controls should be shown.
   * `allow-repopulate` : A boolean value that specifies whether repopulate is allowed in all forms with populate logic
   * `auto-save-interval`: An integer value that specifies auto-save interval (in milliseconds)
 
