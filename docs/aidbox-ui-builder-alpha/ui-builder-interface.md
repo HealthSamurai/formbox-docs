@@ -4,13 +4,30 @@ description: This article outlines the the UI Builder Interface
 
 # Form Builder Interface
 
+## Layouts
+
+The Form Builder comes in two layouts. Both edit the same questionnaire with the same tools — they differ in what is on screen at once and in how much of the work you are expected to do by hand. The names below are the ones in the **Layout** dropdown.
+
+| Layout | Arrangement | Best for |
+| --- | --- | --- |
+| **Modern** | Element tree on the left, form preview in the middle, item settings on the right. The default. | Everyday form building and heavy manual editing. |
+| **AI first** | Form preview on the left, chat with the AI Assistant on the right. The element tree, the settings and the debug panel stay hidden until they are needed. | Building and changing forms by describing what you want. |
+
+Both layouts share the same item settings and widgets, described on [Form Settings](form-creation/form-settings.md) and [Widgets](form-creation/widgets.md).
+
+### Switching the layout
+
+Open the **…** menu in the top-right corner, choose **Settings**, and pick a **Layout**. The change applies immediately, without a reload, and is stored in your browser — it is a personal preference and does not travel with the form.
+
+Embedders can set the layout for everyone through the `builder.layout` field of [SDCConfig](configuration.md): `v2` for the standard layout, `ai` for AI first.
+
+{% content-ref %}
+[AI first layout](ai-first-layout.md)
+{% endcontent-ref %}
+
 ## UI Builder interface overview
 
-{% hint style="warning" %}
-The new Form Builder UI is available as an alternative interface. Its main capabilities are described on the [Form Settings](form-creation/form-settings.md) and [Widgets](form-creation/widgets.md) pages.
-
-This UI will become the default in a future release.
-{% endhint %}
+The description below follows the standard layout.
 
 When creating a form in the UI builder, the interface includes the following components:
 

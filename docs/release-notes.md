@@ -6,7 +6,7 @@
   * Introduced [AI Scriber](ai-scriber.md) (alpha) to automatically fill forms from conversations, navigate Form Packages, look up terminology codes, and preserve evidence for generated answers.
   * Introduced [Form Packages](plan-definitions.md) to combine multiple forms into a single flow, with forms dynamically linked through enableWhen conditions and cross-form prefill. Packages can be shared via link, email, or embedded, with responses exported as a single PDF.
   * Expanded [Liquid Templates](aidbox-ui-builder-alpha/printing-forms/liquid-templates.md) with template management, form linking, AI-assisted editing, live preview, translations, and PDF export.
-  * Introduced the AI-first Form Builder (alpha) to create and modify forms through natural-language instructions, search the Form Gallery and terminology server, import forms from screenshots and PDFs, and interactively build and test forms with AI assistance.
+  * Introduced the [AI-first Form Builder](aidbox-ui-builder-alpha/ai-first-layout.md) (alpha) to create and modify forms through natural-language instructions, search the Form Gallery and terminology server, import forms from screenshots and PDFs, and interactively build and test forms with AI assistance.
   * Added FHIRPath profiles to validate expressions against the selected FHIRPath engine and guide AI-generated expressions.
   * Expanded the Integrations page in the Formbox UI with guided setup for [embedding](aidbox-ui-builder-alpha/embedding.md) forms and Form Packages and configuring [SMART on FHIR](aidbox-ui-builder-alpha/smart-app-integration.md).
   * Added support for external [DTR](davinci.md) services for `$questionnaire-package` and `$next-question` operations with OAuth2 authentication.

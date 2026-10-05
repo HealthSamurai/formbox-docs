@@ -50,7 +50,7 @@ A global Configuration resource can be instantiated to serve as the system-wide 
   * `hide-form-entry-mode`: A boolean value that specifies whether the Entry Mode control should be hidden in form settings.
   * `hide-form-adaptive-form`: A boolean value that specifies whether the Adaptive Form control should be hidden in form settings.
   * `hide-preview-renderer-selector`: A boolean value that specifies whether the preview renderer selector should be hidden in the builder toolbar.
-  * `layout`: The builder layout variant, `default` or `v2`.
+  * `layout`: The builder layout variant: `v2` for the standard layout or `ai` for [AI first](ai-first-layout.md). See [Layouts](ui-builder-interface.md#layouts).
   * `fhirpath-profile`: The FHIRPath profile every expression in a form must fit: `spec/v2.0.0` (the normative FHIRPath release FHIR R4 and R5 reference), `engine/browser` or `engine/server`. Set it when forms built here run in another SDC runtime; left empty, each expression is checked against the engine that evaluates it. The box setting `BOX_SDC_BUILDER_FHIRPATH_PROFILE` sets the same value for the whole box.
   * `custom-renderers`: Web components that can be used to preview a form in the builder, each with `name`, `url` and optional `default`. See [External form renderer](external-form-renderer.md).
   * `external-terminology-servers`: Additional terminology servers offered in the builder UI, each with `url`, `name` and optional `default`. See [Integration with external terminology servers](integration-with-external-terminology-servers.md).
