@@ -210,6 +210,10 @@ To make `%subject` resource available we should call `$populate` operation with 
 * `subject = <reference>` (reference to patient)
 * `local = true` (says that we should search for subject in DB and load resource)
 
+`%subject` and `%patient` are not the same variable. `%subject` comes from the top-level `subject` parameter and can be resolved to a Patient resource with `local: true`. `%patient` is a launch context variable. If an expression uses Patient fields through `%patient`, pass the patient launch context as `context.content.resource`; a `valueReference` is passed as a reference and is not resolved automatically.
+
+In the builder Populate debug panel, if the Questionnaire declares a `patient` launch context, select the Patient in the `Patient` launch context field and enable **Send as resource** to test expressions such as `%patient.name.family`.
+
 Operation call example:
 
 ```yaml

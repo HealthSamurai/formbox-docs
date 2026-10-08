@@ -93,8 +93,11 @@ The reminder is sent only if the form is still incomplete at the scheduled time.
 The **Advanced options** section includes optional settings:
 
 - **Encounter** - link the form delivery to a specific encounter.
+- **Launch context fields** - if the selected form declares launch context variables, additional fields appear here. For example, a declared `patient` launch context is shown as a separate **Patient** field.
 - **Theme** - choose the visual theme for the form.
 - **SDC Config** - choose the SDC configuration used for rendering and behavior.
+
+The main **Patient** field sets `QuestionnaireResponse.subject`. A launch context **Patient** field sets the `%patient` variable used by populate expressions. Use both only when the form needs both concepts.
 
 ## Notes on form sending
 

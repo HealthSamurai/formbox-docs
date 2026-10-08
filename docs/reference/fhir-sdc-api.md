@@ -44,9 +44,9 @@ POST [base]/fhir/Questionnaire/[id]/$populate
 | [questionnaire](fhir-sdc-api.md#questionnaire)       | 0..1        | [Questionnaire](http://hl7.org/fhir/R4/questionnaire.html)       | `supported`     |
 | [questionnaireRef](fhir-sdc-api.md#questionnaireref) | 0..1        | [Reference](http://hl7.org/fhir/R4/references.html#Reference)    | `supported`     |
 | [subject](fhir-sdc-api.md#subject)                   | 1..1        | [Reference](http://hl7.org/fhir/R4/references.html#Reference)    | `supported`     |
-| [context](fhir-sdc-api.md#context)                   | 0..\*       | [Reference](http://hl7.org/fhir/R4/references.html#Reference)    | `supported`     |
+| [context](fhir-sdc-api.md#context)                   | 0..\*       | Backbone                                                         | `supported`     |
 | [context.name](fhir-sdc-api.md#context.name)         | 1..1        | [string](https://www.hl7.org/fhir/datatypes.html#string)         | `supported`     |
-| [context.content](fhir-sdc-api.md#context.content)   | 1..\*       | [Reference](http://hl7.org/fhir/R4/references.html#Reference)    | `supported`     |
+| [context.content](fhir-sdc-api.md#context.content)   | 1..\*       | [Reference](http://hl7.org/fhir/R4/references.html#Reference) or resource | `supported`     |
 | [local](fhir-sdc-api.md#local)                       | 0..1        | [boolean](http://hl7.org/fhir/R4/datatypes.html#boolean)         | `supported`     |
 | [launchContext](fhir-sdc-api.md#launchcontext)       | 0..1        | [Extension](http://hl7.org/fhir/R4/extensibility.html#Extension) | `not supported` |
 
@@ -133,6 +133,8 @@ Context paramertes are presented as pairs of `name` and `content` parameters tha
 
 They should correspond launchContext parameter definitions.
 
+`context.content.valueReference` is passed to expressions as a reference. `$populate` does not automatically resolve launch context references into resources. If an expression needs resource fields, for example `%patient.name`, pass `context.content.resource` instead. The special `subject` parameter is different: with `local: true`, Aidbox can resolve the subject reference and expose the Patient resource as `%subject`.
+
 ```yaml
 name: context
 part:
@@ -189,7 +191,7 @@ valueString: encounter
 
 #### context.content
 
-The actual resource (or resources) to use as the value of the launchContext or variable.
+The actual reference or resource to use as the value of the launchContext or variable. Use `valueReference` when expressions need the reference itself; use `resource` when expressions need fields on that resource.
 
 ```yaml
 name: content
