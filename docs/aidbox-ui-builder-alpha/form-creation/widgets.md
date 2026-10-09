@@ -407,6 +407,19 @@ This mode supports:
 
 Use an expression to define answer options dynamically.
 
+#### Choice columns
+
+Use **Choice columns** to display drop-down options as a table-like list with multiple columns. This is useful when option labels need supporting details, such as code, display, system, or fields from referenced resources.
+
+Each column defines:
+
+- **Path** - FHIRPath evaluated against each option or resource, for example `code`, `display`, or `name.first().family`.
+- **Label** - optional column header.
+- **Width** - optional column width, in pixels or percent.
+- **For display** - use this column as the display text for the selected value.
+
+Choice columns use the SDC `sdc-questionnaire-choiceColumn` extension. They are different from **Column count** on Radio Button and Checkbox List, which only controls how options are laid out.
+
 ## Open Choice
 
 The Open Choice widget allows users to select from a predefined list of options or enter their own custom answer. It is displayed on the form as a drop-down list.
@@ -466,6 +479,10 @@ This mode supports:
 #### Expression
 
 Use an expression to define answer options dynamically.
+
+#### Choice columns
+
+Open Choice supports the same **Choice columns** setting as Choice. Columns apply to predefined options; the custom free-text option is rendered as a normal single value.
 
 #### Open choice label
 
