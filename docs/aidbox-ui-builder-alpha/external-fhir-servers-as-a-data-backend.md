@@ -27,7 +27,7 @@ By default all data is stored in Aidbox and there is no need for any configurati
 
 ## Package storage requirements <a id="plan-definition-storage-requirements"></a>
 
-[Form packages](../plan-definitions.md) support the same storage configuration as individual forms, in both standalone Formbox and the Aidbox module:
+[Form packages](../plan-definitions.md) support the same storage configuration as individual forms:
 
 * `form-store` handles the package's `Questionnaire` resources.
 * `data-store` handles `PlanDefinition`, `RequestGroup`, `Task`, `QuestionnaireResponse`, and extraction results. This includes the package definition, even though it is reusable content.

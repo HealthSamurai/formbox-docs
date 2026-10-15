@@ -4,15 +4,13 @@ description: This article outlines the basic steps to get started with Formbox a
 
 # Getting started (module)
 
-This guide explains how to start using **Formbox as an Aidbox module**. In this deployment model, Formbox runs on top of Aidbox and uses Aidbox as the underlying FHIR server. Form-building and form-rendering capabilities are the same as in the standalone deployment model.
+This guide explains how to start using **Formbox as an Aidbox module**. In this deployment model, Formbox runs on top of Aidbox and uses Aidbox as the underlying FHIR server.
 
 Use this guide if you want to:
 
 - explore Formbox in an Aidbox-hosted sandbox;
 - run Formbox locally as part of an Aidbox project;
 - open the Form Builder and start creating or editing forms.
-
-If you want to run Formbox as a separate product instead, see [Getting started (standalone)](getting-started-formbox.md).
 
 ## Before you start
 {% hint style="info" %}
@@ -89,8 +87,6 @@ The next time you log in to the portal, after signing in successfully, follow th
 
 Please **make sure** that both [Docker & Docker Compose](https://docs.docker.com/engine/install/) are installed (not required if you're planning to use sandbox).
 {% endhint %}
-
-You can start Formbox standalone from the Aidbox Portal and then sign in with the credentials generated for your instance.
 
 Use this option if you want to run Formbox as part of a local Aidbox setup. 
 

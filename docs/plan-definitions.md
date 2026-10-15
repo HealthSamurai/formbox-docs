@@ -18,11 +18,9 @@ If travel assistance is not needed, the person goes from Intake directly to Revi
 
 Create a package in the [Package Designer](plan-definition-designer.md), or define and run it through the [Form packages API](reference/plan-definition-api.md). Both use the same package definition and rules.
 
-## Availability
+## Storage
 
-Packages are available in both [standalone Formbox](getting-started-formbox.md) and Formbox running as an [Aidbox module](getting-started.md).
-
-Packages use local storage by default and also support a configured [external FHIR data store](aidbox-ui-builder-alpha/external-fhir-servers-as-a-data-backend.md#plan-definition-storage-requirements).
+Packages use local storage by default and also support a configured [external FHIR data store](aidbox-ui-builder-alpha/external-fhir-servers-as-a-data-backend.md#plan-definition-storage-requirements). Package writes use FHIR transaction bundles. The configured data store commits or rolls back each bundle, for both local and external storage.
 
 ## Definition and instance
 

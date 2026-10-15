@@ -4,8 +4,6 @@
 * [Formbox  (formerly Aidbox Forms)](README.md)
   * [Release Notes](release-notes.md)
   * [Getting started (module)](getting-started.md)
-  * [Getting started (standalone)](getting-started-formbox.md)
-  * [Data storage and API](form-and-response-storage.md)
   * [Formbox UI](aidbox-forms-interface.md)
   * [Form packages](plan-definitions.md)
     * [Package Designer](plan-definition-designer.md)

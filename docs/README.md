@@ -13,39 +13,11 @@ Formbox is a platform for building, managing, and running digital healthcare for
 
 It follows the [**HL7 FHIR Structured Data Capture (SDC) Implementation Guide**](https://build.fhir.org/ig/HL7/sdc/en/), supporting standard Questionnaire and QuestionnaireResponse workflows, including structured data extraction and population.
 
-### Deployment Options
+### Formbox as an Aidbox Module
 
-Formbox can be used in two configurations.
+Formbox is deployed as a module of Aidbox.
 
-#### 1. Formbox as a Standalone Product
-
-Formbox can run independently as a dedicated form management platform.
-
-In this configuration, it provides:
-
-* No-code Form Builder&#x20;
-* Form Renderer
-* [Form packages](plan-definitions.md) with ordered questionnaires, conditional forms, shared answers, and one submission
-* Form Gallery
-* PDF-to-digital form conversion
-* Workflow automation&#x20;
-* Form and response storage
-* FHIR-aligned data model
-* Embedding via REST API or web components
-
-Formbox can integrate with external FHIR servers and terminology services.
-
-Pre-fill and data extraction workflows are supported by reading from and writing to external FHIR servers in accordance with FHIR SDC.
-
-In this setup, SQL-on-FHIR analytics can be performed on stored QuestionnaireResponse data.
-
-[**Getting Started (Standalone)**](getting-started-formbox.md)
-
-#### 2. Formbox as an Aidbox Module
-
-Formbox can also be deployed as a module of Aidbox.
-
-In this configuration, Formbox uses Aidbox as the underlying FHIR server and provides access to full FHIR server capabilities, including:
+Formbox uses Aidbox as the underlying FHIR server and provides access to full FHIR server capabilities, including:
 
 * Native FHIR storage
 * [Form packages](plan-definitions.md) with ordered questionnaires, conditional forms, shared answers, and one submission
@@ -53,9 +25,7 @@ In this configuration, Formbox uses Aidbox as the underlying FHIR server and pro
 * SQL-on-FHIR and advanced querying across FHIR resources
 * Full FHIR API support
 
-In this setup, SQL-on-FHIR analytics can be performed across all FHIR resources stored in Aidbox, not only QuestionnaireResponse data.
-
-Form building, rendering, and [form packages](plan-definitions.md#availability) are available in both deployment models. Where and how FHIR data is stored depends on the deployment.
+SQL-on-FHIR analytics can be performed across all FHIR resources stored in Aidbox, not only QuestionnaireResponse data.
 
 [**Getting Started (Aidbox Module)**](getting-started.md)
 

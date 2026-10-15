@@ -70,7 +70,7 @@
 ## March 2026 _`2603`_
 
 * **Formbox (formerly Aidbox Forms)**
-  * Supported the ability to run Formbox in [Sandbox mode](getting-started-formbox.md).
+  * Supported the ability to run Formbox in [Sandbox mode](getting-started.md).
   * Added the ability to configure a [list of terminology servers](aidbox-ui-builder-alpha/integration-with-external-terminology-servers.md).
   * Implemented a new [Form Builder layout](aidbox-ui-builder-alpha/ui-builder-interface.md#ui-builder-interface-overview), which will become the default in the next release.
   * Added the ability to include a [header](aidbox-ui-builder-alpha/form-creation/widgets.md) and [footer](aidbox-ui-builder-alpha/form-creation/widgets.md) in a form.
