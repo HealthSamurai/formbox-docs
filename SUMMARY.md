@@ -36,6 +36,7 @@
         * [How to extract data from forms](aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-extract-data-from-forms.md)
         * [How to calculate form filling percentage](aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-calculate-form-filling-percentage.md)
         * [How to create a form with dynamical answers into questions](aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-use-answer-expression-into-forms.md)
+        * [How to display choice options in columns](aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-display-choice-options-in-columns.md)
         * [How to create consent questions](aidbox-ui-builder-alpha/form-creation/how-to-guides/how-to-add-consent-questions.md)
   * [Form distribution](form-distribution.md)
     * [Form sharing](aidbox-ui-builder-alpha/form-sharing.md)

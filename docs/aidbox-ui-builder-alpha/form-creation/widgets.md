@@ -418,7 +418,7 @@ Each column defines:
 - **Width** - optional column width, in pixels or percent.
 - **For display** - use this column as the display text for the selected value.
 
-Choice columns use the SDC `sdc-questionnaire-choiceColumn` extension. They are different from **Column count** on Radio Button and Checkbox List, which only controls how options are laid out.
+Choice columns use the SDC `sdc-questionnaire-choiceColumn` extension. They are different from **Column count** on Radio Button and Checkbox List, which only controls how options are laid out. For a step-by-step example, see [How to display choice options in columns](how-to-guides/how-to-display-choice-options-in-columns.md).
 
 ## Open Choice
 
