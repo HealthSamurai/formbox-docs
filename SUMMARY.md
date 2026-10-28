@@ -58,6 +58,7 @@
     * [Store attachments in S3-like storages](aidbox-ui-builder-alpha/store-attachments-in-s3-like-storages.md)
   * [Additional capabilities](additional-capabilities.md)
     * [Access control in forms](access-control-in-forms.md)
+    * [Security labels in forms](security-labels-in-forms.md)
     * [Adaptive Forms](adaptive-forms.md)
     * [Audit logging in forms](audit-logging-in-forms.md)
     * [Building reports using SQL on FHIR](aidbox-ui-builder-alpha/building-reports-using-sql-on-fhir.md)
