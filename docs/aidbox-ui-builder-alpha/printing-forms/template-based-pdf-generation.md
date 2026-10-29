@@ -29,18 +29,16 @@ The response of `$render` is the result of rendering the selected HTML template 
 To render a Questionnaire, use the following endpoint:
 
 ```yaml
-POST /Questionnaire/[questionnaire-id]/$render
+POST /fhir/Questionnaire/[questionnaire-id]/$render
 Accept: text/html
 Content-Type: text/yaml
 
 resourceType: Parameters
 parameter: 
   - name: 'template-id'
-    value: 
-      string: 'default-template'
+    valueString: 'default-template'
   - name: 'repeated-items-count'
-    value: 
-      integer: 2
+    valueInteger: 2
 ```
 
 The 'template-id' parameter specifies the id of the SDCPrintTemplate resource to be used for rendering. `repeated-items-count` specifies the number of repetitions for fields marked as `repeats`. If this parameter is not provided, the default value is 1.
@@ -50,15 +48,14 @@ The 'template-id' parameter specifies the id of the SDCPrintTemplate resource to
 To render a QuestionnaireResponse, use the following endpoint:
 
 ```yaml
-POST /QuestionnaireResponse/[questionnaire-response-id]/$render
+POST /fhir/QuestionnaireResponse/[questionnaire-response-id]/$render
 Accept: text/html
 Content-Type: text/yaml
 
 resourceType: Parameters
 parameter: 
   - name: 'template-id'
-    value: 
-      string: 'default-template'
+    valueString: 'default-template'
 ```
 
 ## Default Template
@@ -87,8 +84,7 @@ item:
     linkId: signature
     extension:
       - url: http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl
-        value:
-          CodeableConcept:
+        valueCodeableConcept:
             coding:
               - code: signature
                 system: http://aidbox.io/questionnaire-itemControl
@@ -105,16 +101,14 @@ resourceType: Questionnaire
 item:
   - text: Textarea at left side
     answer:
-      - value:
-          string: >-
+      - valueString: >-
             As they rounded a bend in the path that ran beside the river, Lara
             recognized the silhouette of a fig tree atop a nearby hill. The
             weather was hot and the days were long.
     linkId: textarea
   - text: Date at right side
     answer:
-      - value:
-          date: '1066-06-14'
+      - valueDate: '1066-06-14'
     linkId: date
   - text: Signature
     linkId: signature
@@ -130,7 +124,7 @@ resourceType: QuestionnaireResponse
 Let's create a custom print template with id `test`. When writing a template, we can use variables from the [render context](template-based-pdf-generation.md#template-render-context). In the template we will implement a loop where we will check the linkId of each widget and depending on that, add a specific HTML fragment. For the Signature widget, we do not specify any condition at all, as it should not be displayed.
 
 ```yaml
-PUT /SDCPrintTemplate/test-template
+PUT /fhir/SDCPrintTemplate/test-template
 Accept: text/yaml
 Content-Type: text/yaml
 
@@ -180,15 +174,14 @@ content: |
 Now let's render our form using the template we've just created:
 
 ```yaml
-POST /QuestionnaireResponse/c9dacb6d-b6de-4250-8e08-a77f1d34a119/$render
+POST /fhir/QuestionnaireResponse/c9dacb6d-b6de-4250-8e08-a77f1d34a119/$render
 Accept: text/html
 Content-Type: text/yaml
 
 resourceType: Parameters
 parameter: 
   - name: 'template-id'
-    value: 
-      string: 'test-template'
+    valueString: 'test-template'
 ```
 
 ### Template Render Context

@@ -30,9 +30,7 @@ The operation is available at the following endpoints:
 | Endpoint | Description |
 |----------|-------------|
 | `POST /fhir/Questionnaire/$questionnaire-package` | FHIR endpoint |
-| `POST /Questionnaire/$questionnaire-package` | Aidbox-format endpoint |
 | `POST /Organization/{id}/fhir/Questionnaire/$questionnaire-package` | Multi-tenant FHIR endpoint |
-| `POST /Organization/{id}/aidbox/Questionnaire/$questionnaire-package` | Multi-tenant Aidbox-format endpoint |
 
 ## Input Parameters
 
@@ -301,7 +299,7 @@ item:
 Payers such as MCG and InterQual run the DTR operations themselves and own the form library behind them. Point Formbox at one of them through `dtr-service` in the **default** `SDCConfig`, and both `$questionnaire-package` and `$next-question` are forwarded to that service:
 
 ```http
-POST /SDCConfig
+POST /fhir/SDCConfig
 content-type: text/yaml
 
 id: cfg-1

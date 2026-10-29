@@ -571,7 +571,7 @@ For searching `AllergyIntolerance` we need only `Patient` reference that we get 
 Complete FHIR Search Query looks like this:
 
 ```
-GET /AllergyIntolerance?patient=pt-1
+GET /fhir/AllergyIntolerance?patient=pt-1
 ```
 
 We should specify form's `named expression` with this query, but with small modifications:
@@ -709,7 +709,7 @@ It's better to design and debug query in **Aidbox REST Console**
 Complete FHIR Search Query looks like this:
 
 ```
-GET /QuestionnaireResponse?status=completed&questionnaire=http://aidbox.io/forms/patient-name|1.0.0&encounter=enc-1
+GET /fhir/QuestionnaireResponse?status=completed&questionnaire=http://aidbox.io/forms/patient-name|1.0.0&encounter=enc-1
 ```
 
 It uses several filter criteria:

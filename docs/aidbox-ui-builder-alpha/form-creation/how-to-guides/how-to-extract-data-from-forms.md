@@ -54,11 +54,9 @@ parameter:
   resource:
     resourceType: QuestionnaireResponse
     subject:
-      id: morgan
-      resourceType: Patient
+      reference: Patient/morgan
     author:
-      id: morgan
-      resourceType: Patient
+      reference: Patient/morgan
     status: in-progress
     item:
     - linkId: weight

@@ -40,38 +40,17 @@ To enable multi-tenancy for Forms, it is necessary to enable Organization-based 
 
 A standard back-end operation to populate a link within a Questionnaire might look like this:
 
-{% tabs %}
-{% tab title="FHIR API" %}
 ```
 [base]/fhir/Questionnaire/[questionnaire-id]/$populatelink
 ```
-{% endtab %}
-
-{% tab title="Aidbox API" %}
-```
-[base]/Questionnaire/[questionnaire-id]/$populatelink
-```
-{% endtab %}
-{% endtabs %}
 
 #### 2. Multi-Tenant Back-End Call
 
 In multi-tenant mode, the call is modified to include the organization context:
 
-{% tabs %}
-{% tab title="FHIR API" %}
 ```
 [base]/Organization/[organization-id]/fhir/Questionnaire/[questionnaire-id]/$populatelink
-[base]/Organization/[organization-id]/aidbox/Questionnaire/[questionnaire-id]/$populatelink
 ```
-{% endtab %}
-
-{% tab title="Aidbox API" %}
-```
-[base]/Organization/[organization-id]/aidbox/Questionnaire/[questionnaire-id]/$populatelink
-```
-{% endtab %}
-{% endtabs %}
 
 Replace `[organization-id]` and `[questionnaire-id]` with the respective Organization and Questionnaire resource IDs.
 

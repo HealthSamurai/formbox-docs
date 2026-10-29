@@ -157,7 +157,7 @@ It takes the same `endpoint`, `headers` and `auth` fields as the stores above. S
 ### Full config example:
 
 ```yaml
-POST /SDCConfig
+POST /fhir/SDCConfig
 content-type: text/yaml
 
 id: cfg-1

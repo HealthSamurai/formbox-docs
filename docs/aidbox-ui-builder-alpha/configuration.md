@@ -99,8 +99,7 @@ A global Configuration resource can be instantiated to serve as the system-wide 
   "default": true,
   "language": "en",
   "theme": {
-    "id": "example-theme",
-    "resourceType": "QuestionnaireTheme"
+    "reference": "QuestionnaireTheme/example-theme"
   },
   "builder": {
     "form-url-prefix": "https://example.com/forms/",
@@ -125,7 +124,7 @@ A global Configuration resource can be instantiated to serve as the system-wide 
 To create a configuration resource, send a `POST` request to the `/SDCConfig` endpoint with the configuration resource in the request body.
 
 ```http
-POST /SDCConfig
+POST /fhir/SDCConfig
 Content-Type: application/json
 
 {
@@ -136,13 +135,11 @@ Content-Type: application/json
   "default": true,
   "language": "en",
   "theme": {
-    "id": "027cf3dd-dca7-4a38-b805-3e76c1886ac7",
-    "resourceType": "QuestionnaireTheme"
+    "reference": "QuestionnaireTheme/027cf3dd-dca7-4a38-b805-3e76c1886ac7"
   },
   "storage": {
     "account": {
-      "id": "aws-test-account",
-      "resourceType": "AwsAccount"
+      "reference": "AwsAccount/aws-test-account"
     },
     "bucket": "attachments-bucket",
     "store-absolute-url" : false
@@ -180,7 +177,7 @@ Content-Type: application/json
 To read a configuration resource, send a `GET` request to the `/SDCConfig/:id` endpoint, where `:id` is the unique identifier of the configuration resource.
 
 ```http
-GET /SDCConfig/example-config
+GET /fhir/SDCConfig/example-config
 ```
 
 #### Update Configuration Resource
@@ -188,7 +185,7 @@ GET /SDCConfig/example-config
 To update a configuration resource, send a `PUT` request to the `/SDCConfig/:id` endpoint with the updated configuration resource in the request body.
 
 ```http
-PUT /SDCConfig/example-config
+PUT /fhir/SDCConfig/example-config
 Content-Type: application/json
 
 {
@@ -199,8 +196,7 @@ Content-Type: application/json
   "default": true,
   "language": "en",
   "theme": {
-    "id": "027cf3dd-dca7-4a38-b805-3e76c1886ac7",
-    "resourceType": "QuestionnaireTheme"
+    "reference": "QuestionnaireTheme/027cf3dd-dca7-4a38-b805-3e76c1886ac7"
   },
   "builder": {
     "form-url-prefix": "https://example.com/forms/",
@@ -223,7 +219,7 @@ Content-Type: application/json
 To delete a configuration resource, send a `DELETE` request to the `/SDCConfig/:id` endpoint, where `:id` is the unique identifier of the configuration resource.
 
 ```http
-DELETE /SDCConfig/example-config
+DELETE /fhir/SDCConfig/example-config
 ```
 
 ### List Configuration Resources
@@ -231,7 +227,7 @@ DELETE /SDCConfig/example-config
 To list all configuration resources, send a `GET` request to the `/SDCConfig` endpoint.
 
 ```http
-GET /SDCConfig
+GET /fhir/SDCConfig
 ```
 
 ### Get Default Configuration Resource
@@ -547,7 +543,7 @@ To make a shared link open the form in a particular language, first create an `S
 **Step 1 — Create (or reuse) an `SDCConfig` with the target language:**
 
 ```yaml
-POST /SDCConfig
+POST /fhir/SDCConfig
 Content-Type: text/yaml
 
 resourceType: SDCConfig
@@ -573,14 +569,13 @@ The response returns the resource `id`, for example `cd0f1a23-2be3-45f7-b73e-38f
 **Step 2 — Generate the link, referencing that config by id:**
 
 ```yaml
-POST [base]/QuestionnaireResponse/[id]/$generate-link
+POST [base]/fhir/QuestionnaireResponse/[id]/$generate-link
 Content-Type: text/yaml
 
 resourceType: Parameters
 parameter:
   - name: config
-    value:
-      String: cd0f1a23-2be3-45f7-b73e-38f4615e2628
+    valueString: cd0f1a23-2be3-45f7-b73e-38f4615e2628
 ```
 
 {% hint style="info" %}
@@ -590,7 +585,7 @@ The `config` value must be the **id** of an existing `SDCConfig` resource — no
 The same `config` parameter is accepted by the `$populatelink` operation, which generates a link from a `Questionnaire` (and pre-populates a new response):
 
 ```yaml
-POST [base]/Questionnaire/[id]/$populatelink
+POST [base]/fhir/Questionnaire/[id]/$populatelink
 Content-Type: text/yaml
 
 resourceType: Parameters

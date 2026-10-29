@@ -49,12 +49,12 @@ Aidbox picks the service in this order:
 2. `dtr-service` in the default `SDCConfig` — one service for the whole box or tenant, used for `$next-question` and `$questionnaire-package` alike, with OAuth2 credentials of its own. See [Da Vinci DTR](davinci.md#using-an-external-dtr-service).
 3. The built-in implementation, which answers the demo questions described above.
 
-The operation is available at `POST /Questionnaire/$next-question`, `POST /fhir/Questionnaire/$next-question` and, for a tenant, at `POST /Organization/{id}/aidbox/Questionnaire/$next-question` and `POST /Organization/{id}/fhir/Questionnaire/$next-question`.
+The operation is available at `POST /fhir/Questionnaire/$next-question` and, for a tenant, at `POST /Organization/{id}/fhir/Questionnaire/$next-question`.
 
 Example request:
 
 ```json
-POST /Questionnaire/$next-question
+POST /fhir/Questionnaire/$next-question
 content-type: application/json
 accept: application/json
 

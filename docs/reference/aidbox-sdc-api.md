@@ -19,7 +19,7 @@ This operation generates a link to a web page to be used to continue answering a
 ### URLs
 
 ```
-POST [base]/QuestionnaireResponse/[id]/$generate-link
+POST [base]/fhir/QuestionnaireResponse/[id]/$generate-link
 ```
 
 ### Parameters
@@ -60,8 +60,7 @@ Whether the generated link will allow amending and re-submitting the form.
 
 ```
 name: allow-amend
-value:
-  Boolean: true
+valueBoolean: true
 ```
 
 #### allow-repopulate
@@ -72,8 +71,7 @@ NOTE: Repopulate will be working only with forms that contain populate behavior
 
 ```
 name: allow-repopulate
-value:
-  Boolean: true
+valueBoolean: true
 ```
 
 #### redirect-on-submit
@@ -82,8 +80,7 @@ A URL where the user will be redirected to after successfully submitting the for
 
 ```yaml
 name: redirect-on-submit
-value:
-  String: https://example.com/submit-hook?questionnaire=123
+valueString: https://example.com/submit-hook?questionnaire=123
 ```
 
 #### redirect-on-save
@@ -94,8 +91,7 @@ A URL where the user will be redirected to after hitting Save button.
 
 ```yaml
 name: redirect-on-save
-value:
-  String: https://example.com/submit-hook?questionnaire=123
+valueString: https://example.com/submit-hook?questionnaire=123
 ```
 
 #### redirect-on-timeout
@@ -104,8 +100,7 @@ URL to open after the session expires.
 
 ```yaml
 name: redirect-on-timeout
-value:
-  String: https://example.com/session-expired
+valueString: https://example.com/session-expired
 ```
 
 #### session-timeout
@@ -116,8 +111,7 @@ Inactivity timeout duration before the session expires (in milliseconds). For ex
 
 ```yaml
 name: session-timeout
-value:
-  Integer: 1800000
+valueInteger: 1800000
 ```
 
 #### warning-timeout
@@ -127,8 +121,7 @@ Defaults to 1 minute (`60000`).
 
 ```yaml
 name: warning-timeout
-value:
-  Integer: 300000
+valueInteger: 300000
 ```
 
 #### expiration
@@ -137,8 +130,7 @@ Link expiration period (days)
 
 ```yaml
 name: expiration
-value:
-  Integer: 30
+valueInteger: 30
 ```
 
 > By default thir parameter = 7 days
@@ -149,8 +141,7 @@ Form theme.
 
 ```yaml
 name: theme
-value:
-  String: hs-theme
+valueString: hs-theme
 ```
 
 #### read-only
@@ -159,8 +150,7 @@ Show form in a **read-only** mode
 
 ```yaml
 name: read-only
-value:
-  Boolean: true
+valueBoolean: true
 ```
 
 **app-name**
@@ -183,8 +173,7 @@ Reference to a saved `SDCConfig` resource, passed as the resource **id**. When t
 
 ```yaml
 name: config
-value:
-  String: cd0f1a23-2be3-45f7-b73e-38f4615e2628
+valueString: cd0f1a23-2be3-45f7-b73e-38f4615e2628
 ```
 
 ### Usage Example
@@ -192,17 +181,15 @@ value:
 {% tabs %}
 {% tab title="Request" %}
 ```http
-POST [base]/QuestionnaireResponse/[id]/$generate-link
+POST [base]/fhir/QuestionnaireResponse/[id]/$generate-link
 content-type: text/yaml
 
 resourceType: Parameters
 parameter:
   - name: allow-amend
-    value:
-      Boolean: true
+    valueBoolean: true
   - name: redirect-on-submit
-    value:
-      String: https://example.com/submit-hook?questionnaire=123
+    valueString: https://example.com/submit-hook?questionnaire=123
 ```
 {% endtab %}
 
@@ -625,9 +612,9 @@ These paths are **not** under `/fhir`. `POST /fhir/QuestionnaireResponse/$render
 ### URLs
 
 ```
-POST [base]/Questionnaire/[id]/$render
-POST [base]/QuestionnaireResponse/[id]/$render
-POST [base]/QuestionnaireResponse/$render
+POST [base]/fhir/Questionnaire/[id]/$render
+POST [base]/fhir/QuestionnaireResponse/[id]/$render
+POST [base]/fhir/QuestionnaireResponse/$render
 ```
 
 Under multi-tenancy the same operations exist as `/Organization/[org-id]/aidbox/…`.
@@ -681,7 +668,7 @@ valueString: liquid-template-d0TSpgNl
 ### Examples
 
 ```yaml
-POST /QuestionnaireResponse/qr-1/$render
+POST /fhir/QuestionnaireResponse/qr-1/$render
 Content-Type: text/yaml
 
 resourceType: Parameters
@@ -693,7 +680,7 @@ parameter:
 ```
 
 ```yaml
-POST /Questionnaire/q-1/$render
+POST /fhir/Questionnaire/q-1/$render
 Content-Type: text/yaml
 
 resourceType: Parameters

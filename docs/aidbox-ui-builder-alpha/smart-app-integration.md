@@ -146,10 +146,10 @@ matcho:
       - '#^/\$sdc-file(/.*)?$'
       - '#^/\$extend-sdc-session$'
       - '#^/\$drop-sdc-session$'
-      - '#^/QuestionnaireTheme(/.*)?$'
-      - '#^/QuestionnaireResponse/[^/]+/\$[a-z-]+$'
+      - '#^/QuestionnaireResponse/[^/]+/\$generate-token$'
+      - '#^/fhir/QuestionnaireTheme(/.*)?$'
       - '#^/fhir/Questionnaire(/[^/]+)?(/\$[a-z-]+)?/?$'
-      - '#^/fhir/QuestionnaireResponse(/\$[a-z-]+)?/?$'
+      - '#^/fhir/QuestionnaireResponse(/[^/]+)?(/\$[a-z-]+)?/?$'
       - '#^/fhir/PlanDefinition(/[^/]+)?(/\$[a-z-]+)?/?$'
   request-method:
     $one-of: [get, post, put, patch, delete]

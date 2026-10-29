@@ -430,7 +430,7 @@ Triggered during the initialization of the web component if a theme is reference
 **Request**
 
 ```http
-GET /QuestionnaireTheme/<theme-id> HTTP/1.1
+GET /fhir/QuestionnaireTheme/<theme-id> HTTP/1.1
 ```
 
 Where `<theme-id>` is the ID of the theme being requested.
@@ -450,7 +450,7 @@ Triggered during the initialization of the builder web component and after savin
 **Request**
 
 ```http
-GET /QuestionnaireTheme?_sort=.theme-name HTTP/1.1
+GET /fhir/QuestionnaireTheme?_sort=.theme-name HTTP/1.1
 ```
 
 **Response**
@@ -734,7 +734,7 @@ Triggered when the "Save" button is clicked in the theme editor for a new theme.
 **Request**
 
 ```http
-POST /QuestionnaireTheme HTTP/1.1
+POST /fhir/QuestionnaireTheme HTTP/1.1
 Content-Type: application/json
 
 <theme>
@@ -757,7 +757,7 @@ Triggered when the "Save" button is clicked in the theme editor.
 **Request**
 
 ```http
-PUT /QuestionnaireTheme/<theme-id> HTTP/1.1
+PUT /fhir/QuestionnaireTheme/<theme-id> HTTP/1.1
 Content-Type: application/json
 
 <theme>
@@ -902,7 +902,7 @@ Triggered when the "Validate Questionnaire" button is clicked in the builder deb
 **Request**
 
 ```http
-POST /Questionnaire/$validate HTTP/1.1
+POST /fhir/Questionnaire/$validate HTTP/1.1
 Content-Type: application/json
 
 <questionnaire>
@@ -925,7 +925,7 @@ Triggered when the "Validate Questionnaire Response" button is clicked in the bu
 **Request**
 
 ```http
-POST /QuestionnaireResponse/$validate HTTP/1.1
+POST /fhir/QuestionnaireResponse/$validate HTTP/1.1
 Content-Type: application/json
 
 <questionnaire-response>

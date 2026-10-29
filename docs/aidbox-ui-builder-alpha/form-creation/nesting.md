@@ -67,7 +67,7 @@ Also it's possible to create/update themes programmatically.
 It's usefull if you want to make a lot of themes, or automate this flow in some way.
 
 ```json
-PUT /QuestionnaireTheme/[id]
+PUT /fhir/QuestionnaireTheme/[id]
 content-type: application/json
 accept: application/json
 

@@ -64,8 +64,7 @@ After you setup the integration, put the reference to storage credential resourc
   "default": true,
   "storage": {
     "account": {
-      "id": "test-account",
-      "resourceType": "AwsAccount"
+      "reference": "AwsAccount/test-account"
     },
     "bucket": "sdc-files"
   }
@@ -100,8 +99,7 @@ For this situation we have a `SDCConfig` option  - `store-absolute-url`.
   "default": true,
   "storage": {
     "account": {
-      "id": "test-account",
-      "resourceType": "AwsAccount"
+      "reference": "AwsAccount/test-account"
     },
     "bucket": "sdc-files",
     "store-absolute-url" : true

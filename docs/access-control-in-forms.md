@@ -65,16 +65,16 @@ matcho:
         value: sdc-admin
   uri:
    $one-of:
-      - '#/Questionnaire/.*$'
-      - '#/Questionnaire$'
-      - '#/QuestionnaireResponse/.*$'
-      - '#/QuestionnaireResponse$'
-      - '#/QuestionnaireTheme/.*$'
-      - '#/QuestionnaireTheme$'
-      - '#/SDCPrintTemplate/.*$'
-      - '#/SDCPrintTemplate$'
-      - '#/SDCConfig/.*$'
-      - '#/SDCConfig$'
+      - '#/fhir/Questionnaire/.*$'
+      - '#/fhir/Questionnaire$'
+      - '#/fhir/QuestionnaireResponse/.*$'
+      - '#/fhir/QuestionnaireResponse$'
+      - '#/fhir/QuestionnaireTheme/.*$'
+      - '#/fhir/QuestionnaireTheme$'
+      - '#/fhir/SDCPrintTemplate/.*$'
+      - '#/fhir/SDCPrintTemplate$'
+      - '#/fhir/SDCConfig/.*$'
+      - '#/fhir/SDCConfig$'
   request-method:
      $one-of:
        - get
@@ -111,16 +111,16 @@ matcho:
         value: sdc-admin
   uri:
    $one-of:
-      - '#/Patient/.*$'
-      - '#/Patient$'
-      - '#/Encounter/.*$'
-      - '#/Encounter$'
-      - '#/Observation/.*$'
-      - '#/Observation$'
-      - '#/Organization/.*$'
-      - '#/Organization$'
-      - '#/Practitioner/.*$'
-      - '#/Practitioner$'
+      - '#/fhir/Patient/.*$'
+      - '#/fhir/Patient$'
+      - '#/fhir/Encounter/.*$'
+      - '#/fhir/Encounter$'
+      - '#/fhir/Observation/.*$'
+      - '#/fhir/Observation$'
+      - '#/fhir/Organization/.*$'
+      - '#/fhir/Organization$'
+      - '#/fhir/Practitioner/.*$'
+      - '#/fhir/Practitioner$'
   request-method:
      $one-of:
        - get
@@ -195,8 +195,8 @@ matcho:
         value: sdc-admin
   uri:
     $one-of:
-      - '#/ValueSet$'
-      - '#/ValueSet/\$expand$'
+      - '#/fhir/ValueSet$'
+      - '#/fhir/ValueSet/\$expand$'
   request-method:
     $one-of:
       - get
@@ -295,11 +295,11 @@ matcho:
         value: sdc-form-designer
   uri:
     $one-of:
-    - '#/Questionnaire$'
-    - '#/Questionnaire/.*$'
-    - '#/Questionnaire/\$save'
-    - '#/Questionnaire/.*/\$usage'
-    - '#/Questionnaire/.*/\$duplicate'
+    - '#/fhir/Questionnaire$'
+    - '#/fhir/Questionnaire/.*$'
+    - '#/fhir/Questionnaire/\$save'
+    - '#/fhir/Questionnaire/.*/\$usage'
+    - '#/fhir/Questionnaire/.*/\$duplicate'
   request-method:
     $one-of:
       - get
@@ -327,7 +327,7 @@ matcho:
     roles:
       $contains:
         value: sdc-form-designer
-  uri: '#/QuestionnaireResponse$'
+  uri: '#/fhir/QuestionnaireResponse$'
   request-method: get
 ```
 
@@ -350,8 +350,8 @@ matcho:
         value: sdc-form-designer
   uri:
     $one-of:
-      - '#/Questionnaire/\$validate'
-      - '#/QuestionnaireResponse/\$validate'
+      - '#/fhir/Questionnaire/\$validate'
+      - '#/fhir/QuestionnaireResponse/\$validate'
   request-method: post
 ```
 
@@ -374,8 +374,8 @@ matcho:
         value: sdc-form-designer
   uri:
     $one-of:
-      - '#/QuestionnaireTheme$'
-      - '#/QuestionnaireTheme/.*'
+      - '#/fhir/QuestionnaireTheme$'
+      - '#/fhir/QuestionnaireTheme/.*'
   request-method:
     $one-of:
       - get
@@ -405,8 +405,8 @@ matcho:
         value: sdc-form-designer
   uri:
     $one-of:
-      - '#/Encounter$'
-      - '#/Patient$'
+      - '#/fhir/Encounter$'
+      - '#/fhir/Patient$'
   request-method: get
 ```
 
@@ -427,7 +427,7 @@ matcho:
     roles:
       $contains:
         value: sdc-form-designer
-  uri: '#/Questionnaire/\$populate$'
+  uri: '#/fhir/Questionnaire/\$populate$'
   request-method: post
 ```
 
@@ -448,7 +448,7 @@ matcho:
     roles:
       $contains:
         value: sdc-form-designer
-  uri: '#/QuestionnaireResponse/\$extract$'
+  uri: '#/fhir/QuestionnaireResponse/\$extract$'
   request-method: post
 ```
 
@@ -469,7 +469,7 @@ matcho:
     roles:
       $contains:
         value: sdc-form-designer
-  uri: '#/ValueSet$'
+  uri: '#/fhir/ValueSet$'
   request-method: get
 ```
 
@@ -492,7 +492,7 @@ matcho:
     roles:
       $contains:
         value: sdc-form-designer
-  uri: '#/ValueSet/\$expand$'
+  uri: '#/fhir/ValueSet/\$expand$'
   request-method:
     $one-of:
       - get
@@ -622,7 +622,7 @@ matcho:
     roles:
       $contains:
         value: sdc-form-filler
-  uri: '#/QuestionnaireResponse/.*'
+  uri: '#/fhir/QuestionnaireResponse/.*'
   request-method: get
 ```
 
@@ -643,7 +643,7 @@ matcho:
     roles:
       $contains:
         value: sdc-form-filler
-  uri: '#/Questionnaire/$'
+  uri: '#/fhir/Questionnaire/$'
   request-method: get
 ```
 
@@ -664,7 +664,7 @@ matcho:
     roles:
       $contains:
         value: sdc-form-filler
-  uri: '#/QuestionnaireResponse/\$save'
+  uri: '#/fhir/QuestionnaireResponse/\$save'
   request-method:  post
 ```
 
@@ -685,7 +685,7 @@ matcho:
     roles:
       $contains:
         value: sdc-form-filler
-  uri: '#/QuestionnaireResponse/\$submit'
+  uri: '#/fhir/QuestionnaireResponse/\$submit'
   request-method:  post
 ```
 
@@ -708,7 +708,7 @@ matcho:
     roles:
       $contains:
         value: sdc-form-filler
-  uri: '#/ValueSet/\$expand'
+  uri: '#/fhir/ValueSet/\$expand'
   request-method:
     $one-of:
        - post
@@ -817,7 +817,7 @@ matcho:
     roles:
       $contains:
         value: sdc-response-manager
-  uri: '#/SDCConfig$'
+  uri: '#/fhir/SDCConfig$'
   request-method: get
 ```
 
@@ -863,8 +863,8 @@ matcho:
         value: sdc-response-manager
   uri:
     $one-of:
-      - '#/QuestionnaireTheme$'
-      - '#/QuestionnaireTheme/.*'
+      - '#/fhir/QuestionnaireTheme$'
+      - '#/fhir/QuestionnaireTheme/.*'
   request-method: get
 ```
 
@@ -887,8 +887,8 @@ matcho:
         value: sdc-response-manager
   uri:
     $one-of:
-    - '#/Questionnaire$'
-    - '#/Questionnaire/.*$'
+    - '#/fhir/Questionnaire$'
+    - '#/fhir/Questionnaire/.*$'
   request-method: get
 ```
 
@@ -911,8 +911,8 @@ matcho:
         value: sdc-response-manager
   uri:
     $one-of:
-    - '#/QuestionnaireResponse'
-    - '#/QuestionnaireResponse/.*$'
+    - '#/fhir/QuestionnaireResponse'
+    - '#/fhir/QuestionnaireResponse/.*$'
   request-method: get
 ```
 
@@ -940,8 +940,8 @@ matcho:
         value: sdc-response-manager
   uri:
     $one-of:
-    - '#/Encounter$'
-    - '#/Patient$'
+    - '#/fhir/Encounter$'
+    - '#/fhir/Patient$'
   request-method: get
 ```
 
@@ -962,7 +962,7 @@ matcho:
     roles:
       $contains:
         value: sdc-response-manager
-  uri: '#/Questionnaire/.*/\$populatelink$'
+  uri: '#/fhir/Questionnaire/.*/\$populatelink$'
   request-method: post
 ```
 
@@ -983,7 +983,7 @@ matcho:
     roles:
       $contains:
         value: sdc-response-manager
-  uri: '#/QuestionnaireResponse/.*/\$generate-link$'
+  uri: '#/fhir/QuestionnaireResponse/.*/\$generate-link$'
   request-method: post
 ```
 
@@ -1093,11 +1093,11 @@ Affected Proxy Operations
 
 The following SDC operations are affected by strict access control:
 
-- `POST /Questionnaire/$populate` and `POST /Questionnaire/$populatelink`: Prefill a form using data retrieved from FHIR resources.
+- `POST /fhir/Questionnaire/$populate` and `POST /fhir/Questionnaire/$populatelink`: Prefill a form using data retrieved from FHIR resources.
 
-- `POST /QuestionnaireResponse/$submit` : Extract data from a completed response and persist it as FHIR resources.
+- `POST /fhir/QuestionnaireResponse/$submit` : Extract data from a completed response and persist it as FHIR resources.
 
--  `POST /Questionnaire/$reference-lookup` : Perform lookups for resource references (e.g., used in reference widgets).
+-  `POST /fhir/Questionnaire/$reference-lookup` : Perform lookups for resource references (e.g., used in reference widgets).
 
 Configuring Access Policies
 
@@ -1160,6 +1160,6 @@ matcho:
   extra-data:
     sdc:
       context: populate
-  uri: '#/Patient$'
+  uri: '#/fhir/Patient$'
   request-method: get
 ```

@@ -58,7 +58,7 @@ Purpose is how the questionnaire refers to a template — not a property of the 
 Pass `purpose` to pick the Library linked on the form, or `liquid-template-id` to point at a Library directly. `format: pdf` returns a PDF; omit it for HTML. Full parameters: [$render](../../reference/aidbox-sdc-api.md#render-a-questionnaire-or-response-render).
 
 ```yaml
-POST /QuestionnaireResponse/qr-1/$render
+POST /fhir/QuestionnaireResponse/qr-1/$render
 Content-Type: text/yaml
 
 resourceType: Parameters
