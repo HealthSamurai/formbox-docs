@@ -385,16 +385,6 @@ The example provided below represents a comprehensive translations object for En
       "clear" : {"en" : "Clear canvas"},
       "open" : {"en" : "Edit annotation"}
     },
-    "speech-to-text" : {
-      "tooltip" : {
-        "recording" : {"en" : "Recording your speech"},
-        "unsupported" : {"en" : "Speech to text is disabled because neither GPU is available nor cross-origin isolation is enabled"},
-        "initializing" : {"en" : "Initializing speech to text engine"},
-        "record" : {"en" : "Click to record your speech"},
-        "converting" : {"en" : "Converting your speech to text"}
-      },
-      "record" : {"en" : "Record"}
-    },
     "signature" : {
       "alt" : {"en" : "Sign here"},
       "clear" : {"en" : "Clear signature"},

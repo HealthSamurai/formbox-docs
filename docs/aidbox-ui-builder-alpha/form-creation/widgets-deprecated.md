@@ -204,7 +204,6 @@ Extensions editor represents three fields for adding your own custom extension. 
 | [Attachment](widgets-deprecated.md#attachment)         | Question with binary content such as an image, PDF, etc. as an answer                                                                                                                                                                                                                     | FHIR          |
 | Signature                                   | A control for capturing a signature.                                                                                                                                                                                                                                                      | Custom        |
 | [Annotation Pad](widgets-deprecated.md#annotation-pad) | A control for capturing visual information, sketches, or handwritten notes that cannot be easily captured through text inputs.                                                                                                                                                            | Custom        |
-| [Speech to text](widgets-deprecated.md#speech-to-text) | A control to input text by speaking, which is then automatically transcribed into the form.                                                                                                                                                                                               | Custom        |
 | [Reference](widgets-deprecated.md#reference)           | Question with a reference to another resource (practitioner, organization, etc.) as an answer                                                                                                                                                                                             | FHIR          |
 | [Radio Button](widgets-deprecated.md#radio-button)     | A control where choices are listed with a button beside them. The button can be toggled to select or de-select a given choice. Selecting one item deselects all others.                                                                                                                   | FHIR          |
 | [Checkbox List](widgets-deprecated.md#checkbox-list)   | A control where choices are listed with a box beside them. The box can be toggled to select or de-select a given choice with multiple selections.                                                                                                                                         | FHIR          |
@@ -242,14 +241,6 @@ The Annotation Pad widget allows users to draw or write annotations directly wit
 * **Erase Option**: A tool for erasing parts of the drawing or writing.
 
 The annotation will be saved as base64 encoded attachment in QuestionnaireResponse.
-
-### Speech to text
-
-The Speech to Text widget allows users to input text by speaking, which is then automatically transcribed into the form. This is especially useful for capturing detailed information or notes, making the form-filling process faster and more efficient.
-
-**Settings:**
-
-* **Language**: The language in which the speech will be recognised and transcribed. The list of supported languages: Chinese, Croatian, Czech, Danish, Dutch, English, Finnish, French, German, Hungarian, Italian, Japanese, Korean, Polish, Russian, Spanish.
 
 ### Choice
 
