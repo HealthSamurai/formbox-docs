@@ -33,7 +33,6 @@ Formbox supports multiple widget types for building forms. Widgets define how qu
 | [Attachment](widgets.md#attachment) | A widget for uploading files such as documents, images, audio, video, and other supported file types. | FHIR |
 | [Signature](widgets.md#signature) | A widget for capturing a handwritten signature. | Custom |
 | [Annotation Pad](widgets.md#annotation-pad) | A widget for drawing or writing annotations directly in the form, optionally over a background image. | Custom |
-| [Speech to text](widgets.md#speech-to-text) | A widget for entering text by speaking. Spoken input is transcribed into text and stored as the answer value. | Custom |
 | [Reference](widgets.md#reference) | A widget for selecting a reference to another FHIR resource, such as Patient, Practitioner, Appointment, or CarePlan. | FHIR |
 
 
@@ -714,23 +713,6 @@ Defines the stroke thickness used for drawing.
 #### Erase Option
 
 Allows erasing annotation content.
-
-## Speech to text
-
-The Speech to text widget allows users to input text by speaking. The spoken input is transcribed into text and stored as the answer value.
-
-### Input
-
-- **Min Length**
-- **Max Length**
-- **Input constraints (RegEx)**
-- **Language**
-
-#### Language
-
-Defines the language used for speech recognition and transcription.
-
-The language is selected from the list of languages supported by Formbox.
 
 ## Reference
 
